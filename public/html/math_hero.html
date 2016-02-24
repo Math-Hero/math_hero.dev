@@ -1,0 +1,360 @@
+<! DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style type="text/css">
+
+		#race {
+			border: 2px solid #000;
+		}
+
+		.start {
+			background-color: lightblue;
+			height: 200px;
+			border: 2px solid #000;
+			font-weight: bold;
+		}
+
+		.finish {
+			background-color: red;
+			height: 200px;
+			border: 2px solid #000;
+			font-weight: bold;
+		}
+
+		.start>p, .finish>p {
+			background-color: white;
+			text-align: center;
+			text-shadow: 1px 1px 1px #000;
+		}
+
+		button {
+			text-align: center;
+			height: 200px;
+			width: 200px;
+			margin-left: 500px;
+			margin-top: 50px;
+			font-weight: bold;
+			font-size: 30px;
+		}
+
+		#intro {
+			margin: 100px;
+			margin-bottom: 0px;
+			font-size: 30px;
+		}
+
+		#princess {
+			margin: 100px;
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+
+	</style>
+
+
+</head>
+<body>
+    
+    <div id="main-container">
+        <!-- This is a placeholder for the "Welcome, Princess ____" statement. -->
+        <div id="princess"></div>
+        <button id="click-me">Click Me</button>
+        <div id="intro">
+
+            <h1>Introduction:</h1>
+
+
+            <h3>Mission:</h3> 
+            <p>Enter the castle to escape the zombies.</p>
+
+            <h3>Instructions:</h3> 
+            <p>By helping your friends along the way and answering their questions right, you earn tokens. The castle guard needs 10 tokens to let you in.</p>
+
+            <h3>Problems:</h3> 
+            <p>Watch out for trolls who want your tokens and zombies who want your brains!!! Trolls will take half your tokens but a zombie bite means game over.</p>
+
+            <h3>Next:</h3>
+            <p>Click the "Continue" button to begin.</p>
+        </div>
+        <button id="continue" onClick="startGame()">Continue</button>
+        <div id="race">
+            <div class="row" id="1st-row">
+                <div class="col-sm-2">
+                    <!-- Ignore the changes to the car file paths & names. -->
+                    <img src="img/zcar.png" id="zcar">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1 start"><p>START</p></div>
+                <div class="col-sm-7"></div>
+                <div class="col-sm-1 finish"><p>FINISH</p></div>
+            </div>
+            <div class="row" id="2nd-row">
+                <div class="col-sm-2">
+                    <!-- Ignore the changes to the car file paths & names. -->
+                    <img src="img/zcar.png" id="pcar">
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1 start"><p>START</p></div>
+                <div class="col-sm-7"></div>
+                <div class="col-sm-1 finish"><p>FINISH</p></div>
+            </div>  
+        </div>
+    </div>
+    <div id="footer">
+        <div id="copyright"></div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+
+        "use strict";
+
+        // LIST OF VARIABLES
+
+        var commandList1 = "Where would you like to go next? Please Enter A Number\n1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Help a friend";
+
+        var commandList2 = "Where would you like to go next? Please Enter A Number\n1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Help a friend\n6. Enter castle";
+
+        var currentLocation = "field";
+
+        var winDestination = "insideCastle";
+
+        var zCarLocation;
+
+        var pCarLocation;
+
+        var totalCoins;
+
+        var fieldMessage = "You are in a field with tall grass and beautiful flowers. To the north is the castle but you must first cross the river, where bridge trolls live. To the east is a swamp. You can\'t go west because of the ocean or south because of the quick sand.";
+
+        var swampMessage = "You are in a swamp filled with alligators and snakes which could be dangerous to some, but not you. To the north is a forest. To the west is a field. You can\'t go east because of the dense forest or south because of the quick sand.";
+
+        var forestMessage = "You are in a forest filled with song birds and cuddly animals. To the west is the castle but you must first cross the river, where bridge trolls live. To the south is a swamp. You can\'t go east because of the dense forest or north because of the mountains.";
+
+        var castleMessage = "You are at the castle but you can only enter if you can pay the castle guard. To the east is a forest but you must first cross the river, where bridge trolls live. To the south is a field but you must first cross the river, where bridge trolls live. You can\'t go north because of the mountains or west because of the ocean.";
+
+        var castleGuard = "Welcome, Princess " + name + "! I'll need 10 gold coins for you to enter.";
+
+        var bridgeMessage = "You are about to cross the river but a bridge troll wants your gold. Answer the question right and you may cross the bridge with all your gold coins. If you answer wrong, the troll will take half your stash.";
+
+        var zombieAttack = "Oh, no!!! Zombies!!! To out run them, press any button on the keyboard over and over again!!! If you lose the race, they\'ll eat your brains!!! Nom...Nom...Nom";
+
+        var enoughCoins = "You have enough coins! Welcome home!";
+
+        var notEnoughCoins = "I\'m sorry, Your Highness, but you don\'t have enough coins to enter. You can earn more by helping your friends.";
+
+        var wrongDirection = "You can\'t go that way. Please choose a different direction.\n1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Help a friend";
+
+        var num1 = Math.floor((Math.random() * 20) + 1);
+
+        var num2 = Math.floor((Math.random() * 20) + 1);
+
+        var operator = ['+', '-', '*', '/'];
+
+        var randOperator = operator[Math.floor(Math.random()*operator.length)];
+
+        // LIST OF FUNCTIONS
+
+        function helpFriend(){
+        	console.log("Enter help friend function")
+            
+            var mathQuestion = prompt("Princess " + name + "! I'm sure glad to see you! I need help with this math problem. What is... " + num1 + " " + randOperator + " " + num2 + "?");
+            
+            if (mathQuestion == eval(num1.toString() + randOperator + num2.toString())){
+                alert("Thank you so much! To show my appreciation, here\'s 2 gold coins!");
+                totalCoins += 2;
+            } else {
+                alert("I don\'t think that\'s right. Maybe we can try again later.");
+            }
+        }
+
+        function trollChallenge(){
+        	console.log("Enter troll challenge function")
+            
+            var mathQuestion = prompt("Aha! Princess " + name + "! Fail my challenge and I'll steal your gold!!! What is... " + num1 + " " + randOperator + " " + num2 + "?");
+            
+            if (mathQuestion == eval(num1.toString() + randOperator + num2.toString())){
+                alert("Grr... Fine. You may cross my bridge.")
+                totalCoins += 2;
+            } else {
+                alert("Ha! Got 'eem! I'm rich!");
+                totalCoins /= 2;
+            }
+        }
+
+        function zombieRace(){
+        	console.log("Enter zombie race function")
+            $("#race").show();
+            zCarLocation = 0;
+            pCarLocation = 0;
+            $("#zcar").animate({left: '250px'}, slow);
+            while (pCarLocation != 250){
+                $("#pcar").keypress(function(){
+                    $(this).animate({left: '10px'})
+                });
+                pCarLocation += 10;
+            }       
+        }
+
+        function startGame(){
+        	console.log("Enter start game function");
+        	// currentLocation = "field";
+        	// winDestination = "insideCastle";
+    		while(currentLocation!=winDestination){
+    			var counter = 0;
+                var num = Math.floor((Math.random() * 20) + 1);
+                counter++;
+                if (num == 13){
+                    alert(zombieAttack);
+                    zombieRace();
+                    break;
+                }
+                switch(currentLocation){
+                    case "forest":
+                        alert(forestMessage);
+                        response = prompt(commandList1);
+                        if(response == 4){
+                            currentLocation = "bridge2";
+                            
+                        } else if (response == 2){
+                            currentLocation = "swamp";
+                            
+                        } else if (response == 5){
+                            helpFriend();
+
+                        } else {
+                            prompt(wrongDirection);
+                        };
+                    break;
+                    case "swamp":
+                        alert(swampMessage);
+                        response = prompt(commandList1);
+                        if(response == 1){
+                            currentLocation = "forest"; 
+                        } else if (response == 4){
+                            currentLocation = "field";
+                        } else if (response == 5){
+                            helpFriend();
+                        }else {
+                            response = prompt(wrongDirection);
+                        };
+                    break;
+                    case "castle":
+                        alert(castleMessage);
+                        response = prompt(commandList2);
+                        if(response == 2){
+                            currentLocation = "bridge1";    
+                        } else if (response == 3){
+                            currentLocation = "bridge2";
+                        } else if (response == 5){
+                            helpFriend();
+                        } else if (response == 6) {
+                            alert(castleGuard);
+                            if (totalCoins >= 10){
+                                alert(enoughCoins);
+                                alert("GAME OVER")
+                                currentLocation = winDestination;
+                            } else {
+                                alert(notEnoughCoins)
+                                currentLocation = "castle";
+                            }
+                        } else {
+                            response = prompt(wrongDirection);
+                        };              
+                    break;
+                    case "field":
+                        alert(fieldMessage);
+                        response = prompt(commandList1);
+                        if(response == 1){
+                            currentLocation = "bridge1"; 
+                        } else if (response == 3){
+                            currentLocation = "swamp";
+                        } else if (response == 5){
+                            helpFriend();
+                        } else {
+                            response = prompt(wrongDirection);
+                        };
+                    break;
+                    case "bridge1":
+                        alert(bridgeMessage);
+                        trollChallenge();
+                        response = prompt(commandList1);
+                        if(response == 1){
+                            currentLocation = "castle"; 
+                        } else if (response == 2){
+                            currentLocation = "field";
+                        } else if (response == 5){
+                            helpFriend();
+                        } else {
+                            response = prompt(wrongDirection);
+                        };
+                    break;
+                    case "bridge2":
+                        alert(bridgeMessage);
+                        trollChallenge();
+                        response = prompt(commandList1);
+                        if(response == 3){
+                            currentLocation = "forest"; 
+                        } else if (response == 4){
+                            currentLocation = "castle";
+                        } else if (response == 5){
+                            helpFriend();
+                        } else {
+                            response = prompt(wrongDirection);
+                        };
+                    break;
+                }
+            }
+    	}
+
+        
+
+
+	    $(document).ready(function(){
+            $("#intro").hide();
+            $("#race").hide();
+            $("#continue").hide();
+            $("#click-me").hide();
+
+            var name = prompt("What is your name?");
+
+            $("#click-me").show();
+
+            $("#princess").text("Welcome, Princess " + name + "! You arrived just in time. If we don\'t find the answers fast, the zombies will get us! Click the button to get started.");
+            
+            $("#click-me").click(function(){
+            	$("#princess").hide();
+                $("#intro").show();
+                $("#click-me").hide();
+                $("#continue").show();
+            });
+
+	        $("#continue").click(function(){
+	        	console.log('Continue function started');
+	        	$(this).startGame();        
+        	});
+
+        });
+
+    </script>
+
+</body>
+</html>
