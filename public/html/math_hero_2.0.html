@@ -18,13 +18,97 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<style type="text/css">
 
-		.red {
+		
+		.sprite {
+		  width: 102px;
+		  height: 148px;
+		  margin-top: 40px;
+		}
+
+		.right {
+		  background-image: url(http://atomicrobotdesign.com/blog_media/css-sprite/standing-right.png);
+		}
+
+		.left {
+		  background-image: url(http://atomicrobotdesign.com/blog_media/css-sprite/standing-left.png);
+		}
+
+		.walk-right {
+		  background-image: url(http://atomicrobotdesign.com/blog_media/css-sprite/walk-right.png);
+		  -webkit-animation: walk .9s steps(6) infinite;
+		  -moz-animation: walk .9s steps(6) infinite;
+		  -ms-animation: walk .9s steps(6) infinite;
+		  -o-animation: walk .9s steps(6) infinite;
+		  animation: walk .9s steps(6) infinite;
+		}
+
+		.walk-left {
+		  background-image: url(http://atomicrobotdesign.com/blog_media/css-sprite/walk-left.png);
+		  -webkit-animation: walk .9s steps(6) infinite;
+		  -moz-animation: walk .9s steps(6) infinite;
+		  -ms-animation: walk .9s steps(6) infinite;
+		  -o-animation: walk .9s steps(6) infinite;
+		  animation: walk .9s steps(6) infinite;
+		}
+
+		@-webkit-keyframes walk {
+		  from {
+		    background-position: 0px;
+		  }
+		  to {
+		    background-position: -612px;
+		  }
+		}
+
+		@-moz-keyframes walk {
+		  from {
+		    background-position: 0px;
+		  }
+		  to {
+		    background-position: -612px;
+		  }
+		}
+
+		@-ms-keyframes walk {
+		  from {
+		    background-position: 0px;
+		  }
+		  to {
+		    background-position: -612px;
+		  }
+		}
+
+		@-o-keyframes walk {
+		  from {
+		    background-position: 0px;
+		  }
+		  to {
+		    background-position: -612px;
+		  }
+		}
+
+		@-keyframes walk {
+		  from {
+		    background-position: 0px;
+		  }
+		  to {
+		    background-position: -612px;
+		  }
+		}
+
+
+
+
+
+
+
+		/*.red {
 			background-color: red;
 		}
 
 		.blue {
 			background-color: blue;
-		}
+		}*/
 
 
 	</style>
@@ -34,9 +118,8 @@
 <body>
 	
 	<div id="main-container">
-		<div id="section">
-			<button class="red" id="start-btn">Start</button>
-		</div>
+		<div class="sprite right"></div>
+		
 	</div>
 	<div id="footer">
 		<div id="copyright"></div>
@@ -48,97 +131,174 @@
     <script src="../js/jquery-2.2.0.js"></script>
     <script>
 
-	(function () {
-		$(document).ready(function(){
+    (function() {
 
-			var i = 0;
-			while (i < 10){
-				document.getElementById("start-btn").addClass("blue")
+		var sprite = document.querySelector('.sprite'),
+			key = {left: false, right: false},
+			trans = 0,
+			property = getTransformProperty(sprite);
+
+		function getTransformProperty(element) {
+		    var properties = [
+		        'transform',
+		        'WebkitTransform',
+		        'msTransform',
+		        'MozTransform',
+		        'OTransform'
+		    ];
+		    var p;
+		    while (p = properties.shift()) {
+		        if (typeof element.style[p] != 'undefined') {
+		            return p;
+		        }
+		    }
+		    return false;
+		}
+
+		function translate() {
+			sprite.style[property] = 'translateX(' + trans + 'px)';
+		}
+
+		function walk(e) {
+			var keyCode = e.keyCode;
+			if (keyCode === 39) {
+				key.right = true;
+			} else if (keyCode === 37) {
+				key.left = true;
 			}
+	    if (key.right === true) {
+				// trans += 10;
+				translate();
+				sprite.classList.remove('left');
+				sprite.classList.add('right');
+				sprite.classList.add('walk-right');
+			} else if (key.left === true) {
+				// trans -= 10;
+				translate();
+				sprite.classList.remove('right');
+				sprite.classList.add('left');
+				sprite.classList.add('walk-left');
+			}
+		}
 
+		function stop(e) {
+			var keyCode = e.keyCode;
+			if (keyCode === 39) {
+				key.right = false;
+			} else if (keyCode === 37) {
+				key.left = false;
+			}
+			if (key.right === false) {
+				sprite.classList.remove('walk-right');
+			} if (key.left === false) {
+				sprite.classList.remove('walk-left');
+			}
+		}
 
+		document.addEventListener('keydown', walk, false);
+		document.addEventListener('keyup', stop, false);
 
-
-			// Page loads with game title on top, start button in the middle, zombie on the left, princess on the right. *Street fighter style*
-
-			// Audio is playing as well
-
-			// Player presses the start button which begins the game play and a timer.
-
-			// Player must reach the castle before time runs out or the zombies are unleashed
-
-			// In order to advance, Player must answer random math problems correctly. 
-
-			// Difficulty increases in advanced stages.
-
-			// User is prompted for an answer to a math problem which randomly pulls from both an array of math word problems with a variable that inserts random numbers
-
-			// User's answer is evaluated. Answer the question correctly, add time to clock. Wrong answers deduct time.
-
-			// Music intensifies with each new stage.
-
-			// Game play moves left to right
-
-			// Maybe have zombies running towards Player *Like Mario and Turtle Doves*
-
-			// Find mario-like animation or a mario gif 
-
-
-
-
-
-
-
-
-			// ***Function for math problem*** //
-
-			/////////////////////////////////////////////////////////
-
-			var num1 = Math.floor((Math.random() * 20) + 1);
-
-	        var num2 = Math.floor((Math.random() * 20) + 1);
-
-	        var operator = ['+', '-', '*', '/'];
-
-	        var randOperator = operator[Math.floor(Math.random()*operator.length)];
-
-			function helpFriend(){
-	        	console.log("Enter help friend function")
-	            
-	            var mathQuestion = prompt("Princess " + name + "! I'm sure glad to see you! I need help with this math problem. What is... " + num1 + " " + randOperator + " " + num2 + "?");
-	            
-	            if (mathQuestion == eval(num1.toString() + randOperator + num2.toString())){
-	                alert("Thank you so much! To show my appreciation, here\'s 2 gold coins!");
-	                totalCoins += 2;
-	            } else {
-	                alert("I don\'t think that\'s right. Maybe we can try again later.");
-	            }
-	        }
-
-	        /////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		});
 	})();
+
+
+
+
+
+
+
+
+
+	// (function () {
+	// 	$(document).ready(function(){
+
+	// 		var i = 0;
+	// 		while (i < 10){
+	// 			document.getElementById("start-btn").addClass("blue")
+	// 		}
+
+
+
+
+	// 		// Page loads with game title on top, start button in the middle, zombie on the left, princess on the right. *Street fighter style*
+
+	// 		// Audio is playing as well
+
+	// 		// Player presses the start button which begins the game play and a timer.
+
+	// 		// Player must reach the castle before time runs out or the zombies are unleashed
+
+	// 		// In order to advance, Player must answer random math problems correctly. 
+
+	// 		// Difficulty increases in advanced stages.
+
+	// 		// User is prompted for an answer to a math problem which randomly pulls from both an array of math word problems with a variable that inserts random numbers
+
+	// 		// User's answer is evaluated. Answer the question correctly, add time to clock. Wrong answers deduct time.
+
+	// 		// Music intensifies with each new stage.
+
+	// 		// Game play moves left to right
+
+	// 		// Maybe have zombies running towards Player *Like Mario and Turtle Doves*
+
+	// 		// Find mario-like animation or a mario gif 
+
+
+
+
+
+
+
+
+	// 		// // ***Function for math problem*** //
+
+	// 		// /////////////////////////////////////////////////////////
+
+	// 		// var num1 = Math.floor((Math.random() * 20) + 1);
+
+	//   //       var num2 = Math.floor((Math.random() * 20) + 1);
+
+	//   //       var operator = ['+', '-', '*', '/'];
+
+	//   //       var randOperator = operator[Math.floor(Math.random()*operator.length)];
+
+	// 		// function helpFriend(){
+	//   //       	console.log("Enter help friend function")
+	            
+	//   //           var mathQuestion = prompt("Princess " + name + "! I'm sure glad to see you! I need help with this math problem. What is... " + num1 + " " + randOperator + " " + num2 + "?");
+	            
+	//   //           if (mathQuestion == eval(num1.toString() + randOperator + num2.toString())){
+	//   //               alert("Thank you so much! To show my appreciation, here\'s 2 gold coins!");
+	//   //               totalCoins += 2;
+	//   //           } else {
+	//   //               alert("I don\'t think that\'s right. Maybe we can try again later.");
+	//   //           }
+	//   //       }
+
+	//   //       /////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// 	});
+	// })();
 
 
 
