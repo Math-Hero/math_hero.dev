@@ -9,7 +9,7 @@
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<style>
 		body {
-			width: 7680px;
+			width: 10240px;
 			height: 705px;
 		}
 		#container {
@@ -19,15 +19,15 @@
 		}
 		.page {
 			position: absolute;
-			width: 20%;
+			width: 12.5%;
 			height: 100%;
 		}
 		.prob {
 			position: absolute;
 			width: 60%;
-			height: 90%;
-			top: 5%;
-			left: 10%;
+			height: 60%;
+			left: 20%;
+			top: 20%;
 			background-color: #FFFFF0;
 			z-index: -1;
 		}
@@ -39,127 +39,279 @@
 			top: 2%;
 			font-size: 3rem;
 		}
+		#cover {
+			background-color: #C76114;	
+		}
+		#instructions {
+			background-color: #FFF5EE;	
+			left:12.5%;
+		}
 		#pg1 {
 			background-color: #4876FF;
+			left: 25%;
 		}
 		#pg2 {
 			background-color: #FF8C69;
-			left: 16.66%;
+			left: 37.5%;
 		}			
 		#pg3 {
 			background-color: #4876FF;
-			left: 33.32%;
+			left: 50%;
 		}	
 		#pg4 {
 			background-color: #FF8C69;
-			left: 49.98%;
+			left: 62.5%;
 		}		
 		#pg5 {
 			background-color: #4876FF;
-			left: 66.64%;
+			left: 75%;
 		}
 		#pg6 {
 			background-color: #00C957;
-			left: 83.83%;
-			width: 16.67%;
-		}		
+			left: 87.5%;
+		}	
+		.for_prob2 {
+			visibility: hidden;
+		}
+		.for_prob3 {
+			visibility: hidden;
+		}
+		.for_prob4 {
+			visibility: hidden;
+		}
+
 	</style>	
 </head>
 <body>
 	<div id="container">
+		<div id="cover" class="page">
+			<div class="for_intro"><button type="button">Click For Instructions</button></div>
+		</div>
+		<div id="instructions" class="page">
+			<div class="for_pg1"><button type="button">Click To Begin</button></div>
+		</div>
 		<div id="pg1" class="page">
-			<div class="start"><button type="button">Click To Begin</button></div>
-			<div id="prob1" class="prob">
+			<div class="for_prob1"><button type="button">Click For Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div class="prob prob1">
 				This is the first problem.
 				<div class="close_prob">X</div>
-				<div class="first"><button type="button">Click To Submit</button></div>			
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="first"><button type="button">Click To Submit</button></div>
 			</div>
 		</div>
 		<div id="pg2" class="page">
+			<div class="for_prob1"><button type="button">Click For Problem</button></div>
 			<div class="for_prob2"><button type="button">Click For Problem</button></div>
-			<div id="prob2"  class="prob">
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
 				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
 				<div class="close_prob">X</div>
 				<div class="second"><button type="button">Click To Submit</button></div>
 			</div>
 		</div>
 		<div id="pg3" class="page">
+			<div class="for_prob1"><button type="button">Click For Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
 			<div class="for_prob3"><button type="button">Click For Problem</button></div>
-			<div id="prob3" class="prob">
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
 				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
 				<div class="close_prob">X</div>
 				<div class="third"><button type="button">Click To Submit</button></div>
 			</div>
 		</div>
 		<div id="pg4" class="page">
+			<div class="for_prob1"><button type="button">Click for Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
 			<div class="for_prob4"><button type="button">Click For Problem</button></div>
-			<div id="prob4" class="prob">
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
 				This is the fourth problem.
 				<div class="close_prob">X</div>
 				<div class="fourth"><button type="button">Click To Submit</button></div>
 			</div>
 		</div>
 		<div id="pg5" class="page">
-			<div class="for_prob5"><button type="button">Click For Problem</button></div>
-			
-			<div id="prob5" class="prob">
-				This is the fifth problem.
+			<div class="for_prob1"><button type="button">Click for Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
 				<div class="close_prob">X</div>
 				<div class="fifth"><button type="button">Click To Submit</button></div>
 			</div>
 		</div>
 		<div id="pg6" class="page">
-
 			<div class="for_pg1"><button type="button">Click To Return</button></div>
 		</div>
-	</div>
+	<div>
 	<script src="/js/jquery.js"></script>
 	<script>
+		$(".prob-1").click(function() {
+			$(".for_prob1").css("visibility", "hidden");
+			$(".for_prob2").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
+		$(".prob-2").click(function() {
+			$(".for_prob2").css("visibility", "hidden");
+			$(".for_prob3").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
+		$(".prob-3").click(function() {
+			$(".for_prob3").css("visibility", "hidden");
+			$(".for_prob4").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
 		$(".close_prob").click(function() {
 			$(".prob").css("z-index", "-1");
-		})
-		$(".start").click(function() {
-		    $("#prob1").css("z-index", "1");
+		});
+		$(".for_prob1").click(function() {
+		    $(".prob1").css("z-index", "1");
 		});
 		$(".first").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
 		    $('html,body').animate( {
 		        scrollLeft: $("#pg2").offset().left
 		    }, 'slow');
 		});
 		$(".for_prob2").click(function() {
-		    $("#prob2").css("z-index", "1");
+		    $(".prob2").css("z-index", "1");
 		});
 		$(".second").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
 		    $('html,body').animate( {
 		        scrollLeft: $("#pg3").offset().left
 		    }, 'slow');
 		});		
 		$(".for_prob3").click(function() {
-		    $("#prob3").css("z-index", "1");
+		    $(".prob3").css("z-index", "1");
 		});
 		$(".third").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
 		    $('html,body').animate( {
 		        scrollLeft: $("#pg4").offset().left
 		    }, 'slow');
 		});
 		$(".for_prob4").click(function() {
-		    $("#prob4").css("z-index", "1");
+		    $(".prob4").css("z-index", "1");
 		});
 		$(".fourth").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
 		    $('html,body').animate( {
 		        scrollLeft: $("#pg5").offset().left
 		    }, 'slow');
 		});
 		$(".for_prob5").click(function() {
-		    $("#prob5").css("z-index", "1");
+		    $(".prob5").css("z-index", "1");
 		});
 		$(".fifth").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
  			$('html,body').animate( {
 		        scrollLeft: $("#pg6").offset().left
 		    }, 'slow');
 		});
 		$(".for_pg1").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
 		    $('html,body').animate( {
+		        scrollLeft: $("#pg1").offset().left
+		    }, 'slow');
+		});
+		$(".for_intro").click(function() {
+			$('html,body').animate( {
+		        scrollLeft: $("#instructions").offset().left
+		    }, 'slow');
+		});
+		$(".for_pg1").click(function() {
+			$('html,body').animate( {
 		        scrollLeft: $("#pg1").offset().left
 		    }, 'slow');
 		});
