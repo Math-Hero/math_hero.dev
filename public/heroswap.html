@@ -101,29 +101,29 @@
 <script src="/js/jquery-1.12.0.js"></script>
 <script>
 $(document).ready(function(){
-  $('input[type="button"]').click(function(){
+    $('input[type="button"]').click(function(){
         //alert box feedback before generating random numbers
-      var num1=parseInt($("#number1").text());
+        var num1=parseInt($("#number1").text());
         var num2=parseInt($("#number2").text());
-      var total = num1 + num2;
+        var total = num1 + num2;
         var answer = parseInt($("input[type='text']").val());
         
-      if ($("input[type='text']").val() === '') {
-            alert("You have not key in any answer");
+    if ($("input[type='text']").val() === '') {
+        alert("You have not key in any answer");
         } else if (answer === total) {
-          alert("Great job, your highness! That is correct.");
+        alert("Great job, your highness! That is correct.");
         } else {
-          alert("Nope! Try again your majesty.");
+        alert("Nope! Try again your majesty.");
         }
     
       //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
       $("#number1").innerHTML =
-    Math.floor(Math.random() * 10);
+      Math.floor(Math.random() * 10);
       
       //generate a random number range 1 to 9 for number 2 after clicking alert box using callback function
       $("#number2").innerHTML =
-    Math.floor(Math.random() * 10);
-    });
+      Math.floor(Math.random() * 10);
+  });
 });
 </script>
 
