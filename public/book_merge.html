@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Practice</title>
+    <meta charset="utf-8">
+ 	<meta name="viewport" content="height=device-height, initial-scale=1">
+ 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 	<script src="http://cdn.jsdelivr.net/turn.js/3/turn.js"></script>
+ 	<script src="http://cdn.jsdelivr.net/turn.js/3/turn.min.js"></script>
+ 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/turn.js"></script>
+ 	
+	<style>
+		html, body {
+		    margin: 0;
+		    height: 100%;
+		}
+		body {
+		    background-color: #B0C4DE;
+		}
+		body.hide-overflow {
+		    overflow: hidden;
+		}
+		/* helpers */
+		#container1 {
+			position: absolute;
+			visibility: hidden;
+			width: 0px;
+			height: 0px;
+			background-color: red;
+			float: left;
+		}
+		.prob {
+			visibility: hidden;
+			position: absolute;
+			width: 70%;
+			height: 90%;
+			background-color: #FFFFF0;
+			left: 15%;
+			top: 5%;
+		}
+		#container2 {
+		    display: table;
+		    width: 100%;
+		    height: 100%;		    
+		}
+		#display {
+		    display: table-cell;
+		    vertical-align: middle;
+		    text-align: center;
+		}
+		.rel {
+		    position: relative;
+		}
+		/* book */
+		.book {
+		    margin: 0 auto;
+		    width: 100%;
+		    height: 100%;
+
+		}
+		.book .page {
+		    height: 100%;
+		}
+		.book .page img {
+		    max-width: 100%;
+		    height: 100%;
+		}
+		#pg1, #pg4, #pg5, #pg8, #pg9, #pg12, #pg13 {
+			background-color: #4876FF;
+		}
+		#pg2, #pg3, #pg6, #pg7, #pg10, #pg11, #pg14 {
+			background-color: #FF8C69;
+		}
+	</style>
+</head>
+<body>
+	<div id="container1" a href="/img/castle.jpg">
+		<img src="/img/castle.jpg.jpg" alt="Castle" width="2000" height="1037"></a>
+		<div id="prob1" class="prob">
+			This is first problem.
+			<div class="first"><button type="button">Click To Submit</button></div>			
+		</div>		
+		<div id="prob2" class="prob">
+			This is second problem.
+			<div class="second"><button type="button">Click To Submit</button></div>			
+		</div>
+		<div id="prob3" class="prob">
+			This is third problem.
+			<div class="third"><button type="button">Click To Submit</button></div>			
+		</div>
+		<div id="prob4" class="prob">
+			This is fourth problem.
+			<div class="fourth"><button type="button">Click To Submit</button></div>			
+		</div>
+		<div id="prob5" class="prob">
+			This is fifth problem.
+			<div class="fifth"><button type="button">Click To Submit</button></div>			
+		</div>
+	</div> 
+	<div id="container2">	
+	    <div id="display">
+	        <div class="book" id="book">
+	            <div id="pg1" class="page">
+				</div>
+	            <div id="pg2" class="page">
+	            	<div class="for_prob1"><button type="button">Click For Problem #1</button></div>
+	            </div>
+	            <div id="pg3" class="page">
+	            </div>
+	            <div id="pg4" class="page">
+	            	<div class="for_prob2"><button type="button">Click For Problem #2</button></div>
+	            </div>
+	            <div id="pg5" class="page">					
+			    </div>
+	            <div id="pg6" class="page">
+	            	<div class="for_prob3"><button type="button">Click For Problem #3</button></div>
+	            </div>
+	            <div id="pg7" class="page">
+	            </div>
+	            <div id="pg8" class="page">
+	            	<div class="for_prob4"><button type="button">Click For Problem #4</button></div>
+	            </div>
+	            <div id="pg9" class="page">
+	            </div>
+	            <div id="pg10" class="page">
+	            	<div class="for_prob4"><button type="button">Click For Problem #5</button></div>
+	            </div>
+	            <div id="pg11" class="page">
+	            </div>
+	            <div id="pg12" class="page">
+	            	You
+	            </div>
+	            <div id="pg13" class="page">
+	            	Win
+	            </div>
+	            <div id="pg14" class="page">
+	            	<div class="for_pg1"><button type="button">Click To Return</button></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    <script type="text/javascript">
+		/*
+		 * Turn.js responsive book
+		 */
+
+		/*globals window, document, $*/
+		$(".for_prob1").click(function() {
+			$("#container2").css("visibility", "hidden");
+			$("#prob1").css("visibility", "visible");
+			$("#container1").css("height", "100%");
+			$("#container1").css("width", "100%");
+		});
+		$(".first").click(function() {
+			$("#container2").css("visibility", "visible");
+			$(".for_prob1").css("visibility", "hidden");
+			$("#prob1").css("visibility", "hidden");
+			$("#container1").css("height", "0%");
+			$("#container1").css("width", "0%");	
+		});	
+		$(".for_prob2").click(function() {
+			$("#container2").css("visibility", "hidden");
+			$("#prob2").css("visibility", "visible");
+			$("#container1").css("height", "100%");
+			$("#container1").css("width", "100%");
+		});
+		$(".second").click(function() {
+			$("#container2").css("visibility", "visible");
+			$(".for_prob2").css("visibility", "hidden");
+			$("#prob2").css("visibility", "hidden");
+			$("#container1").css("height", "0%");
+			$("#container1").css("width", "0%");	
+		});	
+		$(".for_prob3").click(function() {
+			$("#container2").css("visibility", "hidden");
+			$("#prob3").css("visibility", "visible");
+			$("#container1").css("height", "100%");
+			$("#container1").css("width", "100%");
+		});
+		$(".third").click(function() {
+			$("#container2").css("visibility", "visible");
+			$(".for_prob3").css("visibility", "hidden");
+			$("#prob3").css("visibility", "hidden");
+			$("#container1").css("height", "0%");
+			$("#container1").css("width", "0%");	
+		});	
+		$(".for_prob4").click(function() {
+			$("#container2").css("visibility", "hidden");
+			$("#prob4").css("visibility", "visible");
+			$("#container1").css("height", "100%");
+			$("#container1").css("width", "100%");
+		}); 
+		$(".fourth").click(function() {
+			$("#container2").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$("#prob4").css("visibility", "hidden");
+			$("#container1").css("height", "0%");
+			$("#container1").css("width", "0%");	
+		});	
+		$(".for_prob5").click(function() {
+			$("#container2").css("visibility", "hidden");
+			$("#prob5").css("visibility", "visible");
+			$("#container1").css("height", "100%");
+			$("#container1").css("width", "100%");
+		}); 
+		$(".fifth").click(function() {
+			$("#container2").css("visibility", "visible");
+			$(".for_prob5").css("visibility", "hidden");
+			$("#prob5").css("visibility", "hidden");
+			$("#container1").css("height", "0%");
+			$("#container1").css("width", "0%");	
+		});	
+		(function () {
+		    'use strict';
+
+		    var module = {
+		        ratio: 1.38,
+		        init: function (id) {
+		            var me = this;
+
+		            // if older browser then don't run javascript
+		            if (document.addEventListener) {
+		                this.el = document.getElementById(id);
+		                this.resize();
+		                this.plugins();
+
+		                // on window resize, update the plugin size
+		                window.addEventListener('resize', function (e) {
+		                    var size = me.resize();
+		                    $(me.el).turn('size', size.width, size.height);
+		                });
+		            }
+		        },
+		        resize: function () {
+		            // reset the width and height to the css defaults
+		            this.el.style.width = '';
+		            this.el.style.height = '';
+
+		            var width = this.el.clientWidth,
+		                height = Math.round(width / this.ratio),
+		                padded = Math.round(document.body.clientHeight * 0.9);
+
+		            // if the height is too big for the window, constrain it
+		            if (height > padded) {
+		                height = padded;
+		                width = Math.round(height * this.ratio);
+		            }
+
+		            // set the width and height matching the aspect ratio
+		            this.el.style.width = width + 'px';
+		            this.el.style.height = height + 'px';
+
+		            return {
+		                width: width,
+		                height: height
+		            };
+		        },
+		        plugins: function () {
+		            // run the plugin
+		            $(this.el).turn({
+		                gradients: true,
+		                acceleration: true
+		            });
+		            // hide the body overflow
+		            document.body.className = 'hide-overflow';
+		        }
+		    };
+		    module.init('book');
+		}());
+		
+	</script>
+</body>
+</html>

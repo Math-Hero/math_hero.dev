@@ -1,0 +1,322 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div id="main-container">
+		
+
+		<div id="initial-page">
+			<h1 class="title" id="math-hero-title">MATH HERO</h1>
+			<h2 class="title 2nd-title">PRINCESS</h2>
+			<h2 class="title 2nd-title">- VS -</h2>
+			<h2 class="title 2nd-title" id="zombie-letters">ZOMBIES</h2>
+				
+			<button id="start-btn">Start</button>
+		</div>
+		<div id="instruction-page">
+			<h2 class="title" id="instructions-title">INSTRUCTIONS</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			
+			<button id="continue-btn">Continue</button>
+		</div>
+		
+				<!-- <div class="sprite right"></div> -->
+		<div onload="startGame()" class="row"id="game-container">
+			<div class="col-xs-12">
+				<div class="sprite right"></div>
+			</div>
+			
+		</div>
+				<!-- <img id="rabbit" src="../img/rabbit.jpg"> -->
+				<!-- <img id="tree" src="../img/tree.png"> -->
+		
+		
+		
+	</div>
+	
+
+
+
+	
+	<div id="footer">
+		<div id="copyright"></div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-2.2.0.js"></script>
+    <script>
+// ////////////////////////////////////////////////////////
+//     ********Parallax Scrolling Effect********
+(function() {
+	var myGamePiece = $(".sprite"); // This is the player's icon
+	var myObstacle; // This can be a zombie. This element moves independently
+	var backgroundElement; //This element needs to move slowly when character moves
+	var foregroundElement; // This element needs to move faster when character moves
+	var initialPage = $("#initial-page");
+	var gameContainer = $("#game-container");
+	var instructionPage = $("#instruction-page");
+	var startButton = $("#start-btn");
+	var continueButton = $("#continue-btn");
+	function startGame() {
+	    myGameArea.start();
+	    myGamePiece;
+	    myObstacle  = new component(10, 200, "green", 1100, 120); 
+	}
+	var myGameArea = {
+	    canvas : document.getElementById("game-container"),
+	    start : function() {
+	        this.canvas.width = 1100;
+	        this.canvas.height = 700;
+	        this.context = this.canvas.getContext("2d");
+	        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+	        this.interval = setInterval(updateGameArea, 20);
+	        window.addEventListener('keydown', function (e) {
+	            myGameArea.key = e.keyCode;
+	        })
+	        window.addEventListener('keyup', function (e) {
+	            myGameArea.key = false;
+	        })
+	    }, 
+	    clear : function(){
+	        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	    },
+	    stop : function() {
+	        clearInterval(this.interval);
+	    }
+	}
+	function component(width, height, color, x, y) {
+	    this.gamearea = myGameArea;
+	    this.width = width;
+	    this.height = height;
+	    this.speedX = 0;
+	    this.speedY = 0;    
+	    this.x = x;
+	    this.y = y;    
+	    this.update = function() {
+	        ctx = myGameArea.context;
+	        ctx.fillStyle = color;
+	        ctx.fillRect(this.x, this.y, this.width, this.height);
+	    }
+	    this.newPos = function() {
+	        this.x += this.speedX;
+	        this.y += this.speedY;        
+	    }
+	    this.crashWith = function(otherobj) {
+	        var myleft = this.x;
+	        var myright = this.x + (this.width);
+	        var mytop = this.y;
+	        var mybottom = this.y + (this.height);
+	        var otherleft = otherobj.x;
+	        var otherright = otherobj.x + (otherobj.width);
+	        var othertop = otherobj.y;
+	        var otherbottom = otherobj.y + (otherobj.height);
+	        var crash = true;
+	        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+	            crash = false;
+	        }
+	        return crash;
+	    }
+	}
+	function updateGameArea() {
+	    if (myGamePiece.crashWith(myObstacle)) {
+	        myGameArea.stop();
+	        var mathQuestion = prompt("What is 6 x 6?");
+	    } else {
+	        myGameArea.clear();
+	        myGamePiece.speedX = 0;
+	        myGamePiece.speedY = 0;    
+	        if (myGameArea.key && myGameArea.key == 37) {myGamePiece.speedX = -5; }
+	        if (myGameArea.key && myGameArea.key == 39) {myGamePiece.speedX = 5; }
+	        if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY = -5; }
+	        if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedY = 5; }
+	        myGamePiece.newPos();    
+	        myGamePiece.update();
+	        myObstacle.x -= 5;        
+	        myObstacle.update();
+	    } 
+	}
+	$(document).ready(function(){
+				
+				gameContainer.hide();
+				instructionPage.hide();
+				
+				startButton.click(function(){
+					initialPage.fadeOut();
+					instructionPage.fadeIn();
+				});
+				continueButton.click(function(){
+					instructionPage.fadeOut();
+					gameContainer.fadeIn();
+					startGame();
+				});
+	});
+})();
+// /////////////////////////////////////////////////////////
+		// $(document).ready(function(){
+		// 	var initialPage = $("#initial-page");
+		// 	var game = $("#game-container");
+		// 	var instructionPage = $("#instruction-page");
+		// 	var startButton = $("#start-btn");
+		// 	var continueButton = $("#continue-btn");
+		// 	game.hide();
+		// 	instructionPage.hide();
+		// 	// initialPage.hide();
+		// 	// var i = 0;
+		// 	// while (i < 10){ // Makes Start button flashy
+		// 	// 	document.getElementById("start-btn").addClass("blue")
+		// 	// }
+		// 	startButton.click(function(){
+		// 		initialPage.fadeOut();
+		// 		instructionPage.fadeIn();
+		// 	});
+		// 	continueButton.click(function(){
+		// 		instructionPage.fadeOut();
+		// 		game.fadeIn();
+		// 		startGame();
+		// 	});
+		// 	function startGame(){
+		// 		var sprite = document.querySelector('.sprite'),
+		// 			key = {left: false, right: false},
+		// 			trans = 0,
+		// 			property = getTransformProperty(sprite);
+		// 		var tree = document.querySelector('#tree'),
+		// 			key = {left: false, right: false},
+		// 			trans = 0,
+		// 			property = getTransformProperty(tree);
+		// 		var rabbit = document.querySelector('#rabbit'),
+		// 			key = {left: false, right: false},
+		// 			trans = 0,
+		// 			property = getTransformProperty(rabbit);
+		// 		function getTransformProperty(element) {
+		// 		    var properties = [
+		// 		        'transform',
+		// 		        'WebkitTransform',
+		// 		        'msTransform',
+		// 		        'MozTransform',
+		// 		        'OTransform'
+		// 		    ];
+		// 		    var p;
+		// 		    while (p = properties.shift()) {
+		// 		        if (typeof element.style[p] != 'undefined') {
+		// 		            return p;
+		// 		        }
+		// 		    }
+		// 		    return false;
+		// 		}
+		// 		function translate() {
+		// 			tree.style[property] = 'translateX(' + trans + 'px)';
+		// 			rabbit.style[property] = 'translateX(' + trans + 'px)';
+		// 		}
+		// 		function walk(e) {
+		// 			var keyCode = e.keyCode;
+		// 			if (keyCode === 39) {
+		// 				key.right = true;
+		// 			} else if (keyCode === 37) {
+		// 				key.left = true;
+		// 			}
+		// 	    if (key.right === true) {
+		// 				trans -= 10;
+		// 				translate();
+		// 				sprite.classList.remove('left');
+		// 				sprite.classList.add('right');
+		// 				sprite.classList.add('walk-right');
+		// 				// while (key.right) {
+		// 				// $("#tree").animate({right: "1500px"}, 11000);
+		// 				// }
+		// 			} else if (key.left === true) {
+		// 				// trans -= 10;
+		// 				translate();
+		// 				sprite.classList.remove('right');
+		// 				sprite.classList.add('left');
+		// 				sprite.classList.add('walk-left');
+		// 			}
+		// 		}
+		// 		function stop(e) {
+		// 			var keyCode = e.keyCode;
+		// 			if (keyCode === 39) {
+		// 				key.right = false;
+		// 			} else if (keyCode === 37) {
+		// 				key.left = false;
+		// 			}
+		// 			if (key.right === false) {
+		// 				sprite.classList.remove('walk-right');
+		// 			} if (key.left === false) {
+		// 				sprite.classList.remove('walk-left');
+		// 			}
+		// 		}
+		// 		document.addEventListener('keydown', walk, false);
+		// 		document.addEventListener('keyup', stop, false); 
+		// 	}
+		// });
+	// 		// Page loads with game title on top, start button in the middle, zombie on the left, princess on the right. *Street fighter style*
+	// 		// Audio is playing as well
+	// 		// Player presses the start button which begins the game play and a timer.
+	// 		// Player must reach the castle before time runs out or the zombies are unleashed
+	// 		// In order to advance, Player must answer random math problems correctly. 
+	// 		// Difficulty increases in advanced stages.
+	// 		// User is prompted for an answer to a math problem which randomly pulls from both an array of math word problems with a variable that inserts random numbers
+	// 		// User's answer is evaluated. Answer the question correctly, add time to clock. Wrong answers deduct time.
+	// 		// Music intensifies with each new stage.
+	// 		// Game play moves left to right
+	// 		// Maybe have zombies running towards Player *Like Mario and Turtle Doves*
+	// 		// Find mario-like animation or a mario gif 
+	// 		// // ***Function for math problem*** //
+	// 		// /////////////////////////////////////////////////////////
+	// 		// var num1 = Math.floor((Math.random() * 20) + 1);
+	//   //       var num2 = Math.floor((Math.random() * 20) + 1);
+	//   //       var operator = ['+', '-', '*', '/'];
+	//   //       var randOperator = operator[Math.floor(Math.random()*operator.length)];
+	// 		// function helpFriend(){
+	//   //       	console.log("Enter help friend function")
+	            
+	//   //           var mathQuestion = prompt("Princess " + name + "! I'm sure glad to see you! I need help with this math problem. What is... " + num1 + " " + randOperator + " " + num2 + "?");
+	            
+	//   //           if (mathQuestion == eval(num1.toString() + randOperator + num2.toString())){
+	//   //               alert("Thank you so much! To show my appreciation, here\'s 2 gold coins!");
+	//   //               totalCoins += 2;
+	//   //           } else {
+	//   //               alert("I don\'t think that\'s right. Maybe we can try again later.");
+	//   //           }
+	//   //       }
+	//   //       /////////////////////////////////////////////////////////
+	// 	});
+	// })();
+    </script>
+
+</body>
+</html>

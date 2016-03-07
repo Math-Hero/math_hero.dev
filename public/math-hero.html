@@ -7,6 +7,7 @@
  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 	<script src="/js/jquery.js"></script>
 	<style>
 		body {
 			width: 10240px;
@@ -25,18 +26,19 @@
 		.prob {
 			position: absolute;
 			width: 60%;
-			height: 60%;
-			left: 20%;
-			top: 20%;
+			height: 70%;
+			left: 30%;
+			top: 5%;
 			background-color: #FFFFF0;
 			z-index: -2;
+			background: url(../img/problem_scroll.png) no-repeat center top;
 		}
 		.close_prob {
 			position: absolute;
 			height: 5%;
 			width: 5%;
-			right: 2%;
-			top: 2%;
+			right: 5%;
+			top: 10%;
 			font-size: 3rem;
 		}
 		#cover {
@@ -94,36 +96,49 @@
 		#image1 {
 			z-index: -1;
 		}
+		.for_intro {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
+		.for_pg1 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
 		.for_prob1 {
 			position: absolute;
 			top: 0px;
 			left: 0px;
 			z-index: 5;
 		}
-		.cloud-01 {
+		#cloud-01 {
 			position: absolute;
-			width: 100%;
+			width: 800%;
 			height: 100%;
-			top:20%;	
-			background: url(../img/clouds-01.png) no-repeat left bottom;
+			top: -5%;
+			background: url(../img/cloud1.png) no-repeat left bottom;
 			z-index: 2;
 		}                                                         	
-		.tree {
+		#pineTree {
 			position: absolute;
-			width: 100%;
-			height: 100%;
-			top:20%;
-			background: url(../img/tree.png) no-repeat left bottom;
+			width: 800%;
+			height: 100%;	
+			top: 0%;
+			background: url(../img/tree-02.png) no-repeat left bottom;
 			z-index: 1;
 		}
-		.head {
+		.player {
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			background: url(../img/head.png) no-repeat center top;
+			bottom: 5%;
+			background: url(../img/player.png) no-repeat center top;
 			z-index: 4;
 		}	
-		.cloud-02 {
+		#cloud-02 {
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -131,29 +146,31 @@
 			background: url(../img/clouds-02.png) no-repeat left bottom;
 			z-index: 2;
 		}  
-		.cactus {
+		#cactus {
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			top:20%;
 			background: url(../img/cactus.png) no-repeat left bottom;
 			z-index: 1;
-		}
+		} 
 	</style>	
 </head>
 <body>
 	<div id="container">
 		<div id="cover" class="page">
+			<div id="cover_img"><img src = "img/cover1.jpg" alt ="cover" height="705" width="1280"></div>
 			<div class="for_intro"><button type="button">Click For Instructions</button></div>
 		</div>
 		<div id="instructions" class="page">
-			<div class="for_pg1"><button type="button">Click To Begin</button></div>
+			<div id="intro_img"><img src = "img/intro.jpg" alt ="scroll" height="705" width="1280"></div>
+			<div class="for_pg1"><button type="button">Click To Begin</button></div>		
 		</div>
 		<div id="pg1" class="page">
 			<div id="image1"><img src = "img/field.jpg" alt ="field" height="705" width="1280"></div>
-			<div class="cloud-01"></div>
-			<div class="tree"></div>
-			<div class="head"></div>
+			<div id="cloud-01"></div>
+			<div id="pineTree"></div> 
+			<div class="player"></div>
 			<div id="pg1prob1" class="for_prob1"><button type="button">Click For Problem</button></div>
 			<div id="pg1prob2" class="for_prob2"><button type="button">Click For Problem</button></div>
 			<div id="pg1prob3" class="for_prob3"><button type="button">Click For Problem</button></div>
@@ -180,10 +197,10 @@
 			</div>
 		</div>
 		<div id="pg2" class="page">
-			<img src = "img/desert.jpg" alt ="castle1" height="705" width="1280">
-			<div class="cloud-02"></div>
-			<div class="cactus"></div>
-			<div class="head"></div>
+			<img src = "img/desert.jpg" alt ="desert" height="705" width="1280">
+			<div id="cloud-02"></div>
+			<div id="cactus"></div>
+			<div class="player"></div>
 			<div class="for_prob1"><button type="button">Click For Problem</button></div>
 			<div class="for_prob2"><button type="button">Click For Problem</button></div>
 			<div class="for_prob3"><button type="button">Click For Problem</button></div>
@@ -211,13 +228,12 @@
 		</div>
 		<div id="pg3" class="page">
 			<img src = "img/forest.jpg" alt ="forest" height="705" width="1280">
-			<div class="cloud-01"></div>
-			<div class="tree"></div>
 			<div class="head"></div>
+			<div id="pineTree"></div> 
 			<div class="for_prob1"><button type="button">Click For Problem</button></div>
 			<div class="for_prob2"><button type="button">Click For Problem</button></div>
 			<div class="for_prob3"><button type="button">Click For Problem</button></div>
-			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div> 
 			<div id="prob1" class="prob prob1">
 				This is the first problem.
 				<div class="close_prob">X</div>
@@ -237,12 +253,10 @@
 				This is the fourth problem.
 				<div class="close_prob">X</div>
 				<div class="third"><button type="button">Click To Submit</button></div>
-			</div>
+			</div>  
 		</div>
 		<div id="pg4" class="page">
 			<img src = "img/mountain.jpg" alt ="mountain" height="705" width="1280">
-			<div class="cloud-01"></div>
-			<div class="tree"></div>
 			<div class="head"></div>
 			<div class="for_prob1"><button type="button">Click for Problem</button></div>
 			<div class="for_prob2"><button type="button">Click For Problem</button></div>
@@ -271,8 +285,6 @@
 		</div>
 		<div id="pg5" class="page">
 			<div id="image1"><img src = "img/field.jpg" alt ="field" height="705" width="1280"></div>
-			<div class="cloud-01"></div>
-			<div class="tree"></div>
 			<div class="head"></div>
 			<div class="for_prob1"><button type="button">Click for Problem</button></div>
 			<div class="for_prob2"><button type="button">Click For Problem</button></div>
@@ -305,8 +317,8 @@
 			<div class="for_pg1"><button type="button">Click To Return</button></div>
 		</div>
 	<div>
-	<script src="/js/jquery.js"></script>
-	<script>
+	
+<script>
 		$(".prob-1").click(function() {
 			$(".for_prob1").css("visibility", "hidden");
 			$(".for_prob2").css("visibility", "visible");
@@ -395,7 +407,7 @@
 			$('html,body').animate( {
 		        scrollLeft: $("#pg1").offset().left
 		    }, 'slow');
-		});
+		}); 
 
 		(function($) {
 			$.extend($.fx.step,{
@@ -422,61 +434,95 @@
 		           }
 		        }
 			});
-		})(jQuery);
+		})(jQuery); 
 		$(document).ready(function(){ 
-			$('.cloud-01').css({backgroundPosition: 'right 5%'});
-			$('.tree').css({backgroundPosition: 'right 5%'});
-			$('.head').css({backgroundPosition: 'left 5%'});
-			$('.for_pg1').click(function(){	
-				startHim();
-				startTree();
-				startCloud();
-			});		
+			$('#cloud-01').css({backgroundPosition: 'right top'});
+			$('#pineTree').css({backgroundPosition: 'right -25%'});
+			$('.player').css({backgroundPosition: 'left bottom'});	
+			$('.player').click(function(){	
+				setTimeout("startPlayer()", 1000);
+				setTimeout("startPineTree()", 100);		
+				setTimeout("startCloud1()", 1000);
+			});
+			$('#cloud-02').css({backgroundPosition: 'right 5%'});
+			$('#cactus').css({backgroundPosition: 'right 5%'});
+ 			$('.first').click(function(){	
+				startCactus();
+				startCloud2();
+			},1000);		
 		});
-		var numBody = 40;
-		function startHim(){
+		var numBody = 5;
+		function startPlayer(){
 			numBody++;
-			var numTree = 1;
-			$(".head").animate({top:"-="+numBody+"px"},150).animate({top:"+="+numBody+"px"},150);
-			if(numBody<4){
-				setTimeout("startHim()",300);
+			$(".player").animate({top:"-="+numBody+"px"},500).animate({top:"+="+numBody+"px"},500);
+			if(numBody<400){
+				setTimeout("startPlayer()",500);
 			} else {
-				setTimeout("bounceHim()",300);
+				setTimeout("bouncePlayer()",500);
 			}
 		}	
-		function bounceHim(){
-			$(".head").animate({top:"-=40px"},150).animate({top:"+=40px"},150);
-			setTimeout("bounceHim()",300);
+		function bouncePlayer(){
+			$(".player").animate({top:"-=10px"},500).animate({top:"+=10px"},500);
+			setTimeout("bouncePLayer()",500);
 			} 
-		var numTree = 1;
-		function startTree(){
-			numTree++;
-			$(".tree").animate({right:"+=15px"},500);
-				if(numTree<80){
-				setTimeout("startTree()",500);
+		var numPineTree = 1;
+		function startPineTree(){
+			numPineTree++;
+			$("#pineTree").animate({right:"+=15px"},500);
+				if(numPineTree<80){
+					setTimeout("startPineTree()",500);
 			} else {
-				setTimeout("bounceTree()",500);
+				$('#pineTree').css({backgroundPosition: 'right -25%'},500);
+				setTimeout("bouncePineTree()",500);	
+			}	
+		}
+		function bouncePineTree(){
+			$("#pineTree").animate({top:"-=4px"},500).animate({top:"+=4px"},500);
+			setTimeout("bouncePineTree()",500);
+			
+		}  
+		var numCloud1 = 1;
+		function startCloud1(){
+			numCloud1++;
+			$("#cloud-01").animate({right:"+=10px"},300);
+				if(numCloud2<80){
+				setTimeout("startCloud1()",300);
+			} else {
+				setTimeout("bounceCloud1()",300);
 			}
 		}
-		function bounceTree(){
-			$(".tree").animate({top:"-=4px"},500).animate({top:"+=4px"},500);
-			setTimeout("bounceHim()",500);
+		function bounceCloud1(){
+			$("#cloud-01").animate({top:"-=2px"},300).animate({top:"+=2px"},300);
+			setTimeout("bounceCloud1()",300);
 		} 
-		var numCloud = 1;
-		function startCloud(){
-			numCloud++;
-			$(".cloud-01").animate({right:"+=20px"},300);
-				if(numCloud<80){
-				setTimeout("startCloud()",300);
+		var numCactus = 1;
+		function startCactus(){
+			numCactus++;
+			$("#cactus").animate({right:"+=15px"},500);
+				if(numCactus<80){
+				setTimeout("startCactus()",500);
 			} else {
-				setTimeout("bounceCloud()",300);
+				setTimeout("bounceCactus()",500);
 			}
 		}
-		function bounceCloud(){
-			$(".cloud-01").animate({top:"-=2px"},300).animate({top:"+=2px"},300);
-			setTimeout("bounceCloud()",300);
+		function bounceCactus(){
+			$("#cactus").animate({top:"-=4px"},500).animate({top:"+=4px"},500);
+			setTimeout("bounceCactus()",500);
 		} 
+		var numCloud2 = 1;
+		function startCloud2(){
+			numCloud2++;
+			$("#cloud-02").animate({right:"+=20px"},300);
+				if(numCloud2<80){
+				setTimeout("startCloud2()",300);
+			} else {
+				setTimeout("bounceCloud2()",300);
+			}
+		}
+		function bounceCloud2() {
+			$("#cloud-02").animate({top:"-=2px"},300).animate({top:"+=2px"},300);
+			setTimeout("bounceCloud2()",300);
+		}
 	</script>
 </body>
 </html>
-
