@@ -1,0 +1,142 @@
+		body {		
+			width: 10240px;
+			height: auto;
+		}
+		#container {
+			position: relative;
+			background: no-repeat;
+			height: 100%;
+			width: 100%;
+		}
+		/**The following is the css for the layout; it divides the body into "pages" and 
+		 * allows progression through the pages. It also for the modals.
+		**/ 
+		.page {
+			position: absolute;
+			width: 12.5%;
+			height: 100%;
+		}
+		.image {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		#cover {	
+			background: linear-gradient(to bottom, rgba(155, 48, 255, 0), rgba(155, 48,255, 1)); 		
+		}
+		#instructions {
+			background: linear-gradient(#808080, white);
+			left:12.5%;
+		}
+		#pg1 {
+			background: linear-gradient(#4169E1, white);
+			left: 25%;
+		}
+		#pg2 {
+			background: linear-gradient(#4B0082, white);
+			left: 37.5%;
+		}			
+		#pg3 {
+			background: linear-gradient(#B0C4DE, white);
+			left: 50%;
+		}	
+		#pg4 {		
+			background: linear-gradient(#FF4500, white);
+			left: 62.5%;
+		}		
+		#pg5 {
+			background-color: #4876FF;
+			left: 75%;
+		}
+		#pg6 {
+			background-color: #00C957;
+			left: 87.5%;
+		}	
+		.prob_page {
+			position: absolute;
+			width: 60%;
+			height: 100%;
+			left: 30%;
+			top: 5%;
+			z-index: -2;
+			background: url(../img/problem_scroll.png) no-repeat center top;
+		}
+		table{
+			position: absolute;
+			top: 10%;
+			left: 5%;
+		}
+
+        td{
+            width:150px;
+        }
+        input{
+           font-size:20px;
+        }
+        span{
+            font-size:40px;
+        }        
+        #correctScore{
+            background-color:green; 
+            z-index: -3          
+        }
+        #wrongScore{
+            background-color:red;
+            z-index: -4
+        }
+		.close_prob {
+			position: absolute;
+			visibility: hidden;
+			height: 5%;
+			width: 5%;
+			right: 6%;
+			top: 5%;
+			font-size: 3rem;
+		}	
+		.for_intro {
+			position: absolute;
+			z-index: 1;
+		}
+		.for_pg1 {
+			position: absolute;
+			top: 0%;
+			z-index: 1;
+		}
+		.for_prob {
+			position: absolute;
+			z-index: 6;
+		}
+		/* The following css is for the animated divs */
+		.animation {
+			position: absolute;
+			visibility: visible;
+			height: 100%;
+			width: 100%;
+		}
+		.animation div {
+			position: absolute;
+			visibility: visible;
+			height: 100%;
+			width: 800%;
+			right: -700%;
+		}
+		.cloud-01 {
+			opacity: 0.5;
+			z-index: 1;
+		}                                                                                                     
+		.cloud-02 {                                              
+			z-index: 2;
+		}
+		.tree {
+			z-index: 3;
+		}
+		.ground {
+			z-index: 4;
+		}
+		.player {
+			position: absolute;
+			background: url(../img/player.png) no-repeat left bottom;
+			width: 30%;
+			height: 100%;
+			z-index: 5;
+		}

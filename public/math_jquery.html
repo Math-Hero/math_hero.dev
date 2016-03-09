@@ -1,0 +1,158 @@
+          <!-- HTML BEGINS -->
+
+
+<!DOCTYPE html>
+<html>
+
+<!--START HEAD -->
+<head>
+    <title>math hero math questions</title>
+
+
+    <style type="text/css">
+      /*<!-- CSS BEGINS -->*/
+          body{
+              font-size:40px;
+              text-align:center;
+              background-color: #FC6;
+          }
+          #container {
+            position:absolute;
+            height: 100%;
+            width: 100%;
+          }
+          #pg1 {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+          }
+          #prob {
+            position: absolute;
+            width: 60%;
+            height: 100%;
+            left: 30%;
+            top: 5%;
+          }
+          table{
+              margin-top:200px;
+              background-color:white;
+          }
+          td{
+              width:150px;
+          }
+          input{
+              font-size:20px;
+          }
+          span{
+              font-size:40px;
+          }
+          
+          #correctScore{
+              background-color:green;           
+          }
+          #wrongScore{
+              background-color:red;
+          }
+      /*<!-- CSS ENDS -->*/
+    </style>
+</head>
+<!-- END HEAD -->
+
+<!-- START BODY -->
+<body>
+  <div id="container">
+    <div id="pg1">
+        <div id="prob">
+      <table width="80%">
+              <tr>      
+                  <td colspan="6" align="right" id="timer">
+                      <span>Timer : 50 </span>
+                  </td>
+              </tr>   
+              <tr>
+                  <td colspan="6" id="question">
+                      <span>Question 1/10</span>
+                  </td>
+              </tr>   
+              <tr>
+                  <td>
+                      <span>Correct<span>
+                  </td>
+                  <td  id="correctScore">
+                      <span>0</span>   
+                  </td>
+                  <td>
+                      <span>Wrong<span>
+                  </td>
+                  <td id="wrongScore">
+                      <span>0</span>
+                  </td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>
+                      <div id="number1">1</div>
+                  </td>
+                  <td>
+                      <div>+</div>
+                  </td>
+                  <td>
+                      <div id="number2">2</div>
+                  </td>
+                  <td>
+                      <div>=</div>
+                  </td>
+                  <td>
+                      <input id="answer" type="text"></input>
+                  </td>
+                  <td>
+                      <input type="button" value="check"></input>
+                  </td>
+              </tr>
+          </table> 
+    </div>
+  </div>
+</div>
+
+<script src="/js/jquery-1.12.0.js"></script>
+<script>
+$(document).ready(function(){
+  $('input[type="button"]').click(function(){
+        //alert box feedback before generating random numbers
+      var num1=parseInt($("#number1").text());
+        var num2=parseInt($("#number2").text());
+      var total = num1 + num2;
+        var answer = parseInt($("input[type='text']").val());
+        
+      if ($("input[type='text']").val() === '') {
+            alert("You have not key in any answer");
+        } else if (answer === total) {
+          alert("Great job, your highness! That is correct.");
+        } else {
+          alert("Nope! Try again your majesty.");
+        }
+    
+      //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
+      $("#number1").innerHTML =
+    Math.floor(Math.random() * 10);
+      
+      //generate a random number range 1 to 9 for number 2 after clicking alert box using callback function
+      $("#number2").innerHTML =
+    Math.floor(Math.random() * 10);
+    });
+});
+</script>
+
+      <!-- JS ENDS -->
+
+
+</body>
+
+      <!-- HTML ENDS -->
+
+
+
+
+
+      <!-- JS BEGINS -->

@@ -1,0 +1,184 @@
+<html>
+<head>
+	<title>Hi!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>	
+		body {
+			background: linear-gradient(#4169E1, white);
+			width: 10240px;
+			height: auto;
+		}
+		#container {
+			position: relative;
+			background: no-repeat;
+			height: 100%;
+			width: 100%;
+		}
+		#pg1 {
+			position: absolute;
+			height: 100%;
+			width: 12.5%;
+		}
+		.animation {
+			position: absolute;
+			height: 100%;
+			width:100%;
+		}
+		.cloud-01 {
+			position: absolute;
+			background: url(../img/cloud-01.png) no-repeat left -25%;
+			height:100%;
+			width:400%;
+			right: -300%;
+			z-index: 1;
+			visibility: visible;
+		}                                                                                                        
+		.cloud-02 {   
+			position: absolute;                                            
+			background: url(../img/cloud-01.png) no-repeat left top;
+			height:100%;
+			width:400%;
+			right: -300%;
+			z-index: 2;
+			visibility: visible;
+		}
+		.tree {
+			position: absolute;
+			visibility: visible;
+			background: url(../img/tree-02.png) no-repeat ;
+			height:100%;
+			width:400%;
+			right: -300%;
+			z-index: 3;
+			
+		}
+		.ground {
+			position: absolute;
+			background: url(../img/ground.png) repeat-x left bottom;
+			height:100%;
+			width:400%;
+			right: -300%;
+			z-index: 4;
+			visibility: visible;
+		}
+		#player{
+			position: absolute;
+			background: url(../img/player.png) no-repeat center bottom;
+			width: 30%;
+			height: 100%;
+			z-index: 5;
+		}
+		.stop {
+			position: absolute;
+			left: 35%; 
+			z-index: 6;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script> 
+</head>
+
+<body>
+	<div id="container">	
+		<div id="pg1">
+			<div class="stop"><button type="button">Click to stop</button></div>	
+			<div id="animation">		
+				<div class="cloud-01"></div><!-- end cloud-01 --> 
+				<div class="cloud-02"></div><!-- end cloud-02 -->
+				<div class="tree"></div><!-- end trees -->
+				<div class="ground"></div><!-- end ground -->
+			</div>	
+			<div id="player"></div>			
+		</div><!-- end container -->
+		
+	</div>
+<script>
+	$(document).ready(function() { 
+		$('#player').click(function() {
+			startPlayer();
+			startGround();
+			startTree();
+			startCloud1();
+			startCloud2();
+		});	
+		$('.stop').click(function() {
+			$(".tree").css("visibility", "hidden");
+			
+		});		
+	});
+	function stopPlayer() {
+		$("#player").animate({}).animate({});
+	}	
+	var numPlayer = 2;
+	function startPlayer() {
+		numPlayer++;
+		$("#player").animate({top:"-="+numPlayer+"%"},300).animate({top:"+="+numPlayer+"%"},300);
+		if(numPlayer<2){
+			setTimeout("startPlayer()",300);
+		} else {
+			setTimeout("bouncePlayer()",300);
+		}
+	}	
+	function bouncePlayer(){
+		$("#player").animate({top:"-=2%"},300).animate({top:"+=2%"},300);
+		setTimeout("bouncePlayer()",300);
+	}
+	var numGround = 2;
+	function startGround() {
+		numGround++;
+		$(".ground").animate({right:"+=1.5%"},150);
+		if(numGround<2){
+			setTimeout("startGround()",300);
+		} else {
+			setTimeout("bounceGround()",300);
+		}
+	}	
+	function bounceGround(){
+		$(".ground").animate({right:"+=1.5%"},150);
+		setTimeout("bounceGround()",300);
+	}
+	var numTree = 2;
+	function startTree(){
+		numTree++;
+		if(numTree<2) {
+			setTimeout("startTree()",150);
+		} else {
+			setTimeout("bounceTree()",500);
+		}
+	}
+	function bounceTree(){
+		$(".tree").animate({right:"+=1%"},150);
+		setTimeout("bounceTree()",500);
+	} 
+	var numCloud1 = 2;
+	function startCloud1(){
+		numCloud1++;
+		$(".cloud-01").animate({right:"+=1.5%"},150);
+		if(numCloud1<2){
+			setTimeout("startCloud1()",500);
+		} else {
+			setTimeout("bounceCloud1()",500);
+		}
+	}
+	function bounceCloud1(){
+		$(".cloud-01").animate({right:"+=1.5%"},150);
+		setTimeout("bounceCloud1()",500);
+	} 
+	var numCloud2 = 2;
+	function startCloud2(){
+		numCloud2++;
+		$(".cloud-02").animate({right:"+=1%"},150);
+		if(numCloud2<2){
+			setTimeout("startCloud2()",500);
+		} else {
+			setTimeout("bounceCloud2()",500);
+		}
+	}
+	function bounceCloud2(){
+		$(".cloud-02").animate({right:"+=1%"},150);
+		setTimeout("bounceCloud2()",500);
+	} 
+</script>
+</body>
+</html>
+
