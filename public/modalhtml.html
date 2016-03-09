@@ -186,9 +186,12 @@
 
     <script src="/js/jquery.js"></script>
     <script>
+    "use strict";
     $(document).ready(function(){
         $('input[type="button"]').click(function(){
             //alert box feedback before generating random numbers
+
+
             var num1=parseInt($("#number1").text());
             var num2=parseInt($("#number2").text());
             var total = num1 + num2;
@@ -201,15 +204,22 @@
             } else {
             alert("Nope! Try again your majesty.");
             }
-        
-          //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
+        // selecting a random array item
+        var selectNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            var pickANumber = function ()   {
+            var probNumber = selectNumber[Math.floor(Math.random() * selectNumber.length)];
+            return probNumber;
+        };
+
+        function probNumber()   {
+        //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
           $("#number1").innerHTML =
           Math.floor(Math.random() * 10);
           
           //generate a random number range 1 to 9 for number 2 after clicking alert box using callback function
           $("#number2").innerHTML =
           Math.floor(Math.random() * 10);
-      });
+      }});
     });
     </script>
 </body>

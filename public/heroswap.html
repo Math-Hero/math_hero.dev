@@ -98,18 +98,23 @@
         </tr>
     </table>
 
-<script src="/js/jquery-1.12.0.js"></script>
+<script src="/js/jquery.js"></script>
 <script>
 $(document).ready(function(){
     $('input[type="button"]').click(function(){
         //alert box feedback before generating random numbers
-        var num1=parseInt($("#number1").text());
-        var num2=parseInt($("#number2").text());
+        var selectNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            var pickANumber = function () {
+            var probNumber = selectNumber[Math.floor(Math.random() * 9)];
+            return probNumber;
+};
+        var num1=pickANumber($("#number1").text());
+        var num2=pickANumber($("#number2").text());
         var total = num1 + num2;
         var answer = parseInt($("input[type='text']").val());
         
     if ($("input[type='text']").val() === '') {
-        alert("You have not key in any answer");
+        alert("You must answer the question first, your excellence.");
         } else if (answer === total) {
         alert("Great job, your highness! That is correct.");
         } else {
