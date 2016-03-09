@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <title>Math Hero</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    <style>
+        body {
+            /*width: 10240px;*/
+            /*height: 705px;*/
+        }
+        #container {
+            position: relative;
+            /*width: 100%;*/
+            /*height: 100%;*/
+        }
+        .page {
+            position: absolute;
+            /*width: 12.5%;*/
+            /*height: 100%;*/
+        }
+        #prob-modal {
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            left: 20%;
+            top: 20%;
+            background-color: #FFFFF0;
+            z-index: 1;
+        }
+
+        .invisible {
+            display: none;
+        }
+
+        /*.close_prob {
+            position: absolute;
+            height: 5%;
+            width: 5%;
+            right: 2%;
+            top: 2%;
+            font-size: 3rem;
+        }*/
+        #cover {
+            background-color: #C76114;  
+        }
+        #instructions {
+            background-color: #FFF5EE;  
+            /*left:12.5%;*/
+        }
+        #pg1 {
+            background-color: #4876FF;
+            /*left: 25%;*/
+        }
+        #pg2 {
+            background-color: #FF8C69;
+            /*left: 37.5%;*/
+        }           
+        #pg3 {
+            background-color: #4876FF;
+            /*left: 50%;*/
+        }   
+        #pg4 {
+            background-color: #FF8C69;
+            /*left: 62.5%;*/
+        }       
+        #pg5 {
+            background-color: #4876FF;
+            /*left: 75%;*/
+        }
+        #pg6 {
+            background-color: #00C957;
+            /*left: 87.5%;*/
+        }   
+
+        .timer {
+            background-color: black;
+            color: white;
+        }
+
+        .game-page {
+            width: 1200px;
+        }
+    </style>
+    </style>    
+</head>
+<body>
+    <div id="container">
+        <div id="cover" class="page">
+            <div class="for_intro"><button type="button" id="start-btn">Click For Instructions</button></div>
+        </div>
+        <div id="instructions" class="page">
+            <div class="for_pg1"><button type="button" id="cont-btn">Click To Begin</button></div>
+        </div>
+        <div id="game">
+            <div id="pg1" class="page game-page">
+                <img src = "field.jpg" alt ="field">
+                <span class="timer"></span>
+                <div id="prob-modal" class="invisible">
+                    <p></p>
+                    <input type="text" id="answer">
+                    <button id="answer-submit" type="submit">Submit</button>
+                </div>                
+            </div>
+            <div id="pg2" class="page game-page">
+                <img src = "desert.jpg" alt ="desert">
+                
+            </div>
+            <div id="pg3" class="page game-page">
+                <img src = "forest.jpg" alt ="forest">
+                
+            </div>
+            <div id="pg4" class="page game-page">
+                <img src = "mountain.jpg" alt ="mountain">
+                
+            </div>
+            <div id="pg5" class="page game-page">
+                
+            </div>
+            <div id="pg6" class="page game-page">
+                <img src = "castle1.jpg" alt ="castle1">
+                <div class="for_pg1"><button type="button">Click To Return</button></div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-2.2.0.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script>
+
+        (function () {
+
+            var lives = 3; //User starts with 3 lives
+
+
+            //This function specifies how the timer runs and feeds in the mathProblem function to run every second
+            function startTimer(duration, display) { 
+                var timer = duration, minutes, seconds;
+                setInterval(function () {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    display.textContent = minutes + ":" + seconds;
+
+                    if (--timer < 0) {
+                        timer = duration;
+                    } mathProblem();
+                }, 1000);
+                return timer;
+            }
+
+            //This function specifies the timer start time and feeds it into the html 
+            function gameTimer() { 
+                var fiveMinutes = 60 * 5,
+                    display = document.querySelector('.timer');
+                startTimer(fiveMinutes, display);
+                console.log(startTimer);
+            };
+
+            //This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
+            function mathProblem(){
+                if ((lives > 0) && (startTimer > 0)){ //Keeps the game active as long as both the timer and lives count is greater than 0
+                    console.log("Math function started");
+                    var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
+                    console.log(counter);
+                    if (counter % 5 == 0){ //Evaluates whether the number is divisible by 4
+                        console.log("Counter worked");
+                        alert("Math Problem!")
+                        // $("#prob-modal").toggleClass("invisible");
+                        if (question != answer){
+                            alert("Wrong! You have lost a life and are now infected!!!");
+                            $("#prob-modal").toggleClass("invisible");
+                            lives--; //If answer is wrong, Player is deducted a life
+                            mathProblem();
+                        } else {
+                            $("#prob-modal").toggleClass("invisible");
+                            mathProblem();
+                        }
+                    } 
+                } else {
+                    gameOver();
+                }
+            }
+
+            
+
+            function gameOver(){
+                //Ends game and pops up zombie gif
+            }
+
+
+            $(document).ready(function(){
+                $("#instructions").hide();
+                $("#game").hide();
+
+                $("#start-btn").click(function(){
+                    $("#cover").hide();
+                    $("#instructions").show();
+                });
+
+                $("#cont-btn").click(function(){
+                    $("#instructions").hide();
+                    $("#game").show();
+                    gameTimer(); //Starts the timer and counter functions
+                });
+
+
+
+
+
+
+
+
+            });
+        })();
+
+
+        // $(".prob-1").click(function() { //Adds invisibility
+        //     $(".for_prob1").css("visibility", "hidden");
+        //     $(".for_prob2").css("visibility", "visible");
+        //     $(".prob").css("z-index", "-1");
+        // });
+        // $(".prob-2").click(function() {
+        //     $(".for_prob2").css("visibility", "hidden");
+        //     $(".for_prob3").css("visibility", "visible");
+        //     $(".prob").css("z-index", "-1");
+        // });
+        // $(".prob-3").click(function() {
+        //     $(".for_prob3").css("visibility", "hidden");
+        //     $(".for_prob4").css("visibility", "visible");
+        //     $(".prob").css("z-index", "-1");
+        // });
+        // $(".close_prob").click(function() {
+        //     $(".prob").css("z-index", "-1");
+        // });
+        // $(".for_prob1").click(function() {
+        //     $(".prob1").css("z-index", "1"); //Adds visibility
+        // });
+        // $(".first").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".for_prob4").css("visibility", "hidden");
+        //     $(".prob").css("z-index", "-1");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg2").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_prob2").click(function() {
+        //     $(".prob2").css("z-index", "1");
+        // });
+        // $(".second").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".for_prob4").css("visibility", "hidden");
+        //     $(".prob").css("z-index", "-1");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg3").offset().left
+        //     }, 'slow');
+        // });     
+        // $(".for_prob3").click(function() {
+        //     $(".prob3").css("z-index", "1");
+        // });
+        // $(".third").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".for_prob4").css("visibility", "hidden");
+        //     $(".prob").css("z-index", "-1");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg4").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_prob4").click(function() {
+        //     $(".prob4").css("z-index", "1");
+        // });
+        // $(".fourth").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".for_prob4").css("visibility", "hidden");
+        //     $(".prob").css("z-index", "-1");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg5").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_prob5").click(function() {
+        //     $(".prob5").css("z-index", "1");
+        // });
+        // $(".fifth").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".for_prob4").css("visibility", "hidden");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg6").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_pg1").click(function() {
+        //     $(".for_prob1").css("visibility", "visible");
+        //     $(".prob").css("z-index", "-1");
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg1").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_intro").click(function() {
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#instructions").offset().left
+        //     }, 'slow');
+        // });
+        // $(".for_pg1").click(function() {
+        //     $('html,body').animate( {
+        //         scrollLeft: $("#pg1").offset().left
+        //     }, 'slow');
+        // });
+    
+    </script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,112 @@
+/* --------------
+	PICTURES
+---------------*/
+
+#d-star {
+	float: left;
+	margin-right: 20px; 
+	border-radius: 10px 10px;
+}
+
+#protest {
+	float: left;
+	margin-right: 20px
+}
+
+/* --------------
+	BACKGROUND
+----------------*/
+
+body {
+	background-color: white;
+	margin: 5px;
+	padding: 5px;
+}
+
+/* --------------
+	NAV MENUS
+---------------*/
+
+aside {
+	float: left;
+	margin-bottom: 20px;
+	padding: 20px;
+	border-radius: 3px;
+	margin-left: -20px;
+}
+
+aside li {
+	list-style-type: none;
+	display: block;
+	margin-bottom: 20px;
+}
+
+aside li a {
+	text-decoration: none;
+	color: black;
+}
+
+#top-nav li {
+	display: inline;
+	margin: 10px;
+	list-style-type: none;
+	font-size: 20px;
+}
+
+#top-nav li a {
+	text-decoration: none;
+	color: white;
+}
+
+/* --------------
+  HEADER/FOOTER
+---------------*/
+
+header, footer {
+	background-color: black;
+	height: 100px;
+}
+
+footer {
+	position: relative;
+	margin-top: -150px;
+	height: 150px;
+	clear:both;
+}
+
+footer p {
+	color: white;
+}
+
+/* --------------
+   MAIN CONTENT
+---------------*/
+
+#main-title {
+	margin-bottom: 20px;
+}
+
+#main-container {
+	overflow:auto;
+	padding-bottom: 150px;
+}
+
+article {
+	margin-top: 30px;
+}
+
+.heading {
+	clear: both;
+	margin: auto;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+

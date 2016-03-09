@@ -23,6 +23,7 @@
 		  width: 102px;
 		  height: 148px;
 		  margin-top: 40px;
+		  background-image: url("../img/princess.png");
 		}
 
 		.right {
@@ -102,6 +103,10 @@
 			text-align: center;
 		}
 
+		.myObstacle {
+
+		}
+
 		#zombie-letters {
 			
 		}
@@ -114,7 +119,7 @@
 		}
 
 		#game-container {
-			background-image: url("../img/woodland-background.jpeg");
+			 /*background-image: url("../img/woodland-background.jpeg");*/
 			background-repeat: no-repeat;
 			/*width: 1200px;*/
 			position: relative;
@@ -147,7 +152,12 @@
 
 		}
 
-
+		canvas {
+		    border:1px solid #d3d3d3;
+		    /*background-image: url("../img/woodland-background.jpeg");*/
+			background-repeat: no-repeat;
+			background-width: 100%;
+		}
 
 
 
@@ -194,12 +204,12 @@
 		</div>
 		
 				<!-- <div class="sprite right"></div> -->
-		<div onload="startGame()" class="row"id="game-container">
+		<!-- <div class="row" id="game-container">
 			<div class="col-xs-12">
 				<div class="sprite right"></div>
 			</div>
 			
-		</div>
+		</div> -->
 				<!-- <img id="rabbit" src="../img/rabbit.jpg"> -->
 				<!-- <img id="tree" src="../img/tree.png"> -->
 		
@@ -210,8 +220,9 @@
 
 
 
-	
-	<div id="footer">
+	<!-- <div src="/img/whateverimage.jpg" class="myObstacle">
+	</div>
+ -->	<div id="footer">
 		<div id="copyright"></div>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -226,7 +237,7 @@
 
 (function() {
 
-	var myGamePiece = $(".sprite"); // This is the player's icon
+	var myGamePiece; // This is the player's icon
 	var myObstacle; // This can be a zombie. This element moves independently
 	var backgroundElement; //This element needs to move slowly when character moves
 	var foregroundElement; // This element needs to move faster when character moves
@@ -235,19 +246,32 @@
 	var instructionPage = $("#instruction-page");
 	var startButton = $("#start-btn");
 	var continueButton = $("#continue-btn");
+	
+
 
 	function startGame() {
 	    myGameArea.start();
-	    myGamePiece;
-	    myObstacle  = new component(10, 200, "green", 1100, 120); 
+	    myGamePiece = new component(30, 30, "red", 50, 300);
+	 //    myGamePiece = document.createElement("div");
+		// myGamePiece.addClass("sprite");
+		// canvas.appendChild(myGamePiece);
+	    myObstacle  = new component(10, 200, "green", 1100, 120);
+
 	}
 
 	var myGameArea = {
-	    canvas : document.getElementById("game-container"),
+	    canvas : document.createElement("canvas"),
 	    start : function() {
 	        this.canvas.width = 1100;
 	        this.canvas.height = 700;
 	        this.context = this.canvas.getContext("2d");
+	        var context = this.context;
+
+	        var background = new Image();
+	        background.src = "/img/woodland-background.jpeg";
+	        background.onload = function(){
+	        	context.drawImage(background,50,0);
+	        }
 	        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 	        this.interval = setInterval(updateGameArea, 20);
 	        window.addEventListener('keydown', function (e) {
@@ -256,6 +280,7 @@
 	        window.addEventListener('keyup', function (e) {
 	            myGameArea.key = false;
 	        })
+
 	    }, 
 	    clear : function(){
 	        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -279,7 +304,7 @@
 	        ctx.fillRect(this.x, this.y, this.width, this.height);
 	    }
 	    this.newPos = function() {
-	        this.x += this.speedX;
+	        // this.x += this.speedX;
 	        this.y += this.speedY;        
 	    }
 	    this.crashWith = function(otherobj) {
@@ -306,7 +331,8 @@
 	    } else {
 	        myGameArea.clear();
 	        myGamePiece.speedX = 0;
-	        myGamePiece.speedY = 0;    
+	        myGamePiece.speedY = 0;
+	        /*Game piece moving*/ 
 	        if (myGameArea.key && myGameArea.key == 37) {myGamePiece.speedX = -5; }
 	        if (myGameArea.key && myGameArea.key == 39) {myGamePiece.speedX = 5; }
 	        if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY = -5; }

@@ -1,0 +1,118 @@
+<! DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style type="text/css">
+
+		.timer {
+			background-color: black;
+			color: white;
+		}
+
+
+	</style>
+
+
+</head>
+<body>
+	
+	<div id="main-container">
+		<span class="timer"></span>
+	</div>
+	<div id="footer">
+		<div id="copyright"></div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery-2.2.0.js"></script>
+    <!-- <script src="../js/timer.js"></script> -->
+ 	<script>
+
+(function () {
+
+		
+	var lives = 3; //User starts with 3 lives
+
+
+	//This function specifies how the timer runs and feeds in the mathProblem function to run every second
+	function startTimer(duration, display) { 
+	    var timer = duration, minutes, seconds;
+	    setInterval(function () {
+	        minutes = parseInt(timer / 60, 10);
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	        display.textContent = minutes + ":" + seconds;
+
+	        if (--timer < 0) {
+	            timer = duration;
+	        } mathProblem();
+	    }, 1000);
+	    return timer;
+	}
+
+	//This function specifies the timer start time and feeds it into the html 
+	function gameTimer() {
+		console.log("Game Timer started"); 
+	    var fiveMinutes = 60 * 5,
+	        display = document.querySelector('.timer');
+	    startTimer(fiveMinutes, display);
+	    console.log(startTimer);
+
+	};
+
+
+	//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
+	function mathProblem(){
+		console.log("Math function started");
+		var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
+		console.log(counter);
+		if (counter % 7 == 0){ //Evaluates whether the number is divisible by 4
+			var question = prompt("What is 2 + 2?");//Just a placeholder for the pop up modal with math question
+			var answer = 4;
+			console.log("Counter worked");
+			if (question != answer){
+				alert("Wrong!");
+				lives--; //If answer is wrong, Player is deducted a life
+				mathProblem();
+			} else {
+				mathProblem();
+			}
+		} 
+		
+	}
+
+	
+			
+
+	$(document).ready(function(){
+		gameTimer(); //Starts the timer and counter functions			
+	
+
+	});
+})();
+
+
+
+ </script>
+
+</body>
+</html>

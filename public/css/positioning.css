@@ -1,0 +1,81 @@
+#main-title {
+	color: blue;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 50px;
+}
+
+p {
+	margin-left: 20px;
+	padding: 10px;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: inline-block;
+	box-shadow: 5px 5px 5px black;
+	color: white;
+	text-shadow: 2px 2px black;
+	float: left;
+}
+
+
+.arrow {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: -20px;
+	right: -20px;
+}
+
+#red {
+	background-color: red;
+}
+
+#orange {
+	background-color: orange;
+}
+
+#yellow {
+	background-color: yellow;
+	color: black;
+	text-shadow: 1.5px 1.5px gray;
+}
+
+#green {
+	background-color: green;
+	clear: left;
+}
+#blue {
+	background-color: blue;
+}
+
+#violet {
+	background-color: violet;
+}
+
+body {
+	background-color: lightgray;
+}
+
+
+a:link {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#container {
+	margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+

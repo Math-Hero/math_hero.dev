@@ -1,0 +1,21 @@
+h1 {
+	font-weight: bolder;
+}
+article h1 {
+	color: green;
+}
+
+.abstract {
+	/*transform: rotate(180deg);*/
+}
+#article-subhead {
+	background-color: salmon;
+	width: auto;
+}
+img {
+	float: right;
+	margin: 0 0 10px 10px;
+}
+.nav-menu {
+
+}
