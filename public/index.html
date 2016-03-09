@@ -1,7 +1,6 @@
 <html>
 <head>
 	<title>Math Quest</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -10,58 +9,58 @@
 	<script src="js/jquery-1.12.0.js"></script>
 	<style>
 		body {		
-			width:10240px;
+			width:7680px;
 			height:auto;
 		}
-		#container{
+		#container {
 			position:relative;
 			background:no-repeat;
 			height:100%;
-			width:100%;
+			width:100%;		
 		}
 		/**The following is the css for the layout; it divides the body into "pages" and 
 		 * allows progression through the pages. It also for the modals.
 		**/ 
 		.page{
 			position:absolute;
-			width:12.5%;
-			height:100%;
-		}
-		.image{
-			position:absolute;
 			width:100%;
 			height:100%;
 		}
-		#cover{	
-			background:linear-gradient(to bottom,rgba(155,48,255,0),rgba(155,48,255,1)); 		
+		#background {
+			position:absolute;
+			opacity:0.5;
 		}
-		#instructions{
-			background:linear-gradient(to bottom,rgba(128,128,128,0),rgba(128,128,128,1));
-			left:12.5%;
+		#intro {
+			position:absolute;
+			visibility: visible;
+			height:100%;
+			width:100%;
+			bottom:0%;
+
+			z-index: 7;
 		}
 		#pg1{
 			background:linear-gradient(#4169E1,white);
-			left:25%;
 		}
 		#pg2{
 			background:linear-gradient(#4B0082,white);
-			left: 37.5%;
+			left: 100%;
 		}			
 		#pg3 {
 			background:linear-gradient(#B0C4DE,white);
-			left:50%;
+			left:200%;
 		}	
 		#pg4 {		
 			background:linear-gradient(#FF4500,white);
-			left:62.5%;
+			left:300%;
 		}		
 		#pg5{
 			background-color:#4876FF;
-			left:75%;
+			left:400%;
 		}
 		#pg6{
 			background-color:#00C957;
-			left:87.5%;
+			left:500%;
 		}	
 		.prob_page{
 			position:absolute;
@@ -86,23 +85,6 @@
             background-color:red;
             z-index:-4;
         }
-		#for_intro{
-			position:absolute;
-			top:-5%;
-			left:20%;
-			background-color:purple;
-			color:#9B30FF;
-			z-index:1;
-		}
-		#for_intro_top{
-			position: absolute;
-			width:42%;
-			height:25%;
-			top:-25%;
-			left:8%;
-			background-color:violet;
-			border-radius:1%
-		}
 		#for_pg1{
 			position:absolute;
 			visibility:hidden;
@@ -110,7 +92,7 @@
 			top:40%;
 			background-color:#563D04;
 			color:#D3B372;
-			z-index:1;
+			z-index:8;
 		}
 		.for_prob{
 			position:absolute;
@@ -120,32 +102,28 @@
 		.animation{
 			position:absolute;
 			visibility:visible;
+			background-size: 100% auto;
 			height:100%;
 			width:100%;
 		}
 		.animation div{
 			position:absolute;
 			visibility:visible;
-			height:100%;
+			background-size: auto 100%;
+			bottom:0%;
 			width:800%;
 			right:-700%;
-		}
-		.animation-01{
-			opacity:0.5;
-			z-index:1;
-		}                                                                                                     
-		.animation-02{                                              
 			z-index:2;
-		}
-		.animation-03{
-			z-index:3;
-		}
-		.animation-04{
-			z-index:4;
+			height:auto;
+			bottom:0%;
+		}                                                                                                   
+		.animation-02{   
+			position:absolute;                                           
+
 		}
 		.player{
 			position:absolute;
-			background:url(../img/player.png) no-repeat left bottom;
+			background:url(../images/player.png) no-repeat left bottom;
 			width:30%;
 			height:100%;
 			z-index:5;
@@ -162,26 +140,19 @@
 	</style> 
 </head>
 <body>	
-	<!--EVERY PAGE HAS A .PAGE CLASS AND EVERY STAGE HAS A #PG[] ID
+	<!--EVERY PAGE HAS A .PAGE CLASS AND A #PG[] ID
 		THE "CLICK FOR PROBLEM" BUTTON HAS A #FOR_PROB_PG[] ID AND
 		A .FOR_PROB CLASS
 		THE PROBLEM MODAL HAS A #PROB_PAGE_PG[] ID AND A .PROB_PAGE CLASS -->  
 	<div id="container">
-		<div id="cover" class="page">
-			<div class="image"><img src="img/cover.png" alt="cover"></div>
-			<div id="for_intro_top"></div>
-			 <button id="for_intro" type="button" class="btn btn-primary btn-lg">Click for instructions</button>
-		</div>
-		<div id="instructions" class="page">
-			<div class="image"><img src="img/intro.png" alt="intro"></div>
-			<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>		
-		</div>
-		<div id="pg1" class="page">	
+		<div id="pg1" class="page">
+			<div id="background"><img src="img/tree-01.png" alt="tree-01"></div>	
+			<div id="intro" class="image">
+				<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>
+				<img src="img/intro.png">
+			</div>
 			<div id="pg1-animation" class="animation"> 
-				<div id="animation-01-pg1" class="animation-01"><img src="img/cloud-01.png" alt="cloud-01"></div> 
-				<div id="animation-02-pg1" class="animaition-02"><img src="img/cloud-02.png" alt="cloud-02"></div>
-				<div id="animation-03-pg1" class="animation-03"><img src="img/tree-01.png" alt="tree-01"></div>
-				<div id="animation-04-pg1" class="animation-04"><img src="img/ground-01.png" alt="ground-01"></div>	
+				<div id="animation-02-pg1" class="animaition-01"><img src="img/ground-01.png" alt="ground-01"></div>
 			</div> 
 			<div class="player"></div>	
 			<div class="zombie"></div>
@@ -237,12 +208,10 @@
 		    	</table> 	
 			</div>
 		</div>
-		<div id="pg2" class="page">		
+		<div id="pg2" class="page">	
+			<div id="background"><img src="img/tree-02.png" alt="tree-02"></div>
  			<div id="pg2-animation" class="animation">
-				<div id="animation-01-pg2"class="animation-01"><img src="img/tree-02.png" alt="tree-02"></div> 
-				<div id="animation-02-pg2" class="animation-04"><img src="img/leaf.png" alt="leaf"></div>
-				<div id="animation-03-pg2" class="animation-03"><img src="img/ground-02-02.png" alt="ground-02-02"></div>
-				<div id="animation-04-pg2" class="animation-04"><img src="img/ground-02.png" alt="ground-02"></div>
+				<div id="animation-02-pg2" class="animation-01"><img src="img/ground-02.png" alt="ground-02"></div>
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -296,16 +265,13 @@
 		                	<input type="button" value="check"></input>
 		            	</td>
 		        	</tr>
-		    	</table> 
-				<div class="close_prob">X</div>			
+		    	</table> 	
 			</div>
 		</div>
 		<div id="pg3" class="page">		
-			<div id="pg3-animation" class="animation">	
-				<div id="animation-01-pg3"class="animation-01"><img src="img/bird.png" alt="bird"></div> 
-				<div id="animation-02-pg3" class="animation-02"><img src="img/cloud-03.png" alt="cloud-03"></div>
-				<div id="animation-03-pg3" class="animation-03"><img src="img/mountain.png" alt="mountain"></div>
-				<div id="animation-04-pg3" class="animation-04"><img src="img/ground-03.png" alt="ground-03"></div>
+			<div id="background"><img src="img/mountain.png" alt="mountain"></div>
+			<div id="pg3-animation" class="animation">
+				<div id="animation-02-pg3" class="animation-01"><img src="img/ground-03.png" alt="ground-03"></div>
 			</div>
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -362,11 +328,9 @@
 			</div>
 		</div>
 		<div id="pg4" class="page">
-			<div id="pg4-animation" class="animation"> 
-				<div id="animation-01-pg4" class="animation-01"><img src = "img/rock.png" alt ="rock"></div> 
-				<div id="animation-02-pg4" class="animation-02"><img src = "img/cloud-04.png" alt ="cloud-04"></div>
-				<div id="animation-03-pg4" class="animation-03"><img src = "img/cactus.png" alt ="cactus"></div>
-				<div id="animation-04-pg4"  class="animation-04"><img src = "img/ground-04.png" alt ="ground-04"></div>
+			<div id="background"><img src="img/rock.png" alt="rock"></div> 
+			<div id="pg4-animation" class="animation">
+				<div id="animation-02-pg4" class="animation-01"><img src = "img/ground-04.png" alt ="ground-04"></div>
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -485,8 +449,22 @@
 	<div>
 	<script>
 		"use strict";
+		var counter = 0;
+		function setWindowWidth(){
+    		var windowWidth = window.innerWidth;
+    		document.getElementsByTagName('body')[0].style.width = windowWidth + "px";
+		}
+		function setWindowHeight(){
+    		var windowHeight = window.innerHeight;
+    		document.getElementsByTagName('body')[0].style.height = windowHeight + "px";
+		}
+		window.addEventListener("resize",setWindowWidth,false);
+		window.addEventListener("resize",setWindowHeight,false);						 
 		$(document).ready(function() {
-			showIntro(); 
+			setWindowWidth();
+			setWindowHeight();
+			setTimeout("showPgBtn()",10000);
+			landscape($("#animation-02-pg1"), 200000);
 			// HANDLES MATH PROBLEM EVENTS
 			$('input[type="button"]').click(function() {
 				
@@ -515,38 +493,19 @@
 			    Math.floor(Math.random() * 10); 
 			});
 		});
-		//ANIMATION FOR COVER PAGE
-		function showIntro() {
-			$("#for_intro_top").animate({top: "25%"}, 2500);
-			$("#for_intro").animate({top: "70%"}, 2500);
-		}
 		//ANIMATION IF MATH INPUT IS INCORRECT
 		function showZombie() {
 			$(".zombie").css("visibility", "visible");
 		}
-		//ANIMATION FOR INSTRUCTON PAGE
 		function showPgBtn() {
-			$("#for_pg1").css("visibility", "visible");
+			$("#for_pg1").css("visibility", "visible");		
 		}
-		//ADVANCES TO INSTRUCTIONS PAGE
-		$("#for_intro").click(function() {
-			$('html,body').animate( {
-		        scrollLeft: $("#instructions").offset().left
-		    }, 'slow');
-		    setTimeout("showPgBtn()",3000);
-		}); 
 		//ADVANCES TO FIRST PAGE, STARTS PG1 ANIMATIONS
-		$('#for_pg1').click(function() {						
+		$('#for_pg1').click(function() {	
+			$("#for_pg1").css("visibility", "hidden");
+			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
-			$("#prob-pg1").css("z-index", "-1");
-		   	$('html,body').animate( {
-		       	scrollLeft: $("#pg1").offset().left
-		   	}, 'slow');
-		    startPlayer();
-		   	landscape($("#animation-01-pg1"), 300000);
-			landscape($("#animation-02-pg1"), 200000);
-			landscape($("#animation-03-pg1"), 150000);
-			landscape($("#animation-04-pg1"), 180000);		
+			$("#prob-pg1").css("z-index", "-1");				
 		});
 		//ADVANCES RUESULTING PAGES, STOPS "OLD" ANIMATION 
 		//BEGINS "NEW" ANIMATION
@@ -561,8 +520,6 @@
 		    }, 'slow');
 		    landscape($("#animation-01-pg"+pageNum), 300000);
 			landscape($("#animation-02-pg"+pageNum), 200000);
-			landscape($("#animation-03-pg"+pageNum), 150000);
-			landscape($("#animation-04-pg"+pageNum), 180000); 
 		} 
 		//EVENTS WHEN "CLICK FOR PROBLEM" BUTTON IS PRESSED		
 		$(".for_prob").click(function() {
@@ -578,7 +535,7 @@
 		    }, 'slow');
 		});
 		//PLAYER ANIMATION
-		var numBody = 2;
+/*		var numBody = 3;
 		function startPlayer(){
 			numBody++;
 			$(".player").animate({top:"-="+numBody+ "%"},500).animate({top:"+="+numBody+"%"},500);
@@ -588,25 +545,30 @@
 				setTimeout("bouncePlayer()",500);
 			}
 		}	
+		function bouncePlayer(){	
+			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);		
+				setTimeout("bouncePlayer()",500);
+			} */
+/*		while(counter<5) {
+			bouncePlayer();
+		} 
 		function bouncePlayer(){
 			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
 			setTimeout("bouncePlayer()",500);
-		} 
+		}  */
 		//LANDSCAPE ANIMATION
 		var landscape = function(scenery, speed) {
-			setTimeout(this, 3000);
 			$(scenery).animate( {
 				'right':$(document).width() + 1280
 			}, 
 			{
 				duration: speed,
-					complete: function() {
-						landscape(this,speed);
-					}
+	//				complete: function() {
+	//					landscape(this,speed);
+	//				}
 				}
 			);
 		};	
 	</script>
 </body>
 </html>
-
