@@ -1,0 +1,281 @@
+<html>
+<head>
+	<title>Hi!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>	
+		body {		
+			width: 10240px;
+			height: auto;
+		}
+		#container {
+			position: relative;
+			background: no-repeat;
+			height: 100%;
+			width: 100%;
+		}
+		/**The following is the css for the layout; it divides the body into "pages" and 
+		 * allows progression through the pages. It also for the modals.
+		**/ 
+		.page {
+			position: absolute;
+			width: 12.5%;
+			height: 100%;
+		}
+		.image {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		#cover {	
+			background: linear-gradient(to bottom, rgba(155, 48, 255, 0), rgba(155, 48,255, 1)); 		
+		}
+		#instructions {
+			background: linear-gradient(#808080, white);
+			left:12.5%;
+		}
+		#pg1 {
+			background: linear-gradient(#4169E1, white);
+			left: 25%;
+		}
+		#pg2 {
+			background-color: #FF8C69;
+			left: 37.5%;
+		}			
+		#pg3 {
+			background-color: #4876FF;
+			left: 50%;
+		}	
+		#pg4 {
+			background-color: #FF8C69;
+			left: 62.5%;
+		}		
+		#pg5 {
+			background-color: #4876FF;
+			left: 75%;
+		}
+		#pg6 {
+			background-color: #00C957;
+			left: 87.5%;
+		}	
+		.prob_page {
+			position: absolute;
+			width: 60%;
+			height: 100%;
+			left: 30%;
+			top: 5%;
+			z-index: -2;
+			background-color: red;
+		}
+		.close_prob {
+			position: absolute;
+			visibility: hidden;
+			height: 5%;
+			width: 5%;
+			right: 6%;
+			top: 5%;
+			font-size: 3rem;
+		}	
+		.for_intro {
+			position: absolute;
+			z-index: 1;
+		}
+		.for_pg1 {
+			position: absolute;
+			top: 0%;
+			z-index: 1;
+		}
+		.for_prob {
+			position: absolute;
+			z-index: 6;
+		}
+
+		.animation div {
+			position: absolute;
+			visibility: visible;
+			height: 100%;
+			width: 200%;
+			right: -100%;
+		}
+		.cloud-01 {
+			background: no-repeat left top;
+			opacity: 0.5;
+			z-index: 1;
+		}                                                                                                     
+		.cloud-02 {                                              
+			background: no-repeat left top;
+			z-index: 2;
+		}
+		.tree {
+			background: no-repeat;
+			z-index: 3;
+		}
+		.ground {
+			background: repeat-x left bottom;
+			z-index: 4;
+		}
+		.player {
+			position: absolute;
+			background: url(../img/player.png) no-repeat center bottom;
+			width: 30%;
+			height: 100%;
+			z-index: 5;
+		}
+		.stop {
+			position: absolute;
+			right: 30%;
+			z-index: 6;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script> 
+</head>
+<body>	
+	<div id="container">
+		<div id="cover" class="page">
+			<div class="for_intro"><button type="button">Click For Instructions</button></div>
+		</div>
+		<div id="instructions" class="page">
+			<div class="for_pg1"><button type="button">Click To Begin</button></div>		
+		</div>
+		<div id="pg1" class="page">
+			<div id="pg1-animation" class="animation"> 
+				<div id="pg1-cloud-01" class="cloud-01"><img src="img/cloud-01.png" alt="cloud-01"></div> 
+				<div id="pg1-cloud-02" class="cloud-02"><img src="img/cloud-02.png" alt="cloud-02"></div>
+				<div id="pg1-tree" class="tree"><img src="img/tree-01.png" alt="tree-01"></div>
+				<div id="pg1-ground" class="ground"><img src ="img/ground-01.png" alt="ground-01"></div>	
+			</div> 
+			<div class="player"></div>	
+			<div class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="pg1prob1" class="prob_page">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="first"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div class="stop"><button type="button">Click To Stop</button></div>	
+		</div>
+		<div id="pg2" class="page">
+			<div class="player"></div>
+			<div class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="pg2prob1" class="prob_page">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="second"><button type="button">Click To Submit</button></div>			
+			</div>
+		</div>
+		<div id="pg3" class="page">
+			<div class="player"></div>
+			<div class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="pg3prob1" class="prob_page">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="third"><button type="button">Click To Submit</button></div>			
+			</div>
+		</div>
+		<div id="pg4" class="page">
+			<div class="player"></div>
+			<div class="for_prob"><button type="button">Click for Problem</button></div>
+			<div id="pg4prob1" class="prob_page">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="fourth"><button type="button">Click To Submit</button></div>			
+			</div>
+		</div>
+		<div id="pg5" class="page">
+			<div class="player"></div>
+			<div class="for_prob"><button type="button">Click for Problem</button></div>
+			<div id="pg5prob1" class="prob_page">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="fifth"><button type="button">Click To Submit</button></div>			
+			</div>
+		</div>
+		<div id="pg6" class="page">
+			<div class="head"></div>
+			<div class="for_pg1"><button type="button">Click To Return</button></div>
+		</div>
+	<div>
+	<script>
+		$(document).ready(function() { 
+			$('.for_pg1').click(function() {
+				$(".for_prob1").css("visibility", "visible");
+				$(".prob").css("z-index", "-1");
+		    	$('html,body').animate( {
+		        	scrollLeft: $("#pg1").offset().left
+		    	}, 'slow');
+		    	landscape($(".cloud-01"), 300000);
+				landscape($(".cloud-02"), 200000);
+				landscape($(".tree"), 150000);
+				landscape($(".ground"), 180000);	
+			});		
+		});	
+		$(".for_prob").click(function() {
+			$(".for_prob").css("visibility", "hidden");
+			$(".first").css("visibility", "visible");
+			$(".close_prob").css("visibility", "visible");
+			$(".prob_page").css("z-index", "6");
+		});		
+		$(".close_prob").click(function() {
+			$(".prob_page").css("z-index", "-1");
+			$(".for_prob").css("visibility", "visible");
+		});
+		$(".for_intro").click(function() {
+			$('html,body').animate( {
+		        scrollLeft: $("#instructions").offset().left
+		    }, 'slow');
+		});
+		$(".first").click(function() {
+			$(".for_prob").css("visibility", "visible");
+			$(".prob_page").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg2").offset().left
+		    }, 'slow');
+		    $("#pg1-animation div").css("visibility", "hidden");
+		});
+		$(".second").click(function() {
+			$(".for_prob").css("visibility", "visible");
+			$(".prob_page").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg3").offset().left
+		    }, 'slow');
+		});		
+		$(".third").click(function() {
+			$(".for_prob").css("visibility", "visible");
+			$(".prob_page").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg4").offset().left
+		    }, 'slow');
+		});
+		$(".fourth").click(function() {
+			$(".for_prob").css("visibility", "visible");
+			$(".prob_page").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg5").offset().left
+		    }, 'slow');
+		});	
+		$(".fifth").click(function() {
+			$(".for_prob").css("visibility", "visible");
+ 			$('html,body').animate( {
+		        scrollLeft: $("#pg6").offset().left
+		    }, 'slow');
+		});
+		var landscape = function(scenery, speed) {
+				$(scenery).css({right: "-100%"});
+				$(scenery).animate( {
+					'right':$(document).width() + 100
+				},
+				{
+				duration: speed,
+				complete: function() {
+					landscape(this,speed);
+				}
+			}
+			);
+		};
+		$(".stop").click(function(){
+			var stopLandscape = $(".animation div");
+			stopLandscape.stop();
+		});
+	</script>
+</body>
+</html>
+
