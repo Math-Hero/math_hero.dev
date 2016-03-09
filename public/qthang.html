@@ -1,0 +1,125 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Simple JQuery Quiz</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script>
+        (function ($) {
+            //plugin buttonset vertical
+            $.fn.buttonsetv = function () {
+                $(':radio, :checkbox', this).wrap('<div style="margin: 1px"/>');
+                $(this).buttonset();
+                $('label:first', this).removeClass('ui-corner-left').addClass('ui-corner-top');
+                $('label:last', this).removeClass('ui-corner-right').addClass('ui-corner-bottom');
+                mw = 0; // max witdh
+                $('label', this).each(function (index) {
+                    w = $(this).width();
+                    if (w > mw) mw = w;
+                })
+                $('label', this).each(function (index) {
+                    $(this).width(mw);
+                })
+            };
+        })(jQuery);
+        var questionIndex = 0;
+        var quizStartTime = new Date();
+        var quiz = {
+            "name": "Test Quiz",
+            "questions": [
+                        {
+                            "text": "what is 6 + 2?",
+                            "options": ["3", "7", "8", "9"]
+                        },
+                        {
+                            "text": "what is 3 + 3?",
+                            "options": ["6", "7", "8", "9"]
+                        },
+                        {
+                            "text": "what is 3 + 3?",
+                            "options": ["Choice 1 with some <b>bold text</b>",
+                            'Choice 2 with <img src="http://www.stoursailingclub.co.uk/wp-content/uploads/2012/09/football1.jpg" />',
+                            "Choice 3", "9"]
+                        },
+                    ]
+        };
+        var loadQuestion = function () {
+            console.log("hello");
+            var currentQuestion = quiz.questions[questionIndex];
+            $("#question").html(currentQuestion.text);
+            var $optionsDiv = $("#options")
+            $optionsDiv.empty();
+            var n;
+            for (n = 0; n < currentQuestion.options.length; n++) {
+                var $input = $('<input type="radio"/>');
+                var id = "option" + n;
+                $input.attr("id", id);
+                $input.attr("name", "radio");
+                var $label = $('<label />');
+                $label.attr("for", id);
+                $label.html(currentQuestion.options[n]);
+                $optionsDiv.append($input);
+                $optionsDiv.append($label);
+            }
+            $("#options").buttonsetv();
+            if (questionIndex === 0)
+                $("#previousButton").attr("disabled", "disabled");
+            else
+                $("#previousButton").removeAttr("disabled");
+            if (questionIndex >= quiz.questions.length - 1)
+                $("#nextButton").text("Submit");
+            else
+                $("#nextButton").text("Next");
+            $('#progress').html('<p>' + String(questionIndex + 1) + "/" + quiz.questions.length + "</p>");
+            $("#previousButton").attr("disabled", "disabled");
+        }
+        function onTimer() {
+            var diff = new Date() - quizStartTime;
+            var totalSeconds = Math.floor(diff / 1000);
+            
+            var hours = parseInt( totalSeconds / 3600 ) % 24;
+            var minutes = parseInt( totalSeconds / 60 ) % 60;
+            var seconds = totalSeconds % 60;
+            var timeTaken = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
+            
+            $("#time-taken").text(timeTaken);
+        }
+        $(function () {
+            $("#previousButton").click(function () {
+                questionIndex--;
+                loadQuestion();
+                return false; // don't cause a page refresh
+            });
+            $("#nextButton").click(function () {
+                questionIndex++;
+                loadQuestion();
+                return false; // don't cause a page refresh
+            });
+            $('#title').append($('<h1 />').text(quiz.name));
+            loadQuestion();
+            window.setInterval(onTimer, 1000);
+        });
+    </script>
+</head>
+<body>
+ 
+<form>
+    <div id="quiz">
+        <div id="title"></div>
+        <div id="progress"></div>
+        <div id="time-taken"></div>
+        <div id="question"></div>
+        <div id="options">
+        </div>
+        <div id="navigation">
+            <button id="previousButton" name="previousButton">Previous</button>
+            <button id="nextButton" name="nextButton">Next</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Quest Problem Modals</title>
+    <style type="text/css">
+        
+        #container{
+            width:50%;
+        }
+
+        .mathmodal {
+            margin:0px;padding:0px;
+            width:100%;
+            box-shadow: 10px 10px 5px #888888;
+            border:1px solid #000000;
+            
+            -moz-border-radius-bottomleft:25px;
+            -webkit-border-bottom-left-radius:25px;
+            border-bottom-left-radius:25px;
+            
+            -moz-border-radius-bottomright:25px;
+            -webkit-border-bottom-right-radius:25px;
+            border-bottom-right-radius:25px;
+            
+            -moz-border-radius-topright:25px;
+            -webkit-border-top-right-radius:25px;
+            border-top-right-radius:25px;
+            
+            -moz-border-radius-topleft:25px;
+            -webkit-border-top-left-radius:25px;
+            border-top-left-radius:25px;
+
+        }.mathmodal table{
+            border-collapse: collapse;
+                border-spacing: 0;
+            width:100%;
+            height:100%;
+            margin:0px;padding:0px;
+
+        }.mathmodal tr:last-child td:last-child {
+            -moz-border-radius-bottomright:25px;
+            -webkit-border-bottom-right-radius:25px;
+            border-bottom-right-radius:25px;
+        }
+
+        .mathmodal table tr:first-child td:first-child {
+            -moz-border-radius-topleft:25px;
+            -webkit-border-top-left-radius:25px;
+            border-top-left-radius:25px;
+        }
+
+        .mathmodal table tr:first-child td:last-child {
+            -moz-border-radius-topright:25px;
+            -webkit-border-top-right-radius:25px;
+            border-top-right-radius:25px;
+        }
+
+        .mathmodal tr:last-child td:first-child{
+            -moz-border-radius-bottomleft:25px;
+            -webkit-border-bottom-left-radius:25px;
+            border-bottom-left-radius:25px;
+        }
+
+        .mathmodal tr:hover td{
+            
+        }
+
+        .mathmodal tr:nth-child(odd){ background-color:#aad4ff; }
+
+        .mathmodal tr:nth-child(even)    { background-color:#ffffff; }.mathmodal td{
+            vertical-align:middle;
+            
+            
+            border:1px solid #000000;
+            border-width:0px 1px 1px 0px;
+            text-align:center;
+            padding:12px;
+            font-size:24px;
+            font-family:Times New Roman;
+            font-weight:normal;
+            color:#000000;
+        }
+
+        .mathmodal tr:last-child td{
+            border-width:0px 1px 0px 0px;
+        }
+
+        .mathmodal tr td:last-child{
+            border-width:0px 0px 1px 0px;
+        }
+
+        .mathmodal tr:last-child td:last-child{
+            border-width:0px 0px 0px 0px;
+        }
+
+        .mathmodal tr:first-child td{
+                background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+            background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");  background: -o-linear-gradient(top,#005fbf,003f7f);
+
+            background-color:#005fbf;
+            border:0px solid #000000;
+            text-align:center;
+            border-width:0px 0px 1px 1px;
+            font-size:30px;
+            font-family:Times New Roman;
+            font-weight:bold;
+            color:#ffffff;
+        }
+
+        .mathmodal tr:first-child:hover td{
+            background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+            background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");  background: -o-linear-gradient(top,#005fbf,003f7f);
+
+            background-color:#005fbf;
+        }
+
+        .mathmodal tr:first-child td:first-child{
+            border-width:0px 0px 1px 0px;
+        }
+
+        .mathmodal tr:first-child td:last-child{
+            border-width:0px 0px 1px 1px;
+        }
+
+        #answer {
+            width:75%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="mathmodal" >
+            <table>
+                <tr>
+                    <td colspan="6" align="center" id="timer">
+                        <span>Timer : 50 </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" id="question">
+                        <span>Question 1</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Correct</span>                        
+                    </td>
+                    <td id="correctScore">
+                        <span>0</span>
+                    </td>
+                    <td>
+                        <span>Wrong</span>                        
+                    </td>
+                    <td id="wrongScore">
+                        <span>0</span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="number1">1</div>
+                    </td>
+                    <td>
+                        <div>+</div>
+                    </td>
+                    <td>
+                        <div id="number2">2</div>
+                    </td>
+                    <td>
+                        <div>=</div>
+                    </td>
+                    <td>
+                        <input id="answer" type="text"></input>
+                    </td>
+                    <td>
+                        <input type="button" value="Check"></input>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/jquery.js"></script>
+    <script>
+    "use strict";
+    $(document).ready(function(){
+        $('input[type="button"]').click(function(){
+            //alert box feedback before generating random numbers
+
+
+            var num1=parseInt($("#number1").text());
+            var num2=parseInt($("#number2").text());
+            var total = num1 + num2;
+            var answer = parseInt($("input[type='text']").val());
+            
+        if ($("input[type='text']").val() === '') {
+            alert("You must answer the question first, your excellence.");
+            } else if (answer === total) {
+            alert("Great job, your highness! That is correct.");
+            } else {
+            alert("Nope! Try again your majesty.");
+            }
+        // selecting a random array item
+        var selectNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            var pickANumber = function ()   {
+            var probNumber = selectNumber[Math.floor(Math.random() * selectNumber.length)];
+            return probNumber;
+        };
+
+        function probNumber()   {
+        //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
+          $("#number1").innerHTML =
+          Math.floor(Math.random() * 10);
+          
+          //generate a random number range 1 to 9 for number 2 after clicking alert box using callback function
+          $("#number2").innerHTML =
+          Math.floor(Math.random() * 10);
+      }});
+    });
+    </script>
+</body>
+</html>

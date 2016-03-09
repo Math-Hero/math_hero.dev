@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<title>Math Hero</title>
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="height=device-height, initial-scale=1">
+ 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 	<script src="/js/jquery.js"></script>
+	<style>
+		body {
+			width: 10240px;
+			height: 705px;
+		}
+		#container {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		.page {
+			position: absolute;
+			width: 12.5%;
+			height: 100%;
+		}
+		.prob {
+			position: absolute;
+			width: 60%;
+			height: 70%;
+			left: 30%;
+			top: 5%;
+			background-color: #FFFFF0;
+			z-index: -2;
+			background: url(../img/problem_scroll.png) no-repeat center top;
+		}
+		.close_prob {
+			position: absolute;
+			height: 5%;
+			width: 5%;
+			right: 5%;
+			top: 10%;
+			font-size: 3rem;
+		}
+		#cover {
+			background-color: #C76114;	
+		}
+		#instructions {
+			background-color: #FFF5EE;	
+			left:12.5%;
+		}
+		#pg1 {
+			background-color: #4876FF;
+			left: 25%;
+		}
+		#pg2 {
+			background-color: #FF8C69;
+			left: 37.5%;
+		}			
+		#pg3 {
+			background-color: #4876FF;
+			left: 50%;
+		}	
+		#pg4 {
+			background-color: #FF8C69;
+			left: 62.5%;
+		}		
+		#pg5 {
+			background-color: #4876FF;
+			left: 75%;
+		}
+		#pg6 {
+			background-color: #00C957;
+			left: 87.5%;
+		}	
+		.for_prob2 {
+			visibility: hidden;
+			position: absolute;
+			left: 80px;
+			top: 0px;
+			z-index: 7;
+		}
+		.for_prob3 {
+			visibility: hidden;
+			position: absolute;
+			left: 160px;
+			top: 0px;
+			z-index: 9;
+		}
+		.for_prob4 {
+			visibility: hidden;
+			position: absolute;
+			left: 240px;
+			top: 0px;
+			z-index: 11;
+		}
+		#image1 {
+			z-index: -1;
+		}
+		.for_intro {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
+		.for_pg1 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
+		.for_prob1 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 5;
+		}
+		#cloud-01 {
+			position: absolute;
+			width: 800%;
+			height: 100%;
+			top: 0%;	
+			background: url(../img/cloud1.png) no-repeat left bottom;
+			z-index: 2;
+		}                                                         	
+		#pineTree {
+			position: absolute;
+			width: 800%;
+			height: 100%;
+			top:25%;
+			background: url(../img/tree.png) no-repeat left bottom;
+			z-index: 1;
+		}
+		.player {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			bottom: 5%;
+			background: url(../img/player.png) no-repeat center top;
+			z-index: 4;
+		}	
+		#cloud-02 {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top:20%;	
+			background: url(../img/clouds-02.png) no-repeat left bottom;
+			z-index: 2;
+		}  
+		#cactus {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top:20%;
+			background: url(../img/cactus.png) no-repeat left bottom;
+			z-index: 1;
+		} 
+	</style>	
+</head>
+<body>
+	<div id="container">
+		<div id="cover" class="page">
+			<div id="cover_img"><img src = "img/cover1.jpg" alt ="cover" height="705" width="1280"></div>
+			<div class="for_intro"><button type="button">Click For Instructions</button></div>
+		</div>
+		<div id="instructions" class="page">
+			<div id="intro_img"><img src = "img/intro.jpg" alt ="scroll" height="705" width="1280"></div>
+			<div class="for_pg1"><button type="button">Click To Begin</button></div>		
+		</div>
+		<div id="pg1" class="page">
+			<div id="image1"><img src = "img/field.jpg" alt ="field" height="705" width="1280"></div>
+	<!--		<div id="cloud-01" class="tree"></div>
+			<div id="pineTree"></div> -->
+			<div class="player"></div>
+			<div id="pg1prob1" class="for_prob1"><button type="button">Click For Problem</button></div>
+			<div id="pg1prob2" class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div id="pg1prob3" class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div id="pg1prob4" class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="first"><button type="button">Click To Submit</button></div>
+			</div>
+		</div>
+		<div id="pg2" class="page">
+			<img src = "img/desert.jpg" alt ="desert" height="705" width="1280">
+			<div id="cloud-02"></div>
+			<div id="cactus"></div>
+			<div class="player"></div>
+			<div class="for_prob1"><button type="button">Click For Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="second"><button type="button">Click To Submit</button></div>
+			</div>
+		</div>
+		<div id="pg3" class="page">
+			<img src = "img/forest.jpg" alt ="forest" height="705" width="1280">
+			<div id="cloud-01" class="tree"></div>
+			<div id="pineTree">
+			<div class="head"></div>
+			<div class="for_prob1"><button type="button">Click For Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="third"><button type="button">Click To Submit</button></div>
+			</div>
+		</div>
+		<div id="pg4" class="page">
+			<img src = "img/mountain.jpg" alt ="mountain" height="705" width="1280">
+			<div class="head"></div>
+			<div class="for_prob1"><button type="button">Click for Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="fourth"><button type="button">Click To Submit</button></div>
+			</div>
+		</div>
+		<div id="pg5" class="page">
+			<div id="image1"><img src = "img/field.jpg" alt ="field" height="705" width="1280"></div>
+			<div class="head"></div>
+			<div class="for_prob1"><button type="button">Click for Problem</button></div>
+			<div class="for_prob2"><button type="button">Click For Problem</button></div>
+			<div class="for_prob3"><button type="button">Click For Problem</button></div>
+			<div class="for_prob4"><button type="button">Click For Problem</button></div>
+			<div id="prob1" class="prob prob1">
+				This is the first problem.
+				<div class="close_prob">X</div>
+				<div class="prob-1"><button type="button">Click To Submit</button></div>			
+			</div>
+			<div id="prob2"  class="prob prob2">
+				This is the second problem.
+				<div class="close_prob">X</div>
+				<div class="prob-2"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob3"  class="prob prob3">
+				This is the third problem.
+				<div class="close_prob">X</div>
+				<div class="prob-3"><button type="button">Click To Submit</button></div>
+			</div>
+			<div id="prob4"  class="prob prob4">
+				This is the fourth problem.
+				<div class="close_prob">X</div>
+				<div class="fifth"><button type="button">Click To Submit</button></div>
+			</div>
+		</div>
+		<div id="pg6" class="page">
+			<img src = "img/castle1.jpg" alt ="castle1" height="705" width="1280">
+			<div class="head"></div>
+			<div class="for_pg1"><button type="button">Click To Return</button></div>
+		</div>
+	<div>
+	
+<script>
+		$(".prob-1").click(function() {
+			$(".for_prob1").css("visibility", "hidden");
+			$(".for_prob2").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
+		$(".prob-2").click(function() {
+			$(".for_prob2").css("visibility", "hidden");
+			$(".for_prob3").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
+		$(".prob-3").click(function() {
+			$(".for_prob3").css("visibility", "hidden");
+			$(".for_prob4").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		});
+		$(".close_prob").click(function() {
+			$(".prob").css("z-index", "-1");
+		});
+		$(".for_prob1").click(function() {
+		    $(".prob1").css("z-index", "6");
+		});
+		$(".first").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg2").offset().left
+		    }, 'slow');
+		});
+		$(".for_prob2").click(function() {
+		    $(".prob2").css("z-index", "7");
+		});
+		$(".second").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg3").offset().left
+		    }, 'slow');
+		});		
+		$(".for_prob3").click(function() {
+		    $(".prob3").css("z-index", "9");
+		});
+		$(".third").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg4").offset().left
+		    }, 'slow');
+		});
+		$(".for_prob4").click(function() {
+		    $(".prob4").css("z-index", "8");
+		});
+		$(".fourth").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+			$(".prob").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg5").offset().left
+		    }, 'slow');
+		});
+		$(".for_prob5").click(function() {
+		    $(".prob5").css("z-index", "6");
+		});
+		$(".fifth").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".for_prob4").css("visibility", "hidden");
+ 			$('html,body').animate( {
+		        scrollLeft: $("#pg6").offset().left
+		    }, 'slow');
+		});
+		$(".for_pg1").click(function() {
+			$(".for_prob1").css("visibility", "visible");
+			$(".prob").css("z-index", "-1");
+		    $('html,body').animate( {
+		        scrollLeft: $("#pg1").offset().left
+		    }, 'slow');
+		});
+		$(".for_intro").click(function() {
+			$('html,body').animate( {
+		        scrollLeft: $("#instructions").offset().left
+		    }, 'slow');
+		});
+		$(".for_pg1").click(function() {
+			$('html,body').animate( {
+		        scrollLeft: $("#pg1").offset().left
+		    }, 'slow');
+		}); 
+
+		(function($) {
+			$.extend($.fx.step,{
+			    backgroundPosition: function(fx) {
+		            if (fx.state === 0 && typeof fx.end == 'string') {
+		                var start = $.curCSS(fx.elem,'backgroundPosition');
+		                start = toArray(start);
+		                fx.start = [start[0],start[2]];
+		                var end = toArray(fx.end);
+		                fx.end = [end[0],end[2]];
+		                fx.unit = [end[1],end[3]];
+					}
+		            var nowPosX = [];
+		            nowPosX[0] = ((fx.end[0] - fx.start[0]) * fx.pos) + fx.start[0] + fx.unit[0];
+		            nowPosX[1] = ((fx.end[1] - fx.start[1]) * fx.pos) + fx.start[1] + fx.unit[1];           
+		            fx.elem.style.backgroundPosition = nowPosX[0]+' '+nowPosX[1];
+		            
+		           function toArray(strg){
+		               strg = strg.replace(/left|top/g,'0px');
+		               strg = strg.replace(/right|bottom/g,'100%');
+		               strg = strg.replace(/([0-9\.]+)(\s|\)|$)/g,"$1px$2");
+		               var res = strg.match(/(-?[0-9\.]+)(px|\%|em|pt)\s(-?[0-9\.]+)(px|\%|em|pt)/);
+		               return [parseFloat(res[1],10),res[2],parseFloat(res[3],10),res[4]];
+		           }
+		        }
+			});
+		})(jQuery);
+		$(document).ready(function(){ 
+			$('#cloud-01').css({backgroundPosition: 'right -25%'});
+			$('#pineTree').css({backgroundPosition: 'right -25%'});
+			$('.player').css({backgroundPosition: 'left bottom'});
+			$('.for_pg1').click(function(){	
+				startPlayer();
+				setTimeout("startPineTree()", 1500);
+				
+				setTimeout("startCloud1()", 1500);
+			});
+			$('#cloud-02').css({backgroundPosition: 'right 5%'});
+			$('#cactus').css({backgroundPosition: 'right 5%'});
+ 			$('.first').click(function(){	
+				startCactus();
+				startCloud2();
+			},1000);		
+		});
+		var numBody = 1;
+		function startPlayer(){
+			numBody++;
+			$(".player").animate({top:"-="+numBody+"px"},500).animate({top:"+="+numBody+"px"},500);
+			if(numBody<400){
+				setTimeout("startPlayer()",500);
+			} else {
+				setTimeout("bouncePlayer()",500);
+			}
+		}	
+		function bouncePlayer(){
+			$(".player").animate({top:"-=40px"},500).animate({top:"+=40px"},500);
+			setTimeout("bouncePLayer()",500);
+			} 
+		var numPineTree = 1;
+		function startPineTree(){
+			numPineTree++;
+			$("#pineTree").animate({right:"+=15px"},500);
+				if(numPineTree<70){
+					setTimeout("startPineTree()",500);
+			} else {
+				$('#pineTree').css({backgroundPosition: 'right -25%'},500);
+				setTimeout("bouncePineTree()",500);	
+		}	
+	}
+		function bouncePineTree(){
+			$("#pineTree").animate({top:"-=4px"},500).animate({top:"+=4px"},500);
+			setTimeout("bouncePineTree()",500);
+			
+		}  
+		var numCloud1 = 1;
+		function startCloud1(){
+			numCloud1++;
+			$("#cloud-01").animate({right:"+=20px"},300);
+				if(numCloud2<80){
+				setTimeout("startCloud1()",300);
+			} else {
+				setTimeout("bounceCloud1()",300);
+			}
+		}
+		function bounceCloud1(){
+			$("#cloud-01").animate({top:"-=2px"},300).animate({top:"+=2px"},300);
+			setTimeout("bounceCloud1()",300);
+		} 
+		var numCactus = 1;
+		function startCactus(){
+			numCactus++;
+			$("#cactus").animate({right:"+=15px"},500);
+				if(numCactus<80){
+				setTimeout("startCactus()",500);
+			} else {
+				setTimeout("bounceCactus()",500);
+			}
+		}
+		function bounceCactus(){
+			$("#cactus").animate({top:"-=4px"},500).animate({top:"+=4px"},500);
+			setTimeout("bounceCactus()",500);
+		} 
+		var numCloud2 = 1;
+		function startCloud2(){
+			numCloud2++;
+			$("#cloud-02").animate({right:"+=20px"},300);
+				if(numCloud2<80){
+				setTimeout("startCloud2()",300);
+			} else {
+				setTimeout("bounceCloud2()",300);
+			}
+		}
+		function bounceCloud2(){
+			$("#cloud-02").animate({top:"-=2px"},300).animate({top:"+=2px"},300);
+			setTimeout("bounceCloud2()",300);
+		} 
+	</script>
+</body>
+</html>
