@@ -22,7 +22,6 @@
 <html>
 <head>
 	<title>Math Quest</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -31,21 +30,36 @@
 	<script src="js/jquery-1.12.0.js"></script>
 	<style>
 		body {		
-			width:10240px;
+			width:7680px;
 			height:auto;
 		}
-		#container{
+		#container {
 			position:relative;
 			background:no-repeat;
 			height:100%;
+<<<<<<< HEAD:public/index.html
+			width:100%;		
+		}
+		.overlay{
+		  	position: absolute;
+		  	top: 0;
+		  	left: 0;
+		  	width: 100%;
+		  	height: 100%;
+		  	z-index: 4;
+		  	background-color: rgba(0,0,0,0.5); /*dim the background*/
+=======
 			width:100%;
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		}
 		/**The following is the css for the layout; it divides the body into "pages" and 
 		 * allows progression through the pages. It also for the modals.
 		**/ 
 		.page{
 			position:absolute;
+<<<<<<< HEAD:public/index.html
+=======
 <<<<<<< HEAD
 			width:100%;
 			height:100%;
@@ -91,55 +105,70 @@
 		}
 		.image{
 			position:absolute;
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			width:100%;
 			height:100%;
 		}
-		#cover{	
-			background:linear-gradient(to bottom,rgba(155,48,255,0),rgba(155,48,255,1)); 		
+		#background {
+			position:absolute;
+			opacity:0.5;
 		}
-		#instructions{
-			background:linear-gradient(to bottom,rgba(128,128,128,0),rgba(128,128,128,1));
-			left:12.5%;
+		#intro {
+			position:absolute;
+			visibility: visible;
+			height:60%;
+			width:60%;
+			right:0%;
+			z-index: 7;
 		}
 		#pg1{
 			background:linear-gradient(#4169E1,white);
-			left:25%;
 		}
 		#pg2{
 			background:linear-gradient(#4B0082,white);
-			left: 37.5%;
+			left: 100%;
 		}			
 		#pg3 {
 			background:linear-gradient(#B0C4DE,white);
-			left:50%;
+			left:200%;
 		}	
 		#pg4 {		
 			background:linear-gradient(#FF4500,white);
-			left:62.5%;
+			left:300%;
 		}		
 		#pg5{
 			background-color:#4876FF;
-			left:75%;
+			left:400%;
 		}
 		#pg6{
 			background-color:#00C957;
+<<<<<<< HEAD:public/index.html
+			left:500%;
+=======
 			left:87.5%;
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		}	
 		.prob_page{
 			position:absolute;
 			visibility: hidden;
+			height:60%;
 			width:60%;
-			height:100%;
-			left:30%;
 			top:5%;
-			z-index:-2;
-			background:url(../img/problem_scroll.png) no-repeat center top;
+			right:5%;
+			border-radius: 3%;
+			border: 1px solid black;
+			background-color: #F5DEB3;
+			color: black;
+			z-index: 2;
+			font-size: 200%;
+			font-family: 'Rock Salt';
 		}
 		table{
 			position:absolute;
 			top:10%;
 			left:5%;
+
 		}       
         #correctScore{
             background-color:green; 
@@ -149,6 +178,8 @@
             background-color:red;
             z-index:-4;
         }
+<<<<<<< HEAD:public/index.html
+=======
 <<<<<<< HEAD
 =======
 		#for_intro{
@@ -169,6 +200,7 @@
 			border-radius:1%
 		}
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		#for_pg1{
 			position:absolute;
 			visibility:hidden;
@@ -176,11 +208,15 @@
 			top:40%;
 			background-color:#563D04;
 			color:#D3B372;
+<<<<<<< HEAD:public/index.html
+			z-index:8;
+=======
 <<<<<<< HEAD
 			z-index:8;
 =======
 			z-index:1;
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		}
 		.for_prob{
 			position:absolute;
@@ -190,16 +226,24 @@
 		.animation{
 			position:absolute;
 			visibility:visible;
+<<<<<<< HEAD:public/index.html
+			background-size: 100% auto;
+=======
 <<<<<<< HEAD
 			background-size: 100% auto;
 =======
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			height:100%;
 			width:100%;
 		}
 		.animation div{
 			position:absolute;
 			visibility:visible;
+<<<<<<< HEAD:public/index.html
+			background-size: auto 100%;
+			bottom:0%;
+=======
 <<<<<<< HEAD
 			background-size: auto 100%;
 			bottom:0%;
@@ -218,26 +262,29 @@
 			background:url(../images/player.png) no-repeat left bottom;
 =======
 			height:100%;
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			width:800%;
 			right:-700%;
-		}
-		.animation-01{
-			opacity:0.5;
-			z-index:1;
-		}                                                                                                     
-		.animation-02{                                              
 			z-index:2;
-		}
-		.animation-03{
-			z-index:3;
-		}
-		.animation-04{
-			z-index:4;
+			height:auto;
+			bottom:0%;
+		} 
+		.animation-01{
+			opacity: 0.5;
+		}                                                                                                  
+		.animation-02{   
+			position:absolute;  
+			bottom:0%;                                         
+
 		}
 		.player{
 			position:absolute;
+<<<<<<< HEAD:public/index.html
+			background:url(../images/player.png) no-repeat left bottom;
+=======
 			background:url(../img/player.png) no-repeat left bottom;
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			width:30%;
 			height:100%;
 			z-index:5;
@@ -254,15 +301,29 @@
 	</style> 
 </head>
 <body>	
+<<<<<<< HEAD:public/index.html
+	<!--EVERY PAGE HAS A .PAGE CLASS AND A #PG[] ID
+=======
 <<<<<<< HEAD
 	<!--EVERY PAGE HAS A .PAGE CLASS AND A #PG[] ID
 =======
 	<!--EVERY PAGE HAS A .PAGE CLASS AND EVERY STAGE HAS A #PG[] ID
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		THE "CLICK FOR PROBLEM" BUTTON HAS A #FOR_PROB_PG[] ID AND
 		A .FOR_PROB CLASS
 		THE PROBLEM MODAL HAS A #PROB_PAGE_PG[] ID AND A .PROB_PAGE CLASS -->  
+	<div class="overlay"></div>
 	<div id="container">
+<<<<<<< HEAD:public/index.html
+		<div id="pg1" class="page">
+			<div id="intro" class="image">
+				<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>
+			</div>
+			<div id="pg1-animation" class="animation"> 
+				<div id="animation-01-pg1" class="animation-01"><img src="images/cloud-01.png" alt="cloud-01"></div>
+				<div id="animation-02-pg1" class="animation-02"><img src="images/ground-01.png" alt="ground-01"></div>
+=======
 <<<<<<< HEAD
 		<div id="pg1" class="page">
 			<div id="background"><img src="/img/tree-01.png" alt="tree-01"></div>	
@@ -289,6 +350,7 @@
 				<div id="animation-03-pg1" class="animation-03"><img src="img/tree-01.png" alt="tree-01"></div>
 				<div id="animation-04-pg1" class="animation-04"><img src="img/ground-01.png" alt="ground-01"></div>	
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			</div> 
 			<div class="player"></div>	
 			<div class="zombie"></div>
@@ -344,6 +406,12 @@
 		    	</table> 	
 			</div>
 		</div>
+<<<<<<< HEAD:public/index.html
+		<div id="pg2" class="page">	
+ 			<div id="pg2-animation" class="animation">
+ 				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
+				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02.png" alt="ground-02"></div>
+=======
 <<<<<<< HEAD
 		<div id="pg2" class="page">	
 			<div id="background"><img src="/img/tree-02.png" alt="tree-02"></div>
@@ -357,6 +425,7 @@
 				<div id="animation-03-pg2" class="animation-03"><img src="img/ground-02-02.png" alt="ground-02-02"></div>
 				<div id="animation-04-pg2" class="animation-04"><img src="img/ground-02.png" alt="ground-02"></div>
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -410,6 +479,15 @@
 		                	<input type="button" value="check"></input>
 		            	</td>
 		        	</tr>
+<<<<<<< HEAD:public/index.html
+		    	</table> 	
+			</div>
+		</div>
+		<div id="pg3" class="page">		
+			<div id="background"><img src="img/mountain.png" alt="mountain"></div>
+			<div id="pg3-animation" class="animation">
+				<div id="animation-02-pg3" class="animation-01"><img src="img/ground-03.png" alt="ground-03"></div>
+=======
 <<<<<<< HEAD
 		    	</table> 	
 			</div>
@@ -430,6 +508,7 @@
 				<div id="animation-03-pg3" class="animation-03"><img src="img/mountain.png" alt="mountain"></div>
 				<div id="animation-04-pg3" class="animation-04"><img src="img/ground-03.png" alt="ground-03"></div>
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			</div>
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -486,6 +565,11 @@
 			</div>
 		</div>
 		<div id="pg4" class="page">
+<<<<<<< HEAD:public/index.html
+			<div id="background"><img src="img/rock.png" alt="rock"></div> 
+			<div id="pg4-animation" class="animation">
+				<div id="animation-02-pg4" class="animation-01"><img src = "img/ground-04.png" alt ="ground-04"></div>
+=======
 <<<<<<< HEAD
 			<div id="background"><img src="/img/rock.png" alt="rock"></div> 
 			<div id="pg4-animation" class="animation">
@@ -497,66 +581,12 @@
 				<div id="animation-03-pg4" class="animation-03"><img src = "img/cactus.png" alt ="cactus"></div>
 				<div id="animation-04-pg4"  class="animation-04"><img src = "img/ground-04.png" alt ="ground-04"></div>
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
 			<div id="for_prob_pg4"  class="for_prob"><button type="button">Click for Problem</button></div>
 			<div id="prob_page_pg4" class="prob_page">
-				<table width="80%">
-        			<tr>      
-            			<td colspan="6" align="right" id="timer">
-                			<span>Timer : 50 </span>
-            			</td>
-        			</tr>   
-        			<tr>
-            			<td colspan="6" id="question">
-                			<span>Question 1/10</span>
-            			</td>
-        			</tr>   
-        			<tr>
-			            <td>
-			                <span>Correct<span>
-			            </td>
-		            	<td  id="correctScore">
-		                	<span>0</span>   
-		            	</td>
-		            	<td>
-		                	<span>Wrong<span>
-		            	</td>
-		            	<td id="wrongScore">
-		                	<span>0</span>
-		            	</td>
-		            	<td></td>
-		            	<td></td>
-		        	</tr>
-		        	<tr>
-		            	<td>
-		                	<div id="number1">1</div>
-		            	</td>
-		            	<td>
-		                	<div>+</div>
-		            	</td>
-		            	<td>
-		                	<div id="number2">2</div>
-		            	</td>
-		            	<td>
-		                	<div>=</div>
-		            	</td>
-		            	<td>
-		                	<input id="answer" type="text"></input>
-		            	</td>
-		            	<td>
-		                	<input type="button" value="check"></input>
-		            	</td>
-		        	</tr>
-		    	</table> 	
-			</div>
-		</div>
-		<div id="pg5" class="page">
-			<div class="player"></div>
-			<div class="zombie"></div>
-			<div id="for_prob_pg5" class="for_prob"><button type="button">Click for Problem</button></div>
-			<div id="prob_page_pg5" class="prob_page">
 				<table width="80%">
         			<tr>      
             			<td colspan="6" align="right" id="timer">
@@ -619,10 +649,16 @@
 	<div>
 	<script>
 		"use strict";
+<<<<<<< HEAD:public/index.html
+		var pageNum=1;
+		function setWindowWidth(){
+   			var windowWidth = window.innerWidth;
+=======
 <<<<<<< HEAD
 		var counter = 0;
 		function setWindowWidth(){
     		var windowWidth = window.innerWidth;
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
     		document.getElementsByTagName('body')[0].style.width = windowWidth + "px";
 		}
 		function setWindowHeight(){
@@ -630,6 +666,27 @@
     		document.getElementsByTagName('body')[0].style.height = windowHeight + "px";
 		}
 		window.addEventListener("resize",setWindowWidth,false);
+<<<<<<< HEAD:public/index.html
+		window.addEventListener("resize",setWindowHeight,false);				 
+		$(document).ready(function() {
+
+			setWindowWidth();	
+			setWindowHeight();
+			bouncePlayer();
+			setTimeout("showPgBtn()",10000);
+	/*		var foreground = function (scenery) {
+		      	//  $(scenery).css({right:0});
+		      	$(scenery).css({right:-6400});
+		        $(scenery).animate ({
+		            right: "+=6400"
+		        }, 120000, 'linear', function() {
+		            foreground();
+		    	});	
+		    } */
+		/*	*/
+
+		//	foreground("#animation-02-pg1");
+=======
 		window.addEventListener("resize",setWindowHeight,false);						 
 		$(document).ready(function() {
 			setWindowWidth();
@@ -640,6 +697,7 @@
 		$(document).ready(function() {
 			showIntro(); 
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 			// HANDLES MATH PROBLEM EVENTS
 			$('input[type="button"]').click(function() {
 				
@@ -667,7 +725,10 @@
 			      $("#number2").innerHTML =
 			    Math.floor(Math.random() * 10); 
 			});
+
 		});
+<<<<<<< HEAD:public/index.html
+=======
 <<<<<<< HEAD
 =======
 		//ANIMATION FOR COVER PAGE
@@ -676,10 +737,13 @@
 			$("#for_intro").animate({top: "70%"}, 2500);
 		}
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		//ANIMATION IF MATH INPUT IS INCORRECT
 		function showZombie() {
 			$(".zombie").css("visibility", "visible");
 		}
+<<<<<<< HEAD:public/index.html
+=======
 <<<<<<< HEAD
 		function showPgBtn() {
 			$("#for_pg1").css("visibility", "visible");		
@@ -692,19 +756,18 @@
 			$("#prob-pg1").css("z-index", "-1");				
 =======
 		//ANIMATION FOR INSTRUCTON PAGE
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		function showPgBtn() {
-			$("#for_pg1").css("visibility", "visible");
+			$("#for_pg1").css("visibility", "visible");		
 		}
-		//ADVANCES TO INSTRUCTIONS PAGE
-		$("#for_intro").click(function() {
-			$('html,body').animate( {
-		        scrollLeft: $("#instructions").offset().left
-		    }, 'slow');
-		    setTimeout("showPgBtn()",3000);
-		}); 
 		//ADVANCES TO FIRST PAGE, STARTS PG1 ANIMATIONS
-		$('#for_pg1').click(function() {						
+		$('#for_pg1').click(function() {	
+			$("#for_pg1").css("visibility", "hidden");
+			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
+<<<<<<< HEAD:public/index.html
+			$("#prob-pg1").css("z-index", "-1");				
+=======
 			$("#prob-pg1").css("z-index", "-1");
 		   	$('html,body').animate( {
 		       	scrollLeft: $("#pg1").offset().left
@@ -715,18 +778,40 @@
 			landscape($("#animation-03-pg1"), 150000);
 			landscape($("#animation-04-pg1"), 180000);		
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		});
 		//ADVANCES RUESULTING PAGES, STOPS "OLD" ANIMATION 
 		//BEGINS "NEW" ANIMATION
-		var pageNum=1;
 		function movePage() {	
 			$("#pg" + pageNum + "-animation div").stop();
 			$("#pg" + pageNum +"-animation div").css("z-index", "-5");
 			$("#prob_page_pg" + pageNum).css("z-index", "-1");
 			pageNum++;
-			console.log(pageNum);$('html,body').animate( {
+			$('html,body').animate( {
 		        scrollLeft: $("#pg" + pageNum).offset().left
 		    }, 'slow');
+<<<<<<< HEAD:public/index.html
+		    function foreground() {					      	
+		    $('#animation-02-pg'+pageNum).css({right:-6400});
+			    $('#animation-02-pg'+pageNum).animate ({
+			        right: '+=4000',
+			    }, 20000, 'linear', function() {
+			        foreground();
+			    });
+			}
+			foreground();
+			function background() {					      	
+			    $('#animation-01-pg'+pageNum).css({right:-6400});
+			    $('#animation-01-pg'+pageNum).animate ({
+			        right: '+=4000',
+			    }, 12000, 'linear', function() {
+			        background();
+			    });
+			}
+			background();
+	//	    landscape($("#animation-01-pg"+pageNum), 300000);
+	//		landscape($("#animation-02-pg"+pageNum), 200000);
+=======
 		    landscape($("#animation-01-pg"+pageNum), 300000);
 			landscape($("#animation-02-pg"+pageNum), 200000);
 <<<<<<< HEAD
@@ -734,6 +819,7 @@
 			landscape($("#animation-03-pg"+pageNum), 150000);
 			landscape($("#animation-04-pg"+pageNum), 180000); 
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
 		} 
 		//EVENTS WHEN "CLICK FOR PROBLEM" BUTTON IS PRESSED		
 		$(".for_prob").click(function() {
@@ -741,13 +827,6 @@
 			$("#prob_page_pg" + pageNum).css("visibility", "visible");
 			$(".prob_page").css("z-index", "6");
 		});	
-		//ADVANCES TO PG6 --POSSIBLY REDUNDANT CODE	
-		$(".fifth").click(function() {
-			$(".for_prob").css("visibility", "visible");
- 			$('html,body').animate( {
-		        scrollLeft: $("#pg6").offset().left
-		    }, 'slow');
-		});
 		//PLAYER ANIMATION
 <<<<<<< HEAD
 /*		var numBody = 3;
@@ -782,7 +861,103 @@
 			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
 			setTimeout("bouncePlayer()",500);
 		} 
+
+/*		#animation-02-pg1 */
+/*		while(counter<5) {
+			bouncePlayer();
+		} 
+		function bouncePlayer(){
+			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
+			setTimeout("bouncePlayer()",500);
+		}  */
 		//LANDSCAPE ANIMATION
+<<<<<<< HEAD:public/index.html
+
+/*		var lives = 3; //User starts with 3 lives
+
+
+	//This function specifies how the timer runs and feeds in the mathProblem function to run every second
+	function startTimer(duration, display) { 
+	    var timer = duration, minutes, seconds;
+	    setInterval(function () {
+	        minutes = parseInt(timer / 60, 10);
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	        display.textContent = minutes + ":" + seconds;
+
+	        if (--timer < 0) {
+	            timer = duration;
+	        } mathProblem();
+	    }, 1000);
+	    return timer;
+	}
+
+	//This function specifies the timer start time and feeds it into the html 
+	function gameTimer() {
+		console.log("Game Timer started"); 
+	    var fiveMinutes = 60 * 5,
+	        display = document.querySelector('#time');
+	    startTimer(fiveMinutes, display);
+	    console.log(startTimer);
+
+	};
+
+
+	//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
+	function mathProblem(){
+		console.log("Math function started");
+		var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
+		console.log(counter);
+		if (counter % 7 == 0){ //Evaluates whether the number is divisible by 4
+			var question = prompt("What is 2 + 2?");//Just a placeholder for the pop up modal with math question
+			var answer = 4;
+			console.log("Counter worked");
+			if (question != answer){
+				alert("Wrong!");
+				lives--; //If answer is wrong, Player is deducted a life
+				mathProblem();
+			} else {
+				mathProblem();
+			}
+		} 
+		
+	}
+
+	
+			
+
+/*	$(document).ready(function(){
+		gameTimer(); //Starts the timer and counter functions			
+	
+
+	});
+	})(); */
+		function foreground() {					      	
+		    $('#animation-02-pg'+pageNum).css({right:-6400});
+		    $('#animation-02-pg'+pageNum).animate ({
+		        right: '+=4000',
+		    }, 20000, 'linear', function() {
+		        foreground();
+		    });
+
+		}
+		foreground();
+		function background() {					      	
+		    $('#animation-01-pg'+pageNum).css({right:-6400});
+		    $('#animation-01-pg'+pageNum).animate ({
+		        right: '+=4000',
+		    }, 12000, 'linear', function() {
+		        background();
+		    });
+		}
+		background();
+	</script>
+</body>
+</html>
+=======
 		var landscape = function(scenery, speed) {
 			setTimeout(this, 3000);
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
@@ -811,3 +986,4 @@
 </html>
 
 >>>>>>> ab9fa1741aad3ca65364f10a8866fc37ee9882bd
+>>>>>>> 993678a59e0dc39ab3da43e9b017c7d9e03fa691:public/notindex.html
