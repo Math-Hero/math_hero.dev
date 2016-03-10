@@ -13,15 +13,13 @@
 			height:auto;
 		}
 		#container {
-			position:relative;
+			position:absolute;
 			background:no-repeat;
 			height:100%;
 			width:100%;		
 		}
 		.overlay{
 		  	position: absolute;
-		  	top: 0;
-		  	left: 0;
 		  	width: 100%;
 		  	height: 100%;
 		  	z-index: 4;
@@ -44,8 +42,10 @@
 			visibility: visible;
 			height:60%;
 			width:60%;
-			right:0%;
+			right:5%;
+			top:5%;
 			z-index: 7;
+			background-color: #F5DEB3;
 		}
 		#pg1{
 			background:linear-gradient(#4169E1,white);
@@ -75,10 +75,9 @@
 			visibility: hidden;
 			height:60%;
 			width:60%;
-			top:5%;
-			right:5%;
+			top:15%;
+			right:15%;
 			border-radius: 3%;
-			border: 1px solid black;
 			background-color: #F5DEB3;
 			color: black;
 			z-index: 2;
@@ -165,12 +164,13 @@
 	<div class="overlay"></div>
 	<div id="container">
 		<div id="pg1" class="page">
-			<div id="intro" class="image">
+			<div id="intro">
 				<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>
 			</div>
 			<div id="pg1-animation" class="animation"> 
 				<div id="animation-01-pg1" class="animation-01"><img src="images/cloud-01.png" alt="cloud-01"></div>
-				<div id="animation-02-pg1" class="animation-02"><img src="images/ground-01.png" alt="ground-01"></div>
+				<div id="animation-02-pg1" class="animation-02"><img src="images/tree-01.png" alt="tree-01"></div>
+				<div id="animation-03-pg1" class="animation-03"><img src="images/ground-01.png" alt="ground-01"></div>
 			</div> 
 			<div class="player"></div>	
 			<div class="zombie"></div>
@@ -227,9 +227,10 @@
 			</div>
 		</div>
 		<div id="pg2" class="page">	
- 			<div id="pg2-animation" class="animation">
- 				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
-				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02.png" alt="ground-02"></div>
+			<div id="pg2-animation" class="animation"> 
+				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
+				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02-02.png" alt="ground-02-02"></div>
+				<div id="animation-03-pg2" class="animation-03"><img src="images/ground-02.png" alt="ground-02"></div>
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -287,10 +288,11 @@
 			</div>
 		</div>
 		<div id="pg3" class="page">		
-			<div id="background"><img src="img/mountain.png" alt="mountain"></div>
-			<div id="pg3-animation" class="animation">
-				<div id="animation-02-pg3" class="animation-01"><img src="img/ground-03.png" alt="ground-03"></div>
-			</div>
+			<div id="pg3-animation" class="animation"> 
+				<div id="animation-01-pg3" class="animation-01"><img src="images/cloud-03.png" alt="cloud-03"></div>
+				<div id="animation-02-pg3" class="animation-02"><img src="images/mountain.png" alt="mountain"></div>
+				<div id="animation-03-pg3" class="animation-03"><img src="images/ground-03.png" alt="ground-03"></div>
+			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
 			<div id="for_prob_pg3" class="for_prob"><button type="button">Click For Problem</button></div>
@@ -346,10 +348,11 @@
 			</div>
 		</div>
 		<div id="pg4" class="page">
-			<div id="background"><img src="img/rock.png" alt="rock"></div> 
-			<div id="pg4-animation" class="animation">
-				<div id="animation-02-pg4" class="animation-01"><img src = "img/ground-04.png" alt ="ground-04"></div>
-			</div> 
+			<div id="pg4-animation" class="animation"> 
+				<div id="animation-01-pg4" class="animation-01"><img src="images/cloud-04.png" alt="cloud-04"></div>
+				<div id="animation-02-pg4" class="animation-02"><img src="images/cactus.png" alt="cactus"></div>
+				<div id="animation-03-pg4" class="animation-03"><img src="images/ground-04.png" alt="ground-04"></div>
+			</div>  
 			<div class="player"></div>
 			<div class="zombie"></div>
 			<div id="for_prob_pg4"  class="for_prob"><button type="button">Click for Problem</button></div>
@@ -482,36 +485,46 @@
 			$("#for_pg1").css("visibility", "hidden");
 			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
-			$("#prob-pg1").css("z-index", "-1");				
+			$("#prob-pg1").css("z-index", "-1");
+			$(".overlay").css("z-index", "-3");				
 		});
 		//ADVANCES RUESULTING PAGES, STOPS "OLD" ANIMATION 
 		//BEGINS "NEW" ANIMATION
-		function movePage() {	
+				function movePage() {	
 			$("#pg" + pageNum + "-animation div").stop();
 			$("#pg" + pageNum +"-animation div").css("z-index", "-5");
 			$("#prob_page_pg" + pageNum).css("z-index", "-1");
 			pageNum++;
-			$('html,body').animate( {
+			console.log(pageNum);$('html,body').animate( {
 		        scrollLeft: $("#pg" + pageNum).offset().left
 		    }, 'slow');
 		    function foreground() {					      	
-		    $('#animation-02-pg'+pageNum).css({right:-6400});
-			    $('#animation-02-pg'+pageNum).animate ({
-			        right: '+=4000',
-			    }, 20000, 'linear', function() {
+		    $('#animation-03-pg'+pageNum).css({right:-6400});
+			    $('#animation-03-pg'+pageNum).animate ({
+			        right: '+=6400',
+			    }, 30000, 'linear', function() {
 			        foreground();
 			    });
 			}
 			foreground();
-			function background() {					      	
-			    $('#animation-01-pg'+pageNum).css({right:-6400});
-			    $('#animation-01-pg'+pageNum).animate ({
-			        right: '+=4000',
-			    }, 12000, 'linear', function() {
-			        background();
+		    function background_02() {					      	
+		    $('#animation-02-pg'+pageNum).css({right:-6400});
+			    $('#animation-02-pg'+pageNum).animate ({
+			        right: '+=6400',
+			    }, 40000, 'linear', function() {
+			        background_02();
 			    });
 			}
-			background();
+			background_02();
+			function background_01() {					      	
+			    $('#animation-01-pg'+pageNum).css({right:-6400});
+			    $('#animation-01-pg'+pageNum).animate ({
+			        right: '+=6400',
+			    }, 50000, 'linear', function() {
+			        background_01();
+			    });
+			}
+			background_01();
 	//	    landscape($("#animation-01-pg"+pageNum), 300000);
 	//		landscape($("#animation-02-pg"+pageNum), 200000);
 		} 
@@ -609,25 +622,34 @@
 
 	});
 	})(); */
+		//FOREGROUND AND BACKGROUND ANIMATIONS FOR THE FIRST PAGE; ALL OTHER PAGES HANDLED BY MOVEPAGE FUNCTION
 		function foreground() {					      	
+		    $('#animation-03-pg'+pageNum).css({right:-6400});
+			    $('#animation-03-pg'+pageNum).animate ({
+			        right: '+=6400',
+			    }, 35000, 'linear', function() {
+			        foreground();
+			    });
+			}
+		foreground();
+		function background_02() {					      	
 		    $('#animation-02-pg'+pageNum).css({right:-6400});
 		    $('#animation-02-pg'+pageNum).animate ({
-		        right: '+=4000',
-		    }, 20000, 'linear', function() {
-		        foreground();
+		        right: '+=6400',
+		    }, 40000, 'linear', function() {
+		        background_02();
 		    });
-
 		}
-		foreground();
-		function background() {					      	
+		background_02();
+		function background_01() {					      	
 		    $('#animation-01-pg'+pageNum).css({right:-6400});
 		    $('#animation-01-pg'+pageNum).animate ({
-		        right: '+=4000',
-		    }, 12000, 'linear', function() {
-		        background();
+		        right: '+=6400',
+		    }, 50000, 'linear', function() {
+		        background_01();
 		    });
 		}
-		background();
+		background_01();
 	</script>
 </body>
 </html>
