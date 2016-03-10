@@ -6,6 +6,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script> 
+	<script src="js/jquery-1.12.0.js"></script>
 	<style>
 		body {		
 			width:7680px;
@@ -16,6 +17,15 @@
 			background:no-repeat;
 			height:100%;
 			width:100%;		
+		}
+		.overlay{
+		  	position: absolute;
+		  	top: 0;
+		  	left: 0;
+		  	width: 100%;
+		  	height: 100%;
+		  	z-index: 4;
+		  	background-color: rgba(0,0,0,0.5); /*dim the background*/
 		}
 		/**The following is the css for the layout; it divides the body into "pages" and 
 		 * allows progression through the pages. It also for the modals.
@@ -32,9 +42,9 @@
 		#intro {
 			position:absolute;
 			visibility: visible;
-			height:100%;
-			width:100%;
-			bottom:0%;
+			height:60%;
+			width:60%;
+			right:0%;
 			z-index: 7;
 		}
 		#pg1{
@@ -63,12 +73,17 @@
 		.prob_page{
 			position:absolute;
 			visibility: hidden;
+			height:60%;
 			width:60%;
-			height:100%;
-			left:30%;
 			top:5%;
-			z-index:-2;
-			background:url(../img/problem_scroll.png) no-repeat center top;
+			right:5%;
+			border-radius: 3%;
+			border: 1px solid black;
+			background-color: #F5DEB3;
+			color: black;
+			z-index: 2;
+			font-size: 200%;
+			font-family: 'Rock Salt';
 		}
 		table{
 			position:absolute;
@@ -119,8 +134,10 @@
 		.animation-01{
 			opacity: 0.5;
 		}                                                                                                  
-		.animation-02{    
-                                      
+		.animation-02{   
+			position:absolute;  
+			bottom:0%;                                         
+
 		}
 		.player{
 			position:absolute;
@@ -138,10 +155,6 @@
 			bottom:0%;
 			z-index:7;
 		}
-		.timer{
-			background-color: black;
-			color: white;
-		}
 	</style> 
 </head>
 <body>	
@@ -149,16 +162,15 @@
 		THE "CLICK FOR PROBLEM" BUTTON HAS A #FOR_PROB_PG[] ID AND
 		A .FOR_PROB CLASS
 		THE PROBLEM MODAL HAS A #PROB_PAGE_PG[] ID AND A .PROB_PAGE CLASS -->  
+	<div class="overlay"></div>
 	<div id="container">
 		<div id="pg1" class="page">
 			<div id="intro" class="image">
 				<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>
-				<img src="img/intro.png">
 			</div>
 			<div id="pg1-animation" class="animation"> 
 				<div id="animation-01-pg1" class="animation-01"><img src="images/cloud-01.png" alt="cloud-01"></div>
-				<div id="animation-02-pg1" class="animation-02"><img src="images/tree-01.png" alt="tree-01"></div>
-				<div id="animation-03-pg1" class="animation-03"><img src="images/ground-01.png" alt="ground-01"></div>
+				<div id="animation-02-pg1" class="animation-02"><img src="images/ground-01.png" alt="ground-01"></div>
 			</div> 
 			<div class="player"></div>	
 			<div class="zombie"></div>
@@ -215,10 +227,9 @@
 			</div>
 		</div>
 		<div id="pg2" class="page">	
-			<div id="pg2-animation" class="animation"> 
-				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
-				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02-02.png" alt="ground-02-02"></div>
-				<div id="animation-03-pg2" class="animation-03"><img src="images/ground-02.png" alt="ground-02"></div>
+ 			<div id="pg2-animation" class="animation">
+ 				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
+				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02.png" alt="ground-02"></div>
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
@@ -276,11 +287,10 @@
 			</div>
 		</div>
 		<div id="pg3" class="page">		
-			<div id="pg3-animation" class="animation"> 
-				<div id="animation-01-pg3" class="animation-01"><img src="images/cloud-03.png" alt="cloud-03"></div>
-				<div id="animation-02-pg3" class="animation-02"><img src="images/mountain.png" alt="mountain"></div>
-				<div id="animation-03-pg3" class="animation-03"><img src="images/ground-03.png" alt="ground-03"></div>
-			</div> 
+			<div id="background"><img src="img/mountain.png" alt="mountain"></div>
+			<div id="pg3-animation" class="animation">
+				<div id="animation-02-pg3" class="animation-01"><img src="img/ground-03.png" alt="ground-03"></div>
+			</div>
 			<div class="player"></div>
 			<div class="zombie"></div>
 			<div id="for_prob_pg3" class="for_prob"><button type="button">Click For Problem</button></div>
@@ -336,11 +346,10 @@
 			</div>
 		</div>
 		<div id="pg4" class="page">
-			<div id="pg4-animation" class="animation"> 
-				<div id="animation-01-pg4" class="animation-01"><img src="images/cloud-04.png" alt="cloud-04"></div>
-				<div id="animation-02-pg4" class="animation-02"><img src="images/cactus.png" alt="cactus"></div>
-				<div id="animation-03-pg4" class="animation-03"><img src="images/ground-04.png" alt="ground-04"></div>
-			</div>  
+			<div id="background"><img src="img/rock.png" alt="rock"></div> 
+			<div id="pg4-animation" class="animation">
+				<div id="animation-02-pg4" class="animation-01"><img src = "img/ground-04.png" alt ="ground-04"></div>
+			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
 			<div id="for_prob_pg4"  class="for_prob"><button type="button">Click for Problem</button></div>
@@ -415,12 +424,50 @@
 		window.addEventListener("resize",setWindowWidth,false);
 		window.addEventListener("resize",setWindowHeight,false);				 
 		$(document).ready(function() {
+
 			setWindowWidth();	
 			setWindowHeight();
 			bouncePlayer();
-			  //starts timer
-			setTimeout("showPgBtn()",3000);
+			setTimeout("showPgBtn()",10000);
+	/*		var foreground = function (scenery) {
+		      	//  $(scenery).css({right:0});
+		      	$(scenery).css({right:-6400});
+		        $(scenery).animate ({
+		            right: "+=6400"
+		        }, 120000, 'linear', function() {
+		            foreground();
+		    	});	
+		    } */
+		/*	*/
+
+		//	foreground("#animation-02-pg1");
 			// HANDLES MATH PROBLEM EVENTS
+			$('input[type="button"]').click(function() {
+				
+	        	//alert box feedback before generating random numbers
+	      		var num1=parseInt($("#number1").text());
+	        	var num2=parseInt($("#number2").text());
+	      		var total = num1 + num2;
+	        	var answer = parseInt($("input[type='text']").val());
+	        
+	      		if ($("input[type='text']").val() === '') {
+	            	alert("You have not keyed any answer");
+	        	} else if (answer === total) {
+	          		alert("Great job, your highness! That is correct.");
+	          		$(".zombie").css("visibility", "hidden");
+	          		setTimeout("movePage()",2000);
+	        	} else {
+	          		alert("Nope! Try again your majesty.");
+	          		showZombie();
+	        	}	    
+			      //generate a random number range 1 to 9 for number 1 after clicking alert box using callback function
+			      $("#number1").innerHTML =
+			    Math.floor(Math.random() * 10);
+			      
+			      //generate a random number range 1 to 9 for number 2 after clicking alert box using callback function
+			      $("#number2").innerHTML =
+			    Math.floor(Math.random() * 10); 
+			});
 
 		});
 		//ANIMATION IF MATH INPUT IS INCORRECT
@@ -430,13 +477,12 @@
 		function showPgBtn() {
 			$("#for_pg1").css("visibility", "visible");		
 		}
-		//ADVANCES TO FIRST PAGE
+		//ADVANCES TO FIRST PAGE, STARTS PG1 ANIMATIONS
 		$('#for_pg1').click(function() {	
 			$("#for_pg1").css("visibility", "hidden");
 			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
-			$("#prob-pg1").css("z-index", "-1");
-	//		gameTimer();	FOR MATH PROBLEM TIMER			
+			$("#prob-pg1").css("z-index", "-1");				
 		});
 		//ADVANCES RUESULTING PAGES, STOPS "OLD" ANIMATION 
 		//BEGINS "NEW" ANIMATION
@@ -445,36 +491,29 @@
 			$("#pg" + pageNum +"-animation div").css("z-index", "-5");
 			$("#prob_page_pg" + pageNum).css("z-index", "-1");
 			pageNum++;
-			console.log(pageNum);$('html,body').animate( {
+			$('html,body').animate( {
 		        scrollLeft: $("#pg" + pageNum).offset().left
 		    }, 'slow');
 		    function foreground() {					      	
-		    $('#animation-03-pg'+pageNum).css({right:-6400});
-			    $('#animation-03-pg'+pageNum).animate ({
-			        right: '+=6400',
-			    }, 30000, 'linear', function() {
+		    $('#animation-02-pg'+pageNum).css({right:-6400});
+			    $('#animation-02-pg'+pageNum).animate ({
+			        right: '+=4000',
+			    }, 20000, 'linear', function() {
 			        foreground();
 			    });
 			}
 			foreground();
-		    function background_02() {					      	
-		    $('#animation-02-pg'+pageNum).css({right:-6400});
-			    $('#animation-02-pg'+pageNum).animate ({
-			        right: '+=6400',
-			    }, 40000, 'linear', function() {
-			        background_02();
-			    });
-			}
-			background_02();
-			function background_01() {					      	
+			function background() {					      	
 			    $('#animation-01-pg'+pageNum).css({right:-6400});
 			    $('#animation-01-pg'+pageNum).animate ({
-			        right: '+=6400',
-			    }, 50000, 'linear', function() {
-			        background_01();
+			        right: '+=4000',
+			    }, 12000, 'linear', function() {
+			        background();
 			    });
 			}
-			background_01(); 
+			background();
+	//	    landscape($("#animation-01-pg"+pageNum), 300000);
+	//		landscape($("#animation-02-pg"+pageNum), 200000);
 		} 
 		//EVENTS WHEN "CLICK FOR PROBLEM" BUTTON IS PRESSED		
 		$(".for_prob").click(function() {
@@ -497,35 +536,98 @@
 			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
 			setTimeout("bouncePlayer()",500);
 		} 
-		//FOREGROUND AND BACKGROUND ANIMATIONS FOR THE FIRST PAGE; ALL OTHER PAGES HANDLED BY MOVEPAGE FUNCTION
-		function foreground() {					      	
-		    $('#animation-03-pg'+pageNum).css({right:-6400});
-			    $('#animation-03-pg'+pageNum).animate ({
-			        right: '+=6400',
-			    }, 35000, 'linear', function() {
-			        foreground();
-			    });
+
+/*		#animation-02-pg1 */
+/*		while(counter<5) {
+			bouncePlayer();
+		} 
+		function bouncePlayer(){
+			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
+			setTimeout("bouncePlayer()",500);
+		}  */
+		//LANDSCAPE ANIMATION
+
+/*		var lives = 3; //User starts with 3 lives
+
+
+	//This function specifies how the timer runs and feeds in the mathProblem function to run every second
+	function startTimer(duration, display) { 
+	    var timer = duration, minutes, seconds;
+	    setInterval(function () {
+	        minutes = parseInt(timer / 60, 10);
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	        display.textContent = minutes + ":" + seconds;
+
+	        if (--timer < 0) {
+	            timer = duration;
+	        } mathProblem();
+	    }, 1000);
+	    return timer;
+	}
+
+	//This function specifies the timer start time and feeds it into the html 
+	function gameTimer() {
+		console.log("Game Timer started"); 
+	    var fiveMinutes = 60 * 5,
+	        display = document.querySelector('#time');
+	    startTimer(fiveMinutes, display);
+	    console.log(startTimer);
+
+	};
+
+
+	//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
+	function mathProblem(){
+		console.log("Math function started");
+		var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
+		console.log(counter);
+		if (counter % 7 == 0){ //Evaluates whether the number is divisible by 4
+			var question = prompt("What is 2 + 2?");//Just a placeholder for the pop up modal with math question
+			var answer = 4;
+			console.log("Counter worked");
+			if (question != answer){
+				alert("Wrong!");
+				lives--; //If answer is wrong, Player is deducted a life
+				mathProblem();
+			} else {
+				mathProblem();
 			}
-		foreground();
-		function background_02() {					      	
+		} 
+		
+	}
+
+	
+			
+
+/*	$(document).ready(function(){
+		gameTimer(); //Starts the timer and counter functions			
+	
+
+	});
+	})(); */
+		function foreground() {					      	
 		    $('#animation-02-pg'+pageNum).css({right:-6400});
 		    $('#animation-02-pg'+pageNum).animate ({
-		        right: '+=6400',
-		    }, 40000, 'linear', function() {
-		        background_02();
+		        right: '+=4000',
+		    }, 20000, 'linear', function() {
+		        foreground();
 		    });
 
 		}
-		background_02();
-		function background_01() {					      	
+		foreground();
+		function background() {					      	
 		    $('#animation-01-pg'+pageNum).css({right:-6400});
 		    $('#animation-01-pg'+pageNum).animate ({
-		        right: '+=6400',
-		    }, 50000, 'linear', function() {
-		        background_01();
+		        right: '+=4000',
+		    }, 12000, 'linear', function() {
+		        background();
 		    });
 		}
-		background_01();
+		background();
 	</script>
 </body>
 </html>
