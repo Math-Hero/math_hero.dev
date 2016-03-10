@@ -1,11 +1,15 @@
+
 <html>
 <head>
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
 	<style>
 		body{
 			position:relative;
@@ -16,7 +20,7 @@
 			position: absolute;
 			width: 100%;
 			height:100%;
-			background-color: green;
+
 		}
 		.timer {
 			position: absolute;
@@ -26,243 +30,136 @@
 		}
 		.prob_page{
 			position:absolute;
-			visibility: hidden;
-			height:60%;
+			display:none;
+			height:80%;
 			width:60%;
 			top:5%;
 			right:5%;
+			z-index: 7;
 			border-radius: 3%;
 			border: 1px solid black;
 			background-color: #F5DEB3;
 			color: black;
-			z-index: 2;
-			font-size: 200%;
-			font-family: 'Rock Salt';
+			font-size: 400%;
+			font-family: 'Lato';
 		}
 	</style>
 </head>
 <body>
-	<div id="container">
-		<div class="timer"></div>
-		<div class="prob_page">
-	    <table style="width:80%" align="center">
-	        <tr>      
-	            <td colspan="6" align="right">            
-	            </td>
-	        </tr>   
-	        <tr>
-	            <td colspan="6">
-	            </td>
-	        </tr>   
-	        <tr>
-	        </tr>
-	        <tr>
-	            <td>
-	                <div id="numA"></div>
-	            </td>
-	            <td>
-	                <div>+</div>
-	            </td>
-	            <td>
-	                <div id="numB"></div>
-	            </td>
-	            <td>
-	                <div>=</div>
-	            </td>
-	            <td>
-	                <input id="answer" type="text"></input>
-	            </td>
-	            <td>
-	                <input type="button" value="Check"></input>
-	            </td>
-	        </tr>
-	    </table>
-			</div>
-		</div>
- 	<script>
-		$(document).ready(function(){
-			gameTimer(); //Starts the timer and counter functions			
-		});
-		var lives = 3; //User starts with 3 lives
-		//This function specifies how the timer runs and feeds in the mathProblem function to run every second
-	//			function mathQuiz() { 	
-					
-					
-//				} 
+<div id="container">
+	<input id="timer" type="text">
+	<div class="timer"></div>
+	<div id="prob_page_pg1"class="prob_page">
+		<table style="width:80%">
+			<tr>
+				<td id="numA1"></td>
+				<td>+</td>
+				<td id="numB1"></td>
+				<td>=</div>
+	<input id="answer" type="text" size="4"></input>
+	<input type="button" value="Check" onclick="ans()"></input>
+	</tr>
+	</table>
+</div>
+</div>
+</body>
+<script>
+var pageNum=1
+	$(document).ready(function(){
+		console.log("doc");
+		startTimer(); //Starts the timer and counter functions
+	});
+	var lives = 3; //User starts with 3 lives
+	var maxValue=60;
+	var Answer= $("#answer").val();
+	var ticker = 0;
+	// start timer function
+	var d1 = new Date();
+	d1.setHours(0,5,0);
 
-	/*			function mathQuiz() { 	
-					console.log('test');
-					var maxValue=60;
-					function random(maxValue) {
-						day= new Date();
-						hour= day.getHours();
-						min=day.getMinutes();
-						sec=day.getSeconds();
-						mili=day.getTime()
-						return(((hour*3600)+(min*60)+(sec)+mili) % maxValue);
-					}
-					function random2(maxValue) {
-						day= new Date();
-						mil=day.getTime();
-						return((mil) % maxValue);
-					}
-					function add() {
-						numA=random(maxValue);
-						numB=random2(maxValue);
-						numC=numA + numB;
-					//	numA=$("#number1").innerHTML; 
-					//	numB=$("#number2").innerHTML; 
-					//	window.prompt(  numA + "+"  + numB +  " = ", "");
-						ans();
-					}
-					function ans() {
-						if ($("input[type='text']").val() === numC) {
-								msg = "Congratulations, your answer is correct.";
-								
-								mathProblem();
-							}
-							else {
-								lives--; //If answer is wrong, Player is deducted a life
-								msg = "Oops!  " + Answer + " is incorrect.\n\n"
-									+ "The correct answer was " +numC + ".\n\n"
-									+ "You have "+ lives+ " remaining";
-		   					}
-							mathProblem();
-						}
-					}
-					random(60);
-					random2(maxValue);
-					add();
-					ans(); */
-				
-		
-		function startTimer(duration, display) { 
-		    var timer = duration, minutes, seconds;
-		    setInterval(function () {
-		        minutes = parseInt(timer / 60, 10);
-		        seconds = parseInt(timer % 60, 10);
-		        minutes = minutes < 10 ? "0" + minutes : minutes;
-		        seconds = seconds < 10 ? "0" + seconds : seconds;
-		        display.textContent = minutes + ":" + seconds;
-		        if (--timer < 0) {
-		            timer = duration;
-		        } mathProblem();
-		    }, 1000);
-		    return timer;
+	var t = 0;
+
+
+
+	function pause(){
+		clearTimeout(t);
+	}
+
+
+	function resume(){
+		t= setTimeout(startTimer,1000);
+	}
+
+
+
+	function startTimer(duration, display) {
+
+		var h= d1.getHours();
+		var m= d1.getMinutes();
+		var s=d1.getSeconds();
+		m= (m<10)?"0"+m: m;
+		s= (s<10)? "0"+s : s;
+		var el= document.getElementById("timer");
+		el.value= h+":"+m+":"+s;
+		d1.setSeconds(d1.getSeconds()-1);
+		if( h==0 && m==0 && s==0 ) clearTimeout(t);
+		t= setTimeout(startTimer,1000);
+		if(s == 55) {  //variable s is the number of seconds on the timer.... make this statement whatever you want so that the problem pops up.
+			pause();
+			mathProblem();
 		}
-		//This function specifies the timer start time and feeds it into the html 
-		function gameTimer() {
-			console.log("Game Timer started"); 
-		    var fiveMinutes = 60 * 5,
-		        display = document.querySelector('.timer');
-		    startTimer(fiveMinutes, display);
-		    console.log(startTimer);
+	}
 
-		};
-		//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
-		function mathProblem(){
-			console.log("Math function started");
-			var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
-			console.log(counter);
-			if (counter % 7 == 0){ 
-				$(".prob_page").css("visibility","visible");
-				var numA=$("#numA").innerHTML;
-				var numB=$("#numB").innerHTML; 
-				var Answer= $("#answer").val();
-			//startpaste	
-				function mathQuiz() { 	
-					console.log('test');
-					maxValue=60;
-					function random(maxValue) {
-						day= new Date();
-						hour= day.getHours();
-						min=day.getMinutes();
-						sec=day.getSeconds();
-						mili=day.getTime()
-						return(((hour*3600)+(min*60)+(sec)+mili) % maxValue);
-					}
-					function random2(maxValue) {
-						day= new Date();
-						mil=day.getTime();
-						return((mil) % maxValue);
-					}
-					function add() {
-						numA=random(maxValue);
-						numB=random2(maxValue);
-						numC=numA + numB;
-					//	numA=$("#number1").innerHTML; 
-					//	numB=$("#number2").innerHTML; 
-					//	window.prompt(  numA + "+"  + numB +  " = ", "");
-						ans();
-					}
-					function ans() {
-						if ($("input[type='text']").val() === numC) {
-								msg = "Congratulations, your answer is correct.";
-								
-								mathProblem();
-							}
-							else {
-								lives--; //If answer is wrong, Player is deducted a life
-								msg = "Oops!  " + Answer + " is incorrect.\n\n"
-									+ "The correct answer was " +numC + ".\n\n"
-									+ "You have "+ lives+ " remaining";
-		   					}
-							mathProblem();
-						}
-					}
-					random(maxValue);
-					random2(maxValue);
-					add();
-					ans();
-				} 
-				console.log('test');
-			/*		maxValue=60;
-					function random(maxValue) {
-						day= new Date();
-						hour= day.getHours();
-						min=day.getMinutes();
-						sec=day.getSeconds();
-						mili=day.getTime()
-						return(((hour*3600)+(min*60)+(sec)+mili) % maxValue);
-					}
-					function random2(maxValue) {
-						day= new Date();
-						mil=day.getTime();
-						return((mil) % maxValue);
-					}
-					function add() {
-						numA=random(maxValue);
-						numB=random2(maxValue);
-						numC=numA + numB;
-					//	numA=$("#number1").innerHTML; 
-					//	numB=$("#number2").innerHTML; 
-					//	window.prompt(  numA + "+"  + numB +  " = ", "");
-						ans();
-					}
-					function ans() {
-						if ($("input[type='text']").val() === numC) {
-								msg = "Congratulations, your answer is correct.";			
-								mathProblem();
-							}
-							else {
-								lives--; //If answer is wrong, Player is deducted a life
-								msg = "Oops!  " + Answer + " is incorrect.\n\n"
-									+ "The correct answer was " +numC + ".\n\n"
-									+ "You have "+ lives+ " remaining";
-		   					}
-							mathProblem();
-						}
-					}
-					random(60);
-					random2(60);
-					add();
-					///end paste
-				console.log("Counter worked"); */
-				
-			} 
-			
-		
- </script>
+	//This function displays the problem in a popup.
+	function mathProblem(){
+			$("#prob_page_pg" +pageNum).show();
+			//	mathQuiz();
+			random1(maxValue);
+			random2(maxValue);
+			add();
 
+	}
+	//First random number to compare
+	function random1(maxValue) {
+		day= new Date();
+		hour= day.getHours();
+		min=day.getMinutes();
+		sec=day.getSeconds();
+		mili=day.getTime()
+		return(((hour*3600)+(min*60)+(sec)+mili) % maxValue);
+	}
+	//second random number to compare
+	function random2(maxValue) {
+		day= new Date();
+		mil=day.getTime();
+		return((mil) % maxValue);
+	}
+	//add function
+	function add() {
+		numA=random1(maxValue);
+		numB=random2(maxValue);
+		numC=numA + numB;
+		document.getElementById("numA"+pageNum).innerHTML = numA;
+		document.getElementById("numB"+pageNum).innerHTML = numB;
+
+	}
+	//evaluates answer
+	function ans() {
+		if ($(Answer === numC)) {
+			alert("Great job your highness!");
+			$("#prob_page_pg"+pageNum).hide();
+			resume();
+		}
+		else {
+			lives--; //If answer is wrong, Player is deducted a life
+			msg = "Oops!  " + Answer + " is incorrect.\n\n"
+					+ "The correct answer was " +numC + ".\n\n"
+					+ "You have "+ lives+ " remaining";
+			console.log(lives);
+			mathProblem();
+		}
+	}
+
+</script>
 </body>
 </html>

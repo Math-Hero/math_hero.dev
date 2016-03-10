@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="js/jquery.js"></script> 
 	<script src="js/jquery-1.12.0.js"></script>
 	<style>
@@ -40,10 +41,11 @@
 		#intro {
 			position:absolute;
 			visibility: visible;
-			height:60%;
+			height:80%;
 			width:60%;
 			right:5%;
-			top:5%;
+			top:10%;
+			border-radius: 3%;
 			z-index: 7;
 			background-color: #F5DEB3;
 		}
@@ -63,49 +65,64 @@
 			left:300%;
 		}		
 		#pg5{
-			background-color:#4876FF;
+			background:linear-gradient(#4169E1,white);
 			left:400%;
-		}
-		#pg6{
-			background-color:#00C957;
-			left:500%;
 		}	
+		.prob_page div{
+			font-family: 'Lato';
+			height:60%;
+			width:20%;
+			font-size:300%;
+			float:left;
+			z-index: 10;
+			color: black;
+		}
+		.check , .answer{
+			position:absolute;
+			font-size:200%;
+			font-family: 'Lato';
+			left:40%;
+			top:60%;
+		}
+		.answer {
+			position:absolute;
+			right:20%;
+			z-index: 10;
+		}
 		.prob_page{
 			position:absolute;
 			visibility: hidden;
-			height:60%;
+			height:80%;
 			width:60%;
-			top:15%;
-			right:15%;
+			top:5%;
+			right:5%;
+			z-index: 7;
 			border-radius: 3%;
+			border: 1px solid black;
 			background-color: #F5DEB3;
 			color: black;
-			z-index: 2;
-			font-size: 200%;
-			font-family: 'Rock Salt';
+			font-family: 'Lato';
 		}
-		table{
-			position:absolute;
-			top:10%;
-			left:5%;
-
-		}       
-        #correctScore{
-            background-color:green; 
-            z-index: -3;          
-        }
-        #wrongScore{
-            background-color:red;
-            z-index:-4;
-        }
 		#for_pg1{
 			position:absolute;
 			visibility:hidden;
 			right:5%;
 			top:40%;
+			height:15%;
 			background-color:#563D04;
-			color:#D3B372;
+			color:#F5DEB3;
 			z-index:8;
+		}
+		#intro_text{
+			position: absolute;
+			text-align: center;
+			width:65%;
+			height:90%;
+			left:5%;
+			top:13%;
+			font-size: 250%;
+			font-weight:lighter;
+			font-family: 'Lato';
 		}
 		.for_prob{
 			position:absolute;
@@ -130,14 +147,6 @@
 			height:auto;
 			bottom:0%;
 		} 
-		.animation-01{
-			opacity: 0.5;
-		}                                                                                                  
-		.animation-02{   
-			position:absolute;  
-			bottom:0%;                                         
-
-		}
 		.player{
 			position:absolute;
 			background:url(../images/player.png) no-repeat left bottom;
@@ -148,11 +157,24 @@
 		.zombie{
 			position:absolute;
 			visibility: hidden;
-			background-color: black;
 			width:30%;
-			height:80%;
-			bottom:0%;
+			height:30%;
 			z-index:7;
+			background:url(../images/mj-02.png) no-repeat left bottom;
+		}
+		.answer{
+			
+		}
+		.numA, .numB {
+		position: absolute;
+			text-align: center;
+			width:65%;
+			height:90%;
+			left:5%;
+			top:13%;
+			font-size: 250%;
+			font-weight:lighter;
+			font-family: 'Lato';
 		}
 	</style> 
 </head>
@@ -164,7 +186,13 @@
 	<div class="overlay"></div>
 	<div id="container">
 		<div id="pg1" class="page">
+			<input class="timer" type="text">
 			<div id="intro">
+				<div id="intro_text">
+					<b><u>Math</u></b> <b><u>Quest</u></b><br><br>Help the princess get to the castle
+					by solving math questions along the way. You have 5 minutes
+					to reach the castle.<br><br><b>GOOD LUCK!</b>
+				</div>
 				<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>
 			</div>
 			<div id="pg1-animation" class="animation"> 
@@ -174,59 +202,25 @@
 			</div> 
 			<div class="player"></div>	
 			<div class="zombie"></div>
-			<div id="for_prob_pg1" class="for_prob"><button type="button">Click For Problem</button></div>
-			<div id="prob_page_pg1" class="prob_page">
-				<table width="80%">
-        			<tr>      
-            			<td colspan="6" align="right" id="timer">
-                			<span>Timer : 50 </span>
-            			</td>
-        			</tr>   
-        			<tr>
-            			<td colspan="6" id="question">
-                			<span>Question 1/10</span>
-            			</td>
-        			</tr>   
-        			<tr>
-			            <td>
-			                <span>Correct<span>
-			            </td>
-		            	<td  id="correctScore">
-		                	<span>0</span>   
-		            	</td>
-		            	<td>
-		                	<span>Wrong<span>
-		            	</td>
-		            	<td id="wrongScore">
-		                	<span>0</span>
-		            	</td>
-		            	<td></td>
-		            	<td></td>
-		        	</tr>
-		        	<tr>
-		            	<td>
-		                	<div id="number1">1</div>
-		            	</td>
-		            	<td>
-		                	<div>+</div>
-		            	</td>
-		            	<td>
-		                	<div id="number2">2</div>
-		            	</td>
-		            	<td>
-		                	<div>=</div>
-		            	</td>
-		            	<td>
-		                	<input id="answer" type="text"></input>
-		            	</td>
-		            	<td>
-		                	<input type="button" value="check"></input>
-		            	</td>
-		        	</tr>
-		    	</table> 	
+			<div id="prob_page_pg1"class="prob_page">
+				<table style="width:80%">
+				<tr>
+				<td id="numA1"></td>
+				<td>+</td>
+				<td id="numB1"></td>
+				<td>=</div>
+	<input id="answer" type="text" size="4"></input>
+	<input type="button" value="Check" onclick="ans()"></input>
+	</tr>
+	</table>
+	<input id="answer" type="text" size="4"></input>
+	<input type="button" value="Check" onclick="ans()"></input>
+	</tr>
+	</table>
 			</div>
 		</div>
 		<div id="pg2" class="page">	
+			<input id="timer" type="text">
 			<div id="pg2-animation" class="animation"> 
 				<div id="animation-01-pg2" class="animation-01"><img src="images/tree-02.png" alt="tree-02"></div>
 				<div id="animation-02-pg2" class="animation-02"><img src="images/ground-02-02.png" alt="ground-02-02"></div>
@@ -234,181 +228,57 @@
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
-			<div id="for_prob_pg2"  class="for_prob"><button type="button">Click For Problem</button></div>
-			<div id="prob_page_pg2" class="prob_page">
 
-				<table width="80%">
-        			<tr>      
-            			<td colspan="6" align="right" id="timer">
-                			<span>Timer : 50 </span>
-            			</td>
-        			</tr>   
-        			<tr>
-            			<td colspan="6" id="question">
-                			<span>Question 1/10</span>
-            			</td>
-        			</tr>   
-        			<tr>
-			            <td>
-			                <span>Correct<span>
-			            </td>
-		            	<td  id="correctScore">
-		                	<span>0</span>   
-		            	</td>
-		            	<td>
-		                	<span>Wrong<span>
-		            	</td>
-		            	<td id="wrongScore">
-		                	<span>0</span>
-		            	</td>
-		            	<td></td>
-		            	<td></td>
-		        	</tr>
-		        	<tr>
-		            	<td>
-		                	<div id="number1">1</div>
-		            	</td>
-		            	<td>
-		                	<div>+</div>
-		            	</td>
-		            	<td>
-		                	<div id="number2">2</div>
-		            	</td>
-		            	<td>
-		                	<div>=</div>
-		            	</td>
-		            	<td>
-		                	<input id="answer" type="text"></input>
-		            	</td>
-		            	<td>
-		                	<input type="button" value="check"></input>
-		            	</td>
-		        	</tr>
-		    	</table> 	
-			</div>
+	<div id="prob_page2"class="prob_page">
+		<table style="width:80%">
+			<tr>
+				<td id="numA"></td>
+				<td>+</td>
+				<td id="numB"></td>
+				<td>=</div>
+	<input id="answer" type="text" size="4"></input>
+	<input type="button" value="Check" onclick="ans()"></input>
+	</tr>
+	</table>
+</div>
 		</div>
 		<div id="pg3" class="page">		
 			<div id="pg3-animation" class="animation"> 
+				<input id="timer" type="text">
 				<div id="animation-01-pg3" class="animation-01"><img src="images/cloud-03.png" alt="cloud-03"></div>
 				<div id="animation-02-pg3" class="animation-02"><img src="images/mountain.png" alt="mountain"></div>
 				<div id="animation-03-pg3" class="animation-03"><img src="images/ground-03.png" alt="ground-03"></div>
 			</div> 
 			<div class="player"></div>
 			<div class="zombie"></div>
-			<div id="for_prob_pg3" class="for_prob"><button type="button">Click For Problem</button></div>
 			<div id="prob_page_pg3" class="prob_page">
-				<table width="80%">
-        			<tr>      
-            			<td colspan="6" align="right" id="timer">
-                			<span>Timer : 50 </span>
-            			</td>
-        			</tr>   
-        			<tr>
-            			<td colspan="6" id="question">
-                			<span>Question 1/10</span>
-            			</td>
-        			</tr>   
-        			<tr>
-			            <td>
-			                <span>Correct<span>
-			            </td>
-		            	<td  id="correctScore">
-		                	<span>0</span>   
-		            	</td>
-		            	<td>
-		                	<span>Wrong<span>
-		            	</td>
-		            	<td id="wrongScore">
-		                	<span>0</span>
-		            	</td>
-		            	<td></td>
-		            	<td></td>
-		        	</tr>
-		        	<tr>
-		            	<td>
-		                	<div id="number1">1</div>
-		            	</td>
-		            	<td>
-		                	<div>+</div>
-		            	</td>
-		            	<td>
-		                	<div id="number2">2</div>
-		            	</td>
-		            	<td>
-		                	<div>=</div>
-		            	</td>
-		            	<td>
-		                	<input id="answer" type="text"></input>
-		            	</td>
-		            	<td>
-		                	<input type="button" value="check"></input>
-		            	</td>
-		        	</tr>
-		    	</table> 	
+				<div id="numA3"class="numA"></div>
+			    <div class="symbol">+</div> 
+			    <div id="numB3"class="numB"></div>
+			    <div class="equal">=</div>
+			    <div><input class="answer" type="text" size="3" ></input></div>
 			</div>
 		</div>
 		<div id="pg4" class="page">
 			<div id="pg4-animation" class="animation"> 
-				<div id="animation-01-pg4" class="animation-01"><img src="images/cloud-04.png" alt="cloud-04"></div>
+				<input id="timer" type="text">
+				<div id="animation-01-pg4" class="animation-01"><img src="images/rock.png" alt="rock"></div>
 				<div id="animation-02-pg4" class="animation-02"><img src="images/cactus.png" alt="cactus"></div>
 				<div id="animation-03-pg4" class="animation-03"><img src="images/ground-04.png" alt="ground-04"></div>
 			</div>  
 			<div class="player"></div>
 			<div class="zombie"></div>
-			<div id="for_prob_pg4"  class="for_prob"><button type="button">Click for Problem</button></div>
 			<div id="prob_page_pg4" class="prob_page">
-				<table width="80%">
-        			<tr>      
-            			<td colspan="6" align="right" id="timer">
-                			<span>Timer : 50 </span>
-            			</td>
-        			</tr>   
-        			<tr>
-            			<td colspan="6" id="question">
-                			<span>Question 1/10</span>
-            			</td>
-        			</tr>   
-        			<tr>
-			            <td>
-			                <span>Correct<span>
-			            </td>
-		            	<td  id="correctScore">
-		                	<span>0</span>   
-		            	</td>
-		            	<td>
-		                	<span>Wrong<span>
-		            	</td>
-		            	<td id="wrongScore">
-		                	<span>0</span>
-		            	</td>
-		            	<td></td>
-		            	<td></td>
-		        	</tr>
-		        	<tr>
-		            	<td>
-		                	<div id="number1">1</div>
-		            	</td>
-		            	<td>
-		                	<div>+</div>
-		            	</td>
-		            	<td>
-		                	<div id="number2">2</div>
-		            	</td>
-		            	<td>
-		                	<div>=</div>
-		            	</td>
-		            	<td>
-		                	<input id="answer" type="text"></input>
-		            	</td>
-		            	<td>
-		                	<input type="button" value="check"></input>
-		            	</td>
-		        	</tr>
-		    	</table> 	
+				<div id="numA4"class="numA"></div>
+			    <div class="symbol">+</div> 
+			    <div id="numB4"class="numB"></div>
+			    <div class="equal">=</div>
+			    <div><input class="answer" type="text" size="3" ></input></div>
 			</div>
 		</div>
-		<div id="pg6" class="page">
-			<img src="img/castle1.jpg" alt ="castle1">
+		<div id="pg5" class="page">
+			<div class="player"></div>
+			<img src="images/castle-01.png" alt ="castle-01">
 			<div class="head"></div>
 			<div class="for_pg1"><button type="button">Click To Return</button></div>
 		</div>
@@ -427,7 +297,8 @@
 		window.addEventListener("resize",setWindowWidth,false);
 		window.addEventListener("resize",setWindowHeight,false);				 
 		$(document).ready(function() {
-
+			console.log("doc");
+			//Starts the timer and counter functions
 			setWindowWidth();	
 			setWindowHeight();
 			bouncePlayer();
@@ -442,7 +313,6 @@
 		    	});	
 		    } */
 		/*	*/
-
 		//	foreground("#animation-02-pg1");
 			// HANDLES MATH PROBLEM EVENTS
 			$('input[type="button"]').click(function() {
@@ -471,7 +341,6 @@
 			      $("#number2").innerHTML =
 			    Math.floor(Math.random() * 10); 
 			});
-
 		});
 		//ANIMATION IF MATH INPUT IS INCORRECT
 		function showZombie() {
@@ -481,7 +350,8 @@
 			$("#for_pg1").css("visibility", "visible");		
 		}
 		//ADVANCES TO FIRST PAGE, STARTS PG1 ANIMATIONS
-		$('#for_pg1').click(function() {	
+		$('#for_pg1').click(function() {
+			startTimer(); 	
 			$("#for_pg1").css("visibility", "hidden");
 			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
@@ -549,7 +419,6 @@
 			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
 			setTimeout("bouncePlayer()",500);
 		} 
-
 /*		#animation-02-pg1 */
 /*		while(counter<5) {
 			bouncePlayer();
@@ -559,29 +428,22 @@
 			setTimeout("bouncePlayer()",500);
 		}  */
 		//LANDSCAPE ANIMATION
-
 /*		var lives = 3; //User starts with 3 lives
-
-
 	//This function specifies how the timer runs and feeds in the mathProblem function to run every second
 	function startTimer(duration, display) { 
 	    var timer = duration, minutes, seconds;
 	    setInterval(function () {
 	        minutes = parseInt(timer / 60, 10);
 	        seconds = parseInt(timer % 60, 10);
-
 	        minutes = minutes < 10 ? "0" + minutes : minutes;
 	        seconds = seconds < 10 ? "0" + seconds : seconds;
-
 	        display.textContent = minutes + ":" + seconds;
-
 	        if (--timer < 0) {
 	            timer = duration;
 	        } mathProblem();
 	    }, 1000);
 	    return timer;
 	}
-
 	//This function specifies the timer start time and feeds it into the html 
 	function gameTimer() {
 		console.log("Game Timer started"); 
@@ -589,10 +451,7 @@
 	        display = document.querySelector('#time');
 	    startTimer(fiveMinutes, display);
 	    console.log(startTimer);
-
 	};
-
-
 	//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
 	function mathProblem(){
 		console.log("Math function started");
@@ -612,14 +471,11 @@
 		} 
 		
 	}
-
 	
 			
-
 /*	$(document).ready(function(){
 		gameTimer(); //Starts the timer and counter functions			
 	
-
 	});
 	})(); */
 		//FOREGROUND AND BACKGROUND ANIMATIONS FOR THE FIRST PAGE; ALL OTHER PAGES HANDLED BY MOVEPAGE FUNCTION
@@ -650,6 +506,102 @@
 		    });
 		}
 		background_01();
+		var pageNum=1
+
+	
+	var lives = 3; //User starts with 3 lives
+	var maxValue=60;
+	var Answer= $("#answer").val();
+	var ticker = 0;
+	// start timer function
+	var d1 = new Date();
+	d1.setHours(0,5,0);
+
+	var t = 0;
+
+
+
+	function pause(){
+		clearTimeout(t);
+	}
+
+
+	function resume(){
+		t= setTimeout(startTimer,1000);
+	}
+
+
+
+	function startTimer(duration, display) {
+
+		var h= d1.getHours();
+		var m= d1.getMinutes();
+		var s=d1.getSeconds();
+		m= (m<10)?"0"+m: m;
+		s= (s<10)? "0"+s : s;
+		var el= document.getElementById("timer");
+		el.value= h+":"+m+":"+s;
+		d1.setSeconds(d1.getSeconds()-1);
+		if( h==0 && m==0 && s==0 ) clearTimeout(t);
+		t= setTimeout(startTimer,1000);
+		if(s == 55) {  //variable s is the number of seconds on the timer.... make this statement whatever you want so that the problem pops up.
+			pause();
+			mathProblem();
+		}
+	}
+
+	//This function displays the problem in a popup.
+	function mathProblem(){
+			$("#pg" + pageNum + "-animation div").stop();
+			$("#prob_page_pg" + pageNum).css("visibility", "visible");
+			$(".prob_page").css("z-index", "6");
+		//	$("#prob_page_pg" +pageNum).show();
+			//	mathQuiz();
+			random1(maxValue);
+			random2(maxValue);
+			add();
+
+	}
+	//First random number to compare
+	function random1(maxValue) {
+		day= new Date();
+		hour= day.getHours();
+		min=day.getMinutes();
+		sec=day.getSeconds();
+		mili=day.getTime()
+		return(((hour*3600)+(min*60)+(sec)+mili) % maxValue);
+	}
+	//second random number to compare
+	function random2(maxValue) {
+		day= new Date();
+		mil=day.getTime();
+		return((mil) % maxValue);
+	}
+	//add function
+	function add() {
+		numA=random1(maxValue);
+		numB=random2(maxValue);
+		numC=numA + numB;
+		document.getElementById("numA"+pageNum).innerHTML = numA;
+		document.getElementById("numB"+pageNum).innerHTML = numB;
+
+	}
+	//evaluates answer
+	function ans() {
+		if ($(Answer === numC)) {
+			alert("Great job your highness!");
+			$("#prob_page_pg"+pageNum).hide();
+			resume();
+		}
+		else {
+			lives--; //If answer is wrong, Player is deducted a life
+			msg = "Oops!  " + Answer + " is incorrect.\n\n"
+					+ "The correct answer was " +numC + ".\n\n"
+					+ "You have "+ lives+ " remaining";
+			console.log(lives);
+			mathProblem();
+		}
+	}
 	</script>
 </body>
 </html>
