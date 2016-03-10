@@ -3,8 +3,10 @@
 	<title>Math Quest</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 	<script type="text/javascript" src="js/velocity.js"></script>
+ 	<script type="text/javascript" src="js/velocity.min.js"></script>
+	<script type="text/javascript" src="js/velocity.ui.js"></script>
+	<script type="text/javascript" src="js/velocity.ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script> 
 	<script src="js/jquery-1.12.0.js"></script>
 	<style>
@@ -107,7 +109,7 @@
 		}
 		.player{
 			position:absolute;
-			background:url(../images/player.png) no-repeat left bottom;
+			background:url(../img/player.png) no-repeat left bottom;
 			width:30%;
 			height:100%;
 			z-index:5;
@@ -201,7 +203,6 @@
 	<div>
 	<script>
 		"use strict";
-		var counter = 0;
 		function setWindowWidth(){
     		var windowWidth = window.innerWidth;
     		document.getElementsByTagName('body')[0].style.width = windowWidth + "px";
@@ -213,10 +214,11 @@
 		window.addEventListener("resize",setWindowWidth,false);
 		window.addEventListener("resize",setWindowHeight,false);						 
 		$(document).ready(function() {
+	//		gameTimer();
 			setWindowWidth();
 			setWindowHeight();
 			setTimeout("showPgBtn()",10000);
-			landscape($("#animation-02-pg1"), 200000);
+		//	landscape($("#animation-02-pg1"), 2000);
 			// HANDLES MATH PROBLEM EVENTS
 			$('input[type="button"]').click(function() {
 				
@@ -257,11 +259,20 @@
 			$("#for_pg1").css("visibility", "hidden");
 			$("#intro").css("visibility", "hidden");					
 			$(".for_prob1").css("visibility", "visible");
-			$("#prob-pg1").css("z-index", "-1");				
+			$("#prob-pg1").css("z-index", "-1");	
+			loop();			
 		});
 		//ADVANCES RUESULTING PAGES, STOPS "OLD" ANIMATION 
 		//BEGINS "NEW" ANIMATION
-		var pageNum=1;
+		var pageNum =1;
+		function loop() {
+	        $('#animation-02-pg1').css({right:0});
+	        $('#animation-02-pg1').animate ({
+	            right: '+=5000',
+	        }, 15000, 'linear', function() {
+	            loop();
+	        });
+	    } 
 		function movePage() {	
 			$("#pg" + pageNum + "-animation div").stop();
 			$("#pg" + pageNum +"-animation div").css("z-index", "-5");
@@ -287,7 +298,7 @@
 		    }, 'slow');
 		});
 		//PLAYER ANIMATION
-/*		var numBody = 3;
+		var numBody = 3;
 		function startPlayer(){
 			numBody++;
 			$(".player").animate({top:"-="+numBody+ "%"},500).animate({top:"+="+numBody+"%"},500);
@@ -300,18 +311,11 @@
 		function bouncePlayer(){	
 			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);		
 				setTimeout("bouncePlayer()",500);
-			} */
-/*		while(counter<5) {
-			bouncePlayer();
-		} 
-		function bouncePlayer(){
-			$(".player").animate({top:"-=2%"},500).animate({top:"+=2%"},500);
-			setTimeout("bouncePlayer()",500);
-		}  */
+			}  
 		//LANDSCAPE ANIMATION
-		var landscape = function(scenery, speed) {
+	/*	var landscape = function(scenery, speed) {
 			$(scenery).animate( {
-				'right':$(document).width() + 1280
+				'right':$(document).width() + 100
 			}, 
 			{
 				duration: speed,
@@ -320,7 +324,55 @@
 					}
 				}
 			);
-		};	
+		};	*/
+	//	landscape($("#animation-02-pg1"), 2000);
+	/*
+	var lives = 3; //User starts with 3 lives
+	//This function specifies how the timer runs and feeds in the mathProblem function to run every second
+	function startTimer(duration, display) { 
+	    var timer = duration, minutes, seconds;
+	    setInterval(function () {
+	        minutes = parseInt(timer / 60, 10);
+	        seconds = parseInt(timer % 60, 10);
+
+	        minutes = minutes < 10 ? "0" + minutes : minutes;
+	        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+	        display.textContent = minutes + ":" + seconds;
+
+	        if (--timer < 0) {
+	            timer = duration;
+	        } mathProblem();
+	    }, 1000);
+	    return timer;
+	}
+	//This function specifies the timer start time and feeds it into the html 
+	function gameTimer() {
+		console.log("Game Timer started"); 
+	    var fiveMinutes = 60 * 5,
+	    display = document.querySelector('#time');
+	    startTimer(fiveMinutes, display);
+		console.log(startTimer);
+	}
+	//This function randomizes a number between 1 and 100 in order to randomly invoke a pop-up
+	function mathProblem(){
+		console.log("Math function started");
+		var counter = Math.floor((Math.random() * 100) + 1);//Randomizes the number
+		console.log(counter);
+		if (counter % 7 == 0){ //Evaluates whether the number is divisible by 4
+			var question = prompt("What is 2 + 2?");//Just a placeholder for the pop up modal with math question
+			var answer = 4;
+			console.log("Counter worked");
+			if (question != answer){
+				alert("Wrong!");
+				lives--; //If answer is wrong, Player is deducted a life
+				mathProblem();
+			} else {
+				mathProblem();
+			}
+		} 
+		
+	} */
 	</script>
 </body>
 </html>
