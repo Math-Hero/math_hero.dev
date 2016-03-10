@@ -1,0 +1,335 @@
+<html>
+<head>
+	<title>Math Quest</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="/css/mathquest.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	</head>
+<body>
+	<!--EVERY PAGE HAS A .PAGE CLASS AND EVERY STAGE HAS A #PG[] ID
+		THE "CLICK FOR PROBLEM" BUTTON HAS A #FOR_PROB_PG[] ID AND
+		A .FOR_PROB CLASS
+		THE PROBLEM MODAL HAS A #PROB_PAGE_PG[] ID AND A .PROB_PAGE CLASS -->  
+	<div id="container">
+		<div id="cover" class="page">
+			<div class="image"><img src="/img/cover.png" alt="cover"></div>
+			<div id="for_intro_top"></div>
+			 <button id="for_intro" type="button" class="btn btn-primary btn-lg">Click for instructions</button>
+		</div>
+		<div id="instructions" class="page">
+			<div class="image"><img src="/img/intro.png" alt="intro"></div>
+			<button id="for_pg1" type="button" class="btn btn-primary btn-lg">Click to begin</button>		
+		</div>
+		<div id="pg1" class="page">	
+			<div id="pg1-animation" class="animation"> 
+				<div id="animation-01-pg1" class="animation-01"><img src="/img/cloud-01.png" alt="cloud-01"></div> 
+				<div id="animation-02-pg1" class="animaition-02"><img src="/img/cloud-02.png" alt="cloud-02"></div>
+				<div id="animation-03-pg1" class="animation-03"><img src="/img/tree-01.png" alt="tree-01"></div>
+				<div id="animation-04-pg1" class="animation-04"><img src="/img/ground-01.png" alt="ground-01"></div>	
+			</div> 
+			<div class="player"></div>	
+			<div class="zombie"></div>
+			<div id="for_prob_pg1" class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="prob_page_pg1" class="prob_page">
+				<table width="80%">
+        			<tr>      
+            			<td colspan="6" align="right" id="timer">
+                			<span>Timer : 50 </span>
+            			</td>
+        			</tr>   
+        			<tr>
+            			<td colspan="6" id="question">
+                			<span>Question 1/10</span>
+            			</td>
+        			</tr>   
+        			<tr>
+			            <td>
+			                <span>Correct<span>
+			            </td>
+		            	<td  id="correctScore">
+		                	<span>0</span>   
+		            	</td>
+		            	<td>
+		                	<span>Wrong<span>
+		            	</td>
+		            	<td id="wrongScore">
+		                	<span>0</span>
+		            	</td>
+		            	<td></td>
+		            	<td></td>
+		        	</tr>
+		        	<tr>
+		            	<td>
+		                	<div id="number1">1</div>
+		            	</td>
+		            	<td>
+		                	<div>+</div>
+		            	</td>
+		            	<td>
+		                	<div id="number2">2</div>
+		            	</td>
+		            	<td>
+		                	<div>=</div>
+		            	</td>
+		            	<td>
+		                	<input id="answer" type="text"></input>
+		            	</td>
+		            	<td>
+		                	<input type="button" value="check"></input>
+		            	</td>
+		        	</tr>
+		    	</table> 	
+			</div>
+		</div>
+		<div id="pg2" class="page">		
+ 			<div id="pg2-animation" class="animation">
+				<div id="animation-01-pg2"class="animation-01"><img src="/img/tree-02.png" alt="tree-02"></div> 
+				<div id="animation-02-pg2" class="animation-04"><img src="/img/leaf.png" alt="leaf"></div>
+				<div id="animation-03-pg2" class="animation-03"><img src="/img/ground-02-02.png" alt="ground-02-02"></div>
+				<div id="animation-04-pg2" class="animation-04"><img src="/img/ground-02.png" alt="ground-02"></div>
+			</div> 
+			<div class="player"></div>
+			<div class="zombie"></div>
+			<div id="for_prob_pg2"  class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="prob_page_pg2" class="prob_page">
+
+				<table width="80%">
+        			<tr>      
+            			<td colspan="6" align="right" id="timer">
+                			<span>Timer : 50 </span>
+            			</td>
+        			</tr>   
+        			<tr>
+            			<td colspan="6" id="question">
+                			<span>Question 1/10</span>
+            			</td>
+        			</tr>   
+        			<tr>
+			            <td>
+			                <span>Correct<span>
+			            </td>
+		            	<td  id="correctScore">
+		                	<span>0</span>   
+		            	</td>
+		            	<td>
+		                	<span>Wrong<span>
+		            	</td>
+		            	<td id="wrongScore">
+		                	<span>0</span>
+		            	</td>
+		            	<td></td>
+		            	<td></td>
+		        	</tr>
+		        	<tr>
+		            	<td>
+		                	<div id="number1">1</div>
+		            	</td>
+		            	<td>
+		                	<div>+</div>
+		            	</td>
+		            	<td>
+		                	<div id="number2">2</div>
+		            	</td>
+		            	<td>
+		                	<div>=</div>
+		            	</td>
+		            	<td>
+		                	<input id="answer" type="text"></input>
+		            	</td>
+		            	<td>
+		                	<input type="button" value="check"></input>
+		            	</td>
+		        	</tr>
+		    	</table> 
+				<div class="close_prob">X</div>			
+			</div>
+		</div>
+		<div id="pg3" class="page">		
+			<div id="pg3-animation" class="animation">	
+				<div id="animation-01-pg3"class="animation-01"><img src="/img/bird.png" alt="bird"></div> 
+				<div id="animation-02-pg3" class="animation-02"><img src="/img/cloud-03.png" alt="cloud-03"></div>
+				<div id="animation-03-pg3" class="animation-03"><img src="/img/mountain.png" alt="mountain"></div>
+				<div id="animation-04-pg3" class="animation-04"><img src="/img/ground-03.png" alt="ground-03"></div>
+			</div>
+			<div class="player"></div>
+			<div class="zombie"></div>
+			<div id="for_prob_pg3" class="for_prob"><button type="button">Click For Problem</button></div>
+			<div id="prob_page_pg3" class="prob_page">
+				<table width="80%">
+        			<tr>      
+            			<td colspan="6" align="right" id="timer">
+                			<span>Timer : 50 </span>
+            			</td>
+        			</tr>   
+        			<tr>
+            			<td colspan="6" id="question">
+                			<span>Question 1/10</span>
+            			</td>
+        			</tr>   
+        			<tr>
+			            <td>
+			                <span>Correct<span>
+			            </td>
+		            	<td  id="correctScore">
+		                	<span>0</span>   
+		            	</td>
+		            	<td>
+		                	<span>Wrong<span>
+		            	</td>
+		            	<td id="wrongScore">
+		                	<span>0</span>
+		            	</td>
+		            	<td></td>
+		            	<td></td>
+		        	</tr>
+		        	<tr>
+		            	<td>
+		                	<div id="number1">1</div>
+		            	</td>
+		            	<td>
+		                	<div>+</div>
+		            	</td>
+		            	<td>
+		                	<div id="number2">2</div>
+		            	</td>
+		            	<td>
+		                	<div>=</div>
+		            	</td>
+		            	<td>
+		                	<input id="answer" type="text"></input>
+		            	</td>
+		            	<td>
+		                	<input type="button" value="check"></input>
+		            	</td>
+		        	</tr>
+		    	</table> 	
+			</div>
+		</div>
+		<div id="pg4" class="page">
+			<div id="pg4-animation" class="animation"> 
+				<div id="animation-01-pg4" class="animation-01"><img src = "/img/rock.png" alt ="rock"></div> 
+				<div id="animation-02-pg4" class="animation-02"><img src = "/img/cloud-04.png" alt ="cloud-04"></div>
+				<div id="animation-03-pg4" class="animation-03"><img src = "/img/cactus.png" alt ="cactus"></div>
+				<div id="animation-04-pg4"  class="animation-04"><img src = "/img/ground-04.png" alt ="ground-04"></div>
+			</div> 
+			<div class="player"></div>
+			<div class="zombie"></div>
+			<div id="for_prob_pg4"  class="for_prob"><button type="button">Click for Problem</button></div>
+			<div id="prob_page_pg4" class="prob_page">
+				<table width="80%">
+        			<tr>      
+            			<td colspan="6" align="right" id="timer">
+                			<span>Timer : 50 </span>
+            			</td>
+        			</tr>   
+        			<tr>
+            			<td colspan="6" id="question">
+                			<span>Question 1/10</span>
+            			</td>
+        			</tr>   
+        			<tr>
+			            <td>
+			                <span>Correct<span>
+			            </td>
+		            	<td  id="correctScore">
+		                	<span>0</span>   
+		            	</td>
+		            	<td>
+		                	<span>Wrong<span>
+		            	</td>
+		            	<td id="wrongScore">
+		                	<span>0</span>
+		            	</td>
+		            	<td></td>
+		            	<td></td>
+		        	</tr>
+		        	<tr>
+		            	<td>
+		                	<div id="number1">1</div>
+		            	</td>
+		            	<td>
+		                	<div>+</div>
+		            	</td>
+		            	<td>
+		                	<div id="number2">2</div>
+		            	</td>
+		            	<td>
+		                	<div>=</div>
+		            	</td>
+		            	<td>
+		                	<input id="answer" type="text"></input>
+		            	</td>
+		            	<td>
+		                	<input type="button" value="check"></input>
+		            	</td>
+		        	</tr>
+		    	</table> 	
+			</div>
+		</div>
+		<div id="pg5" class="page">
+			<div class="player"></div>
+			<div class="zombie"></div>
+			<div id="for_prob_pg5" class="for_prob"><button type="button">Click for Problem</button></div>
+			<div id="prob_page_pg5" class="prob_page">
+				<table width="80%">
+        			<tr>      
+            			<td colspan="6" align="right" id="timer">
+                			<span>Timer : 50 </span>
+            			</td>
+        			</tr>   
+        			<tr>
+            			<td colspan="6" id="question">
+                			<span>Question 1/10</span>
+            			</td>
+        			</tr>   
+        			<tr>
+			            <td>
+			                <span>Correct<span>
+			            </td>
+		            	<td  id="correctScore">
+		                	<span>0</span>   
+		            	</td>
+		            	<td>
+		                	<span>Wrong<span>
+		            	</td>
+		            	<td id="wrongScore">
+		                	<span>0</span>
+		            	</td>
+		            	<td></td>
+		            	<td></td>
+		        	</tr>
+		        	<tr>
+		            	<td>
+		                	<div id="number1">1</div>
+		            	</td>
+		            	<td>
+		                	<div>+</div>
+		            	</td>
+		            	<td>
+		                	<div id="number2">2</div>
+		            	</td>
+		            	<td>
+		                	<div>=</div>
+		            	</td>
+		            	<td>
+		                	<input id="answer" type="text"></input>
+		            	</td>
+		            	<td>
+		                	<input type="button" value="check"></input>
+		            	</td>
+		        	</tr>
+		    	</table> 	
+			</div>
+		</div>
+		<div id="pg6" class="page">
+			<img src="/img/castle1.jpg" alt ="castle1">
+			<div class="head"></div>
+			<div class="for_pg1"><button type="button">Click To Return</button></div>
+		</div>
+	<div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="/js/mathquest.js"></script>
+	</body>
+</html>
+

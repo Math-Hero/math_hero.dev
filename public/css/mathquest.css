@@ -1,0 +1,164 @@
+body {		
+			width: 10240px;
+			height: auto;
+		}
+		#container {
+			position: absolute;
+			background: no-repeat;
+			height: 100%;
+			width: 100%;
+			
+		}
+		img {
+			position: absolute;
+		    max-width: auto;
+		    max-height: auto;
+		}
+		/**The following is the css for the layout; it divides the body into "pages" and 
+		 * allows progression through the pages. It also for the modals.
+		**/ 
+		.page{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.image{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		#cover{	
+			background: linear-gradient(
+				to bottom,
+				rgba(155,48,255, 0),
+				rgba(155,48,255, 1)
+				); 		
+		}
+		#instructions{
+			background: linear-gradient(
+				to bottom,
+				rgba(128,128,128, 0),
+				rgba(128,128,128, 1)
+				);
+			left:100%;
+		}
+		#pg1{
+			background-color: linear-gradient(#4169E1,white);
+			left: 200%;
+		}
+		#pg2{
+			background-color: linear-gradient(#4B0082,white);
+			left: 300%;
+		}			
+		#pg3 {
+			background-color: linear-gradient(#B0C4DE,white);
+			left: 400%;
+		}	
+		#pg4 {		
+			background-color: linear-gradient(#FF4500,white);
+			left: 500%;
+		}		
+		#pg5{
+			background-color: #4876FF;
+			left: 600%;
+		}
+		#pg6{
+			background-color: #00C957;
+			left: 700%;
+		}	
+		.prob_page{
+			position: absolute;
+			visibility: hidden;
+			width: 60%;
+			height: 100%;
+			left: 30%;
+			top: 5%;
+			z-index: -2;
+			background: url(../img/problem_scroll.png) no-repeat center top;
+		}
+		table{
+			position: absolute;
+			top: 10%;
+			left: 5%;
+		}       
+        #correctScore{
+            background-color: green; 
+            z-index: -3;          
+        }
+        #wrongScore{
+            background-color: red;
+            z-index: -4;
+        }
+		#for_intro{
+			position: absolute;
+			top: -5%;
+			left: 20%;
+			background-color: purple;
+			color: #9B30FF;
+			z-index: 1;
+		}
+		#for_intro_top{
+			position: absolute;
+			width: 42%;
+			height: 25%;
+			top: -25%;
+			left: 8%;
+			background-color: violet;
+			border-radius: 1%
+		}
+		#for_pg1{
+			position: absolute;
+			visibility: hidden;
+			right: 5%;
+			top: 40%;
+			background-color: #563D04;
+			color: #D3B372;
+			z-index: 1;
+		}
+		.for_prob{
+			position: absolute;
+			z-index: 6;
+		}
+		/* The following css is for the animated divs */
+		.animation{
+			position: absolute;
+			visibility: visible;
+			height: 100%;
+			width: 100%;
+		}
+		.animation div{
+			position: absolute;
+			visibility: visible;
+			height: 100%;
+			width: 800%;
+			right: -700%;
+		}
+		.animation-01{
+			opacity: 0.5;
+			z-index: 1;
+		}                                                                                                     
+		.animation-02{                                              
+			z-index: 2;
+		}
+		.animation-03{
+			z-index: 3;
+		}
+		.animation-04{
+			z-index: 4;
+		}
+		.player{
+			position: absolute;
+			background: url(../img/player.png) no-repeat left bottom;
+			width: 30%;
+			height: 100%;
+			z-index: 5;
+		}
+		.zombie{
+			position: absolute;
+			visibility: hidden;
+			background-color: black;
+			width: 30%;
+			height: 80%;
+			bottom: 0%;
+			z-index: 7;
+		}
